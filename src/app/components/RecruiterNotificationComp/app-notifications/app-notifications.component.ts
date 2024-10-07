@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-app-notifications',
@@ -24,10 +25,25 @@ export class AppNotificationsComponent {
       skills: 'Lorem ipsum...',
       experiences: 'Another experience...',
     },
+    {
+      id: 3,
+      name: 'John Doe',
+      skills: 'Lorem ipsum...',
+      experiences: 'Another experience...',
+    },
+    {
+      id: 4,
+      name: 'John Doe',
+      skills: 'Lorem ipsum...',
+      experiences: 'Another experience...',
+    },
+    
     // Add more notifications as needed
   ];
 
-  selectCandidate(notification: any) {
-    this.candidateSelected.emit(notification);
+  constructor(private router: Router) {}
+
+  selectCandidate() {
+    this.router.navigate(['/candidate-detail']);
   }
 }

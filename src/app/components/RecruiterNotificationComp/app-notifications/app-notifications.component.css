@@ -1,0 +1,78 @@
+.notification-container {
+  margin: 10px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 300px; /* Adjust the width as needed */
+  max-height: 100vh;
+  overflow-y: auto;
+  background-color: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Increased shadow */
+  padding: 16px;
+  z-index: 1000;
+  border-radius: 5%;
+  font-family: 'Roboto', sans-serif; /* Apply the Roboto font */
+}
+
+.notification-title {
+  font-size: 1.5rem; /* Increase font size */
+  font-weight: bolder;
+  color: #002543; /* Change color */
+  margin-bottom: 16px;
+  letter-spacing: 0.05em; /* Add letter spacing */
+}
+
+.notification-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notification-item {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  margin-bottom: 8px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  height: 60px; /* Smaller height */
+}
+
+.notification-item:hover {
+  background-color: #e0e0e0;
+}
+
+.notification-avatar {
+  width: 40px;
+  height: 40px;
+  background-color: #98abee; /* Purple color */
+  border-radius: 50%; /* Make it circular */
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  flex-shrink: 0; /* Prevent shrinking */
+}
+
+.notification-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.notification-header {
+  font-size: 0.9rem;
+  font-weight: 700; /* Make it more bold */
+  color: #022744; /* Change color */
+  margin-bottom: 2px; /* Reduce space below the header */
+}
+
+.notification-description {
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 0; /* Remove top margin */
+}

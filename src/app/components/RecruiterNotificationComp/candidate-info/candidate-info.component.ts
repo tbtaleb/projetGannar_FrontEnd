@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-candidate-info',
@@ -9,5 +10,9 @@ import { Component, Input } from '@angular/core';
   styleUrl: './candidate-info.component.css',
 })
 export class CandidateInfoComponent {
-  @Input() selectedCandidate: any;
+  
+
+  candidateId!: number;
+
+  
 }

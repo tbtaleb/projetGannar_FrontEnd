@@ -1,9 +1,38 @@
-<div *ngIf="selectedCandidate" class="candidate-details">
-  <h2>{{ selectedCandidate.name }}</h2>
-  <p><strong>Skills:</strong> {{ selectedCandidate.skills }}</p>
-  <p><strong>Experiences:</strong></p>
-  <ul>
-    <li *ngFor="let experience of selectedCandidate.experiences">{{ experience }}</li>
-  </ul>
-  <button class="view-more-btn">View More</button>
+<div class="candidate-detail-container">
+  <h2 class="candidate-name">Foulen Fouleni</h2>
+  <div class="underline"></div>
+  <!-- Underline for candidate name -->
+
+  <div class="candidate-section">
+    <h3 class="candidate-section-title skills">Skills:</h3>
+    <p class="candidate-section-content">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </p>
+  </div>
+
+  <div class="candidate-section">
+    <h3 class="candidate-section-title experiences">Experiences:</h3>
+    <ul class="candidate-experiences">
+      <li>
+        <span class="candidate-experience-title">hedhi (2000-2019):</span>
+        <p class="candidate-experience-description">
+          3malt feha adhika w hedhi w hedhi
+        </p>
+      </li>
+      <li>
+        <span class="candidate-experience-title">hedhika (2000-2019):</span>
+        <p class="candidate-experience-description">
+          3malt feha adhika w hedhi w hedhi
+        </p>
+      </li>
+      <li>
+        <span class="candidate-experience-title">hedhika (2000-2019):</span>
+        <p class="candidate-experience-description">
+          3malt feha adhika w hedhi w hedhi
+        </p>
+      </li>
+    </ul>
+  </div>
+
+  <button class="view-more-button">View More</button>
 </div>
