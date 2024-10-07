@@ -1,0 +1,19 @@
+.list-header{
+    display:flex;
+    
+}
+.fullname{
+    width: 200px;
+}
+.email{
+    width: 450px;
+}
+.score{
+    width: 250px;
+}
+.score-icon{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    width:250px;
+}
