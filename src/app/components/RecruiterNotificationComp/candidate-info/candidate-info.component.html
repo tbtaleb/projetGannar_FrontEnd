@@ -1,0 +1,9 @@
+<div *ngIf="selectedCandidate" class="candidate-details">
+  <h2>{{ selectedCandidate.name }}</h2>
+  <p><strong>Skills:</strong> {{ selectedCandidate.skills }}</p>
+  <p><strong>Experiences:</strong></p>
+  <ul>
+    <li *ngFor="let experience of selectedCandidate.experiences">{{ experience }}</li>
+  </ul>
+  <button class="view-more-btn">View More</button>
+</div>
