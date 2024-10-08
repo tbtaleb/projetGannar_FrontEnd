@@ -1,0 +1,29 @@
+<div class="matches-container">
+    <h2>Your Matches</h2>
+    <p>These offers are shown based on your matching score</p>
+    <div class="offers-grid">
+        <div class="offer-card" *ngFor="let offer of offers">
+            <div class="container">
+                <div class="text-content">
+                    <h3 class="title">{{offer.companyName}}</h3>
+                    <p class="domain">{{ offer.domain }}</p>
+                </div>
+                <div class="offer-header">
+                    <div class="company-logo"> </div>
+                </div>
+                
+                
+            </div>
+           
+             <div class="offer-content">
+                <h4 class="job-title">{{offer.jobTitle }}</h4>
+                <p class="job-type">{{ offer.jobType }}</p>
+                <p class="description">{{ offer.description }}</p>
+                <div class="matching-score"></div>
+
+            </div> 
+        </div>
+
+    </div>
+
+</div>

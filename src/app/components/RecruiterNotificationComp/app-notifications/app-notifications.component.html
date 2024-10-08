@@ -1,0 +1,14 @@
+<div class="notification-container">
+  <h2 class="notification-title">Notifications</h2>
+  <ul class="notification-list">
+    <li *ngFor="let notification of notifications"
+        class="notification-item"
+        (click)="selectCandidate()">
+      <div class="notification-avatar"></div>
+      <div class="notification-text">
+        <h3 class="notification-header">You have a new match!</h3>
+        <p class="notification-description">Our system detected a possible candidate for your <span class="company">Company</span> </p>
+      </div>
+    </li>
+  </ul>
+</div>

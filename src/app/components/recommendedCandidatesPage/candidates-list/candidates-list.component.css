@@ -1,0 +1,24 @@
+.candidate-list{
+    margin:100px;
+    width:900px;
+    height:auto;
+    padding:25px;
+    border-radius: 10px;
+    
+    
+    background-color: #dfe6ff;
+    
+}
+.list-header{
+    display:flex;
+    border-bottom: 1px solid black;
+}
+.fullname{
+    width: 200px;
+}
+.email{
+    width: 450px;
+}
+.score{
+    width: 250px;
+}

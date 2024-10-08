@@ -1,0 +1,105 @@
+.candidate-detail-container {
+  background-color: white;
+  border-radius: 8px;
+   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  padding: 24px;
+  max-width: 500px;
+  margin: 0 auto; /* Center horizontally */
+  position: relative; /* Add relative positioning */
+  top: 50%; /* Center vertically */
+  font-family: 'Roboto', sans-serif;
+}
+
+.candidate-name {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #002543;
+  position: relative;
+}
+
+.underline {
+  width: 80%;
+  height: 2px;
+  background-color: #002543;
+  margin-bottom: 16px;
+}
+
+.candidate-section {
+  margin-bottom: 24px;
+}
+
+.candidate-section-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #002543; /* Change title color */
+  position: relative;
+}
+
+.candidate-section-title.skills,
+.candidate-section-title.experiences {
+  text-decoration: underline;
+}
+
+.candidate-section-content {
+  font-size: 0.875rem;
+  color: #4a5568;
+}
+
+.candidate-experiences {
+  list-style: none; /* Remove default list style */
+  padding-left: 20px;
+  margin-bottom: 60px; /* Remove default padding */
+}
+
+.candidate-experiences li {
+  margin-bottom: 16px; /* Space between list items */
+}
+
+.candidate-experience-title {
+  font-weight: 600;
+  display: block; /* Make title a block element */
+}
+
+.candidate-experience-description {
+  margin: 0; /* Remove default margin */
+  padding-left: 20px; /* Indent description */
+  color: #4a5568; /* Description color */
+}
+
+.view-more-button {
+  background-color: #002543; /* Change button background color */
+  color: white; /* Change button text color */
+  font-weight: 600;
+  padding: 4px 40px; /* Adjust padding for less height and more width */
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.2s, box-shadow 0.3s ease;
+  position: absolute;
+  right: 24px; /* Move button to the right side */
+  bottom: 24px; /* Adjust position as needed */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add box shadow */
+}
+
+.view-more-button:hover {
+  background-color: #001a33; /* Darker shade on hover */
+  transform: scale(1.05); /* Scale effect on hover */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Increase shadow on hover */
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .candidate-detail-container {
+    padding: 16px;
+    max-width: 90%;
+    top: 10%; /* Adjust vertical centering for smaller screens */
+    transform: translateY(0); /* Remove vertical centering for smaller screens */
+  }
+
+  .view-more-button {
+    right: 16px; /* Adjust button position for smaller screens */
+    bottom: 16px; /* Adjust button position for smaller screens */
+  }
+}

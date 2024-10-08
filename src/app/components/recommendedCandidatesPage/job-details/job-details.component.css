@@ -1,0 +1,15 @@
+.job-details{
+    background-color: #00203a;
+    color:white;
+    width:200px;
+    height:100vw;
+    padding:25px;
+    border-top-right-radius: 25px;
+    min-width: auto;
+}
+.job-detail-title{
+    width:100px;
+}
+.job-details-text{
+    width:160px
+}
