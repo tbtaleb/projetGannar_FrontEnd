@@ -22,4 +22,8 @@ export class UserStoryNavComponent {
   navigateToNotifications() {
     this.router.navigate(['/notifications']);
   }
+
+  navigateToProfile() {
+    this.router.navigate(['/profile']);
+  }
 }

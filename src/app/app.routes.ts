@@ -4,12 +4,14 @@ import { CandidateInfoComponent } from './components/RecruiterNotificationComp/c
 import { MatchesComponentComponent } from './components/matches_component/matches_component.component';
 import { RecommendedCandidatesComponent } from './components/recommendedCandidatesPage/recommended-candidates/recommended-candidates.component';
 import { UserStoryNavComponent } from './components/prototype/user-story-nav/user-story-nav.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 export const routes: Routes = [
   { path: 'notifications', component: AppNotificationsComponent },
   { path: 'candidate-detail', component: CandidateInfoComponent },
   { path: 'matches', component: MatchesComponentComponent },
   { path: 'recomandation', component: RecommendedCandidatesComponent },
+  { path: 'profile', component: UserProfileComponent },
  
   // Add other routes as needed
   { path: '', redirectTo: '/matches', pathMatch: 'full' },
