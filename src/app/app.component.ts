@@ -6,11 +6,13 @@ import { CandidateInfoComponent } from "./components/RecruiterNotificationComp/c
 import { RecommendedCandidatesComponent } from './components/recommendedCandidatesPage/recommended-candidates/recommended-candidates.component';
 import { JobDetailsComponent } from './components/recommendedCandidatesPage/job-details/job-details.component';
 import { UserStoryNavComponent } from "./components/prototype/user-story-nav/user-story-nav.component";
+import { JobComponent } from "./components/AllJobs/job/job.component";
+import { JobsListComponent } from "./components/AllJobs/jobs-list/jobs-list.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, AppNotificationsComponent, CandidateInfoComponent, RecommendedCandidatesComponent, JobDetailsComponent, MatchesComponentComponent, UserStoryNavComponent],
+  imports: [RouterOutlet, AppNotificationsComponent, CandidateInfoComponent, RecommendedCandidatesComponent, JobDetailsComponent, MatchesComponentComponent, UserStoryNavComponent, JobComponent, JobsListComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
