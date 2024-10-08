@@ -9,5 +9,7 @@ import { CommonModule } from '@angular/common';
 })
 export class UserProfileComponent {
    test:boolean = false;
- 
+  fileUploaded(event:any){
+    this.test = true;
+  }
 }
