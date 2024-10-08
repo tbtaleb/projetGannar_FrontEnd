@@ -7,7 +7,7 @@
   margin: 0 auto; /* Center horizontally */
   position: relative; /* Add relative positioning */
   top: 50%; /* Center vertically */
-  
+  font-family: 'Roboto', sans-serif;
 }
 
 .candidate-name {
