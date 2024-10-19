@@ -1,0 +1,55 @@
+<div class="flex flex-col h-screen items-center justify-center bg-MainLight">
+    <div class="w-1/2 mb-4">
+      <button (click)="navigateBack()" class="self-start border-2 border-MainDark bg-MainDark text-white text-2xl font-bold py-1 px-4 rounded-full shadow-md hover:bg-MainLight hover:text-MainDark transition duration-300 hover:scale-105 hover:shadow-lg">Back</button>
+    </div>
+  
+    <div class="w-1/2 h-10/12 rounded-lg shadow-xl p-8 bg-white">
+      <form>
+        <!-- Job Title -->
+        <div class="mb-4">
+          <label class="block text-MainShade text-2xl font-bold mb-2" for="jobTitle">
+            Job Title
+          </label>
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-MainDark leading-tight focus:outline-none focus:shadow-outline" id="jobTitle" type="text" placeholder="Enter Job Title">
+        </div>
+  
+        <!-- Job Description -->
+        <div class="mb-4">
+          <label class="block text-MainShade text-2xl font-bold mb-2" for="jobDescription">
+            Job Description
+          </label>
+          <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-MainDark leading-tight focus:outline-none focus:shadow-outline" id="jobDescription" rows="4" placeholder="Enter Job Description"></textarea>
+        </div>
+  
+        <!-- Working Hours -->
+        <div class="mb-4">
+          <label class="block text-MainShade text-2xl font-bold mb-2" for="workingHours">
+            Working Hours
+          </label>
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-MainDark leading-tight focus:outline-none focus:shadow-outline" id="workingHours" type="text" placeholder="Enter Working Hours">
+        </div>
+  
+        <!-- Salary -->
+        <div class="mb-4">
+          <label class="block text-MainShade text-2xl font-bold mb-2" for="salary">
+            Salary
+          </label>
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-MainDark leading-tight focus:outline-none focus:shadow-outline" id="salary" type="text" placeholder="Enter Salary">
+        </div>
+  
+        <!-- Skills Needed -->
+        <div class="mb-4">
+          <label class="block text-MainShade text-2xl font-bold mb-2" for="skillsNeeded">
+            Skills Needed
+          </label>
+          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-MainDark leading-tight focus:outline-none focus:shadow-outline" id="skillsNeeded" type="text" placeholder="Enter Skills Needed">
+        </div>
+  
+        <!-- Buttons (Save and Submit) -->
+        <div class="flex justify-end items-center">
+            <button class="border-2 border-MainDark bg-MainDark text-white text-2xl font-bold py-1 px-4 rounded-full ml-4 shadow-md hover:bg-white hover:text-MainDark transition duration-300 hover:scale-105 hover:shadow-lg" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  

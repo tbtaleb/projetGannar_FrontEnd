@@ -3,8 +3,10 @@ import { AppNotificationsComponent } from './components/RecruiterNotificationCom
 import { CandidateInfoComponent } from './components/RecruiterNotificationComp/candidate-info/candidate-info.component';
 import { MatchesComponentComponent } from './components/matches_component/matches_component.component';
 import { RecommendedCandidatesComponent } from './components/recommendedCandidatesPage/recommended-candidates/recommended-candidates.component';
-import { UserStoryNavComponent } from './components/prototype/user-story-nav/user-story-nav.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { JobDetailComponent } from './components/AllJobs/job-detail/job-detail.component';
+import { AllJobsComponent } from './components/AllJobs/all-jobs/all-jobs.component';
+import { NewJobFormComponent } from './components/new-job-form/new-job-form.component';
 
 export const routes: Routes = [
   { path: 'notifications', component: AppNotificationsComponent },
@@ -12,8 +14,16 @@ export const routes: Routes = [
   { path: 'matches', component: MatchesComponentComponent },
   { path: 'recomandation', component: RecommendedCandidatesComponent },
   { path: 'profile', component: UserProfileComponent },
- 
-  // Add other routes as needed
-  { path: '', redirectTo: '/matches', pathMatch: 'full' },
+  
+  // Parent route for Jobs with child routes
+  { path: 'Jobs', component: AllJobsComponent,},
+  { path: 'jobDetails', component: JobDetailComponent },
+
+  { path: 'newJob' , component: NewJobFormComponent},
+
+  // Redirect default route
+  { path: '', redirectTo: '/Jobs', pathMatch: 'full' },
+
+  // Wildcard route for 404
   { path: '**', redirectTo: '/matches' },
 ];
