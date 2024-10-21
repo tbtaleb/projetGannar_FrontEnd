@@ -9,15 +9,15 @@ import { AllJobsComponent } from './components/AllJobs/all-jobs/all-jobs.compone
 import { NewJobFormComponent } from './components/new-job-form/new-job-form.component';
 
 export const routes: Routes = [
-  { path: 'notifications', component: AppNotificationsComponent },
+  { path: 'notifications', component: AppNotificationsComponent }, //NOT NEEDED SINCE THE CANDIDATE IS GONNA BE LOGGED IN WHILE THE SYSTEM MATCHES THEM WITH JOBS, THE CANDIDATE INITIATES THE MATCHING PROCESS AND AWAITS THE RESULTS!
   { path: 'candidate-detail', component: CandidateInfoComponent },
-  { path: 'matches', component: MatchesComponentComponent },
-  { path: 'recomandation', component: RecommendedCandidatesComponent },
+  { path: 'matches', component: MatchesComponentComponent }, 
+  { path: 'recommendation', component: RecommendedCandidatesComponent },
   { path: 'profile', component: UserProfileComponent },
   
   // Parent route for Jobs with child routes
-  { path: 'Jobs', component: AllJobsComponent,},
-  { path: 'jobDetails', component: JobDetailComponent },
+  { path: 'jobs', component: AllJobsComponent,}, //DONE
+  { path: 'jobDetails/:id', component: JobDetailComponent }, //DONE
 
   { path: 'newJob' , component: NewJobFormComponent},
 
