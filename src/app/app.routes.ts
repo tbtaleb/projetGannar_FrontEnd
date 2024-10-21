@@ -14,7 +14,7 @@ export const routes: Routes = [
   { path: 'matches', component: MatchesComponentComponent }, 
   { path: 'recommendation', component: RecommendedCandidatesComponent },
   { path: 'profile', component: UserProfileComponent },
-  
+  { path: 'home', component: UserProfileComponent },
   // Parent route for Jobs with child routes
   { path: 'jobs', component: AllJobsComponent,}, //DONE
   { path: 'jobDetails/:id', component: JobDetailComponent }, //DONE
