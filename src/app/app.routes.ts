@@ -11,7 +11,7 @@ import { NewJobFormComponent } from './components/new-job-form/new-job-form.comp
 export const routes: Routes = [
   { path: 'notifications', component: AppNotificationsComponent }, //NOT NEEDED SINCE THE CANDIDATE IS GONNA BE LOGGED IN WHILE THE SYSTEM MATCHES THEM WITH JOBS, THE CANDIDATE INITIATES THE MATCHING PROCESS AND AWAITS THE RESULTS!
   { path: 'candidate-detail', component: CandidateInfoComponent },
-  { path: 'matches', component: MatchesComponentComponent }, 
+  { path: 'matches', component: MatchesComponentComponent }, //DONE
   { path: 'recommendation', component: RecommendedCandidatesComponent },
   { path: 'profile', component: UserProfileComponent },
   { path: 'home', component: UserProfileComponent },

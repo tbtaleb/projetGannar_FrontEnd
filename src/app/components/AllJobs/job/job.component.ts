@@ -18,4 +18,6 @@ export class JobComponent {
   goToJobDetails() {
     this.router.navigate([`jobDetails/${this.jobOffer.Id}`]);
   }
+
+  
 }

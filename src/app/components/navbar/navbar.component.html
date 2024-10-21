@@ -8,9 +8,9 @@
         </a>
         <!-- Primary Navbar items -->
         <div class="hidden md:flex items-center space-x-1">
-          <a routerLink="/home" routerLinkActive="text-blue-500" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Home</a>
-          <a routerLink="/jobs" routerLinkActive="text-blue-500" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Jobs</a>
-          <a routerLink="/resume-checker" routerLinkActive="text-blue-500" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Resume Checker</a>
+          <a [routerLink]="['/home']" routerLinkActive="text-blue-500" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Home</a>
+          <a [routerLink]="['/jobs']" routerLinkActive="text-blue-500" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Jobs</a>
+          <a [routerLink]="['/resume-checker']" routerLinkActive="text-blue-500" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Resume Checker</a>
         </div>
       </div>
     </div>
@@ -18,9 +18,9 @@
   <!-- Mobile menu -->
   <div class="hidden mobile-menu md:hidden">
     <ul class="">
-      <li><a routerLink="/home" routerLinkActive="text-blue-500" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">Home</a></li>
-      <li><a routerLink="/jobs" routerLinkActive="text-blue-500" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">Jobs</a></li>
-      <li><a routerLink="/resume-checker" routerLinkActive="text-blue-500" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">Resume Checker</a></li>
+      <li><a [routerLink]="['/home']" routerLinkActive="text-blue-500" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">Home</a></li>
+      <li><a [routerLink]="['/jobs']" routerLinkActive="text-blue-500" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">Jobs</a></li>
+      <li><a [routerLink]="['/resume-checker']" routerLinkActive="text-blue-500" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">Resume Checker</a></li>
     </ul>
   </div>
 </nav>

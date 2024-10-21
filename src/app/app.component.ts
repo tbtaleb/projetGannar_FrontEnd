@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { UploadCvComponent } from "./components/landing page/upload-cv/upload-cv.component";
 import { HomeComponent } from "./components/landing page/home/home.component";
 import { AccueilComponent } from "./components/landing page/accueil/accueil.component";
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @Component({
   selector: 'app-root',
@@ -30,7 +31,8 @@ import { AccueilComponent } from "./components/landing page/accueil/accueil.comp
     AllJobsComponent,
     UploadCvComponent,
     HomeComponent,
-    AccueilComponent
+    AccueilComponent,
+    NavbarComponent
 ],
   providers: [
     HttpClientModule

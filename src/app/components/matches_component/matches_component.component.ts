@@ -1,68 +1,27 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MatchesService } from '../../services/matches.service';
+import { Match } from '../../classes/match';
+import { MatchComponent } from '../match/match.component';
 
 @Component({
   selector: 'app-matches-component',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,MatchComponent],
   templateUrl: './matches_component.component.html',
   styleUrl: './matches_component.component.css',
 })
-export class MatchesComponentComponent {
-  offers = [
-    {
-      companyName: 'Company Name',
-      domain: 'Domain',
-      jobTitle: 'Job Title',
-      jobType: 'Full time',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    },
-    {
-      companyName: 'Company Name',
-      domain: 'Domain',
-      jobTitle: 'Job Title',
-      jobType: 'Full time',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    },
-    {
-      companyName: 'Company Name',
-      domain: 'Domain',
-      jobTitle: 'Job Title',
-      jobType: 'Full time',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    },
-    {
-      companyName: 'Company Name',
-      domain: 'Domain',
-      jobTitle: 'Job Title',
-      jobType: 'Full time',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    },
-    {
-      companyName: 'Company Name',
-      domain: 'Domain',
-      jobTitle: 'Job Title',
-      jobType: 'Full time',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    },{
-      companyName: 'Company Name',
-      domain: 'Domain',
-      jobTitle: 'Job Title',
-      jobType: 'Full time',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    },{
-      companyName: 'Company Name',
-      domain: 'Domain',
-      jobTitle: 'Job Title',
-      jobType: 'Full time',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    },
-    {
-      companyName: 'Company Name',
-      domain: 'Domain',
-      jobTitle: 'Job Title',
-      jobType: 'Full time',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-    },
-];
+export class MatchesComponentComponent implements OnInit{
+
+  candidateMatches:Match[] = []
+
+  constructor(private matchService:MatchesService){}
+
+  ngOnInit(): void {
+    this.matchService.getAllMatches(1).subscribe( data => {
+      this.candidateMatches = data;
+      console.log(this.candidateMatches);
+    })
+  }
+  
 }
