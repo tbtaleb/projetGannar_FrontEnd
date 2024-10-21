@@ -1,10 +1,105 @@
 <app-upload-cv></app-upload-cv>
-<div>
-    <div>
-
+<div class="flex flex-col items-center justify-center min-h-screen px-4 md:px-10">
+    <div class="flex flex-col md:flex-row items-center max-w-6xl w-full">
+        <div class="md:w-1/2 mb-8 md:mb-0">
+            <img src="assets/ccv.png" class="max-h-[80vh] mx-auto" alt="">
+        </div>
+        <div class="md:w-1/2 md:pl-8">
+            <h1 class="font-bold text-5xl mb-6 leading-tight">
+                Ensure your resume makes<br>
+                it past the Applicant Tracking<br>
+                Systems with the help of AI
+            </h1>
+            <ul class="space-y-4 font-bold">
+                <li class="flex items-start">
+                    <i class="fa-regular fa-square-check mt-1 mr-2"></i>
+                    <span>Avoid your resume being ignored due to a lack of relevant keywords</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="fa-regular fa-square-check mt-1 mr-2"></i>
+                    <span>Maximize your content's impact by optimizing for industry-specific keywords</span>
+                </li>
+                <li class="flex items-start">
+                    <i class="fa-regular fa-square-check mt-1 mr-2"></i>
+                    <span>Upgrade your skills section to align perfectly with job requirements</span>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div>  
-       <h1>Ensure your resume makes it past the Applicant Tracking Systems with the help of AI</h1> 
-       
-    </div>   
+</div>
+<h1 class="font-bold text-5xl mb-6 leading-tight">Find some job offers that match your skill set</h1>
+<div class="relative">
+    <div id="scrollContainer" class="overflow-x-auto whitespace-nowrap scroll-smooth pb-5">
+        <button class="absolute left-0 z-10 h-full px-4 text-white bg-blue-500 bg-opacity-75 rounded-lg ml-2 hover:bg-opacity-100 transition-opacity duration-300"
+            (click)="scrollLeft()">
+            <i class="fa-solid fa-chevron-left fa-xl"></i>
+        </button>
+
+        <!-- Job Offer Cards -->
+        <div class="inline-flex space-x-4 px-12">
+            @for (job of jobOffers; track job){
+            <div class="w-64 bg-white rounded-lg shadow-md p-4">
+                <div class="flex justify-between items-start mb-2">
+                    <h3 class="font-bold text-lg">{{job.title}}</h3>
+                    <i [class]="job.icon + ' text-2xl text-gray-600'"></i>
+                </div>
+                <p class="text-sm text-gray-600 mb-2">{{job.company}}</p>
+                <p class="text-sm mb-1"><i class="fa-regular fa-clock mr-2"></i>{{job.shift}}</p>
+                <p class="text-sm"><i class="fa-solid fa-dollar-sign mr-2"></i>{{job.payment}}</p>
+            </div>
+            }
+        </div>
+
+        <button class="absolute right-0 z-10 h-full px-4 text-white bg-blue-500 bg-opacity-75 rounded-lg mr-2 hover:bg-opacity-100 transition-opacity duration-300"
+            (click)="scrollRight()">
+            <i class="fa-solid fa-chevron-right fa-xl"></i>
+        </button>
+    </div>
+</div>
+<div>
+<footer class="bg-gray-800 text-white py-8 mt-12">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-wrap justify-between">
+            <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                <h3 class="text-xl font-bold mb-4">JobMatch AI</h3>
+                <p class="text-sm">Empowering your career with AI-driven job matching.</p>
+            </div>
+            <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                <ul class="text-sm">
+                    <li class="mb-2"><a href="#" class="hover:text-gray-400">Home</a></li>
+                    <li class="mb-2"><a href="#" class="hover:text-gray-400">About Us</a></li>
+                    <li class="mb-2"><a href="#" class="hover:text-gray-400">Services</a></li>
+                    <li class="mb-2"><a href="#" class="hover:text-gray-400">Contact</a></li>
+                </ul>
+            </div>
+            <div class="w-full md:w-1/4 mb-6 md:mb-0">
+                <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+                <p class="text-sm mb-2">123 AI Street, Tech City</p>
+                <p class="text-sm mb-2">contact&#64;jobmatchai.com</p>
+                <p class="text-sm">+1 (555) 123-4567</p>
+            </div>
+            <div class="w-full md:w-1/4">
+                <h4 class="text-lg font-semibold mb-4">Follow Us</h4>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-white hover:text-gray-400">
+                        <i class="fab fa-facebook-f fa-lg"></i>
+                    </a>
+                    <a href="#" class="text-white hover:text-gray-400">
+                        <i class="fab fa-twitter fa-lg"></i>
+                    </a>
+                    <a href="#" class="text-white hover:text-gray-400">
+                        <i class="fab fa-linkedin-in fa-lg"></i>
+                    </a>
+                    <a href="#" class="text-white hover:text-gray-400">
+                        <i class="fab fa-instagram fa-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-gray-700 mt-8 pt-6 text-sm text-center">
+            <p>&copy; 2024 JobMatch AI. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
 </div>
