@@ -1,0 +1,23 @@
+<div class="offer-card" >
+    <div class="container">
+        <div class="text-content">
+            <h3 class="title">{{job.name}}</h3>
+            <p class="domain"></p>
+        </div>
+        <!--
+        <div class="offer-header">
+            <div class="company-logo"> </div>
+        </div>
+        -->
+        
+    </div>
+   
+     <div class="offer-content">
+        <h4 class="job-title">{{job.name}}</h4>
+        <p class="job-type"></p>
+        <p class="description">{{job.description}}</p>
+        <div class="matching-score">{{jobMatch.candidate_score}} %</div>
+        <button (click)="applyForJob()" class="bg-MainDark text-white py-2 px-4 font-semibold rounded-full shadow hover:scale-105 transition duration-100 ease-in-out hover:shadow-lg mr-4 mt-2">Apply</button>
+
+    </div> 
+</div>

@@ -8,9 +8,9 @@ export class JobOffer {
     public workTime!:string;
     public location!:string;
     public salary!:number;
-    public recruiter!: Recruiter;
+    public recruiter!: any;
 
-    constructor(Id:number,name:string,description:string,workTime:string,location:string,salary:number,recruiter:Recruiter){
+    constructor(Id:number,name:string,description:string,workTime:string,location:string,salary:number,recruiter:any){
         this.Id = Id
         this.name = name
         this.description = description
