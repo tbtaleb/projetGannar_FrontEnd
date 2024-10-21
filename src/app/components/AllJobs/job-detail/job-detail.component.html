@@ -3,18 +3,18 @@
         <button (click)="navigateBack()" class="self-start border-2 border-MainDark bg-MainDark text-white text-2xl font-bold py-1 px-4 rounded-full shadow-md hover:bg-MainLight hover:text-MainDark transition duration-300 hover:scale-105 hover:shadow-lg">Back</button>
     </div>
     <div class="w-1/2 h-10/12 rounded-lg shadow-xl p-8 bg-white">
-        <p class="text-2xl text-MainShade mb-4"><span class="text-5xl font-bold text-MainDark">{{jobOffer.name}}.</span> Company Name</p>
+        <p class="text-2xl text-MainShade mb-4"><span class="text-5xl font-bold text-MainDark">{{jobOffer?.name}}.</span> Company Name</p>
         <hr>
         <h1 class="text-MainShade text-2xl font-bold my-2">Job Description :</h1>
-        <p class="text-lg text-MainDark">{{jobOffer.description}}</p>
+        <p class="text-lg text-MainDark">{{jobOffer?.description}}</p>
         <h1 class="text-MainShade text-2xl font-bold my-2">Working Hours :</h1>
-        <p class="text-lg text-MainDark">{{jobOffer.workTime}}</p>
+        <p class="text-lg text-MainDark">{{jobOffer?.workTime}}</p>
         <h1 class="text-MainShade text-2xl font-bold my-2">Salary :</h1>
-        <p class="text-lg text-MainDark">{{jobOffer.salary}} DT</p>
+        <p class="text-lg text-MainDark">{{jobOffer?.salary}} DT</p>
         <div class="flex justify-end items-center text-MainDark">
             <div class="flex">
                 <!--<button class="border-2 border-MainDark text-2xl font-bold py-1 px-4 rounded-full bg-white shadow-md hover:bg-MainDark hover:text-white transition duration-300 hover:scale-105 hover:shadow-lg">Save</button>-->
-                <button (click)="applyForJob" class="border-2 border-MainDark bg-MainDark text-white text-2xl font-bold py-1 px-4 rounded-full ml-4 shadow-md hover:bg-white hover:text-MainDark transition duration-300 hover:scale-105 hover:shadow-lg">Apply</button>
+                <button (click)="applyForJob()" class="border-2 border-MainDark bg-MainDark text-white text-2xl font-bold py-1 px-4 rounded-full ml-4 shadow-md hover:bg-white hover:text-MainDark transition duration-300 hover:scale-105 hover:shadow-lg">Apply</button>
             </div>
         </div>
     </div>

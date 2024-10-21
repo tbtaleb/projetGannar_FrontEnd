@@ -11,6 +11,7 @@ import { JobsListComponent } from "./components/AllJobs/jobs-list/jobs-list.comp
 import { AllJobsComponent } from "./components/AllJobs/all-jobs/all-jobs.component";
 import { HttpClientModule } from '@angular/common/http';
 import { UploadCvComponent } from "./components/upload-cv/upload-cv.component";
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @Component({
   selector: 'app-root',
@@ -26,7 +27,8 @@ import { UploadCvComponent } from "./components/upload-cv/upload-cv.component";
     JobComponent,
     JobsListComponent,
     AllJobsComponent,
-    UploadCvComponent
+    UploadCvComponent,
+    NavbarComponent
 ],
   providers: [
     HttpClientModule

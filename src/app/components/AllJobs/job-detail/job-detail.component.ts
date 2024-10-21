@@ -18,9 +18,8 @@ export class JobDetailComponent implements OnInit{
 
   id:any
   jobOffer:any = {}
-  constructor(private http:HttpClient,private location: Location,private activatedRoute:ActivatedRoute,private jobService:JobOfferService,private applicationService:ApplicationsService) {}
+  constructor(private location: Location,private activatedRoute:ActivatedRoute,private jobService:JobOfferService,private applicationService:ApplicationsService) {}
 
-  
 
   ngOnInit(): void {
     this.id=this.activatedRoute.snapshot.paramMap.get('id');
@@ -29,7 +28,7 @@ export class JobDetailComponent implements OnInit{
 
   
   getJobById(id:number){
-    this.jobService.getJobOfferById(1).subscribe( data => {
+    this.jobService.getJobOfferById(id).subscribe( data => {
       this.jobOffer = data;
       console.log(this.jobOffer);
     })
