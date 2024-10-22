@@ -11,8 +11,7 @@ import { Component } from '@angular/core';
 export class JobDetailComponent {
   constructor(private location: Location) {}
 
-  // Function to navigate back
   navigateBack() {
-    this.location.back();  // Navigates to the previous page
+    this.location.back();
   }
 }
