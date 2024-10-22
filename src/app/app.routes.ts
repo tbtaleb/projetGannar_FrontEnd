@@ -24,6 +24,7 @@ export const routes: Routes = [
   // Redirect default route
   { path: '', redirectTo: '/Jobs', pathMatch: 'full' },
 
+
   // Wildcard route for 404
   { path: '**', redirectTo: '/matches' },
 ];
