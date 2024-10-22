@@ -1,6 +1,6 @@
-<div class="p-4 bg-blue-300 min-h-lvh flex items-center">
-    <img src="assets/Artboard1.png" class="absolute inset-0 w-full h-full object-cover z-0" alt="Background">
 
+<div class="p-4 bg-blue-300 min-h-lvh flex items-center">
+    <img src="assets/Artboard1.png" class="absolute inset-0 w-full h-full object-cover mt-14" alt="Background">
     <div class="w-full max-w-3xl ml-8">
         <div class="bg-white/10 p-8 rounded-xl shadow-md backdrop-blur-sm border max-w-lg min-h border-blue-100 text-white">
             <h1 class="text-4xl font-bold text-gray-800 mb-8">Find if Your Resume is ATS-Optimized with Jobify's Resume Scanner
@@ -14,6 +14,8 @@
                     class="bg-white hover:bg-blue-600 text-black font-bold py-3 px-6 rounded-lg transition duration-300">
                     Upload Your Resume <i class="fa-solid fa-file-arrow-up"></i>
                 </button>
+                <button (click)="onUpload()" class="bg-MainDark text-white py-2 px-4 font-semibold rounded-full shadow hover:scale-105 transition duration-100 ease-in-out hover:shadow-lg ml-4">Upload</button>
+                
             </div>
         </div>
     </div>

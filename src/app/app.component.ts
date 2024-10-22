@@ -15,6 +15,7 @@ import { HomeComponent } from "./components/landing page/home/home.component";
 import { AccueilComponent } from "./components/landing page/accueil/accueil.component";
 import { NavbarComponent } from './components/navbar/navbar.component';
 
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -32,7 +33,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     UploadCvComponent,
     HomeComponent,
     AccueilComponent,
-    NavbarComponent
+    NavbarComponent,
+    
 ],
   providers: [
     HttpClientModule
