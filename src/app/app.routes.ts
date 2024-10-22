@@ -17,14 +17,14 @@ export const routes: Routes = [
   { path: 'profile', component: UserProfileComponent },
   { path: 'home', component: AccueilComponent },
   // Parent route for Jobs with child routes
-  { path: 'jobs', component: AllJobsComponent,}, //DONE
+  { path: 'jobs', component: AllJobsComponent }, //DONE
   { path: 'jobDetails/:id', component: JobDetailComponent }, //DONE
 
-  { path: 'newJob' , component: NewJobFormComponent},
+  { path: 'newJob', component: NewJobFormComponent },
 
   // Redirect default route
-  { path: '', redirectTo: '/Jobs', pathMatch: 'full' },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
 
   // Wildcard route for 404
-  { path: '**', redirectTo: '/matches' },
+  { path: '**', redirectTo: '/home' },
 ];
