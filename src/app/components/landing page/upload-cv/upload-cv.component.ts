@@ -4,10 +4,11 @@ import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CandidateService } from '../../../services/candidate.service';
 import { HttpHeaders } from '@angular/common/http';
+import { NavbarComponent } from '../../navbar/navbar.component';
 @Component({
   selector: 'app-upload-cv',
   standalone: true,
-  imports: [],
+  imports: [NavbarComponent],
   templateUrl: './upload-cv.component.html',
   styleUrls: ['./upload-cv.component.css']
 })

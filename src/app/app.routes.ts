@@ -7,6 +7,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { JobDetailComponent } from './components/AllJobs/job-detail/job-detail.component';
 import { AllJobsComponent } from './components/AllJobs/all-jobs/all-jobs.component';
 import { NewJobFormComponent } from './components/new-job-form/new-job-form.component';
+import { AccueilComponent } from './components/landing page/accueil/accueil.component';
 
 export const routes: Routes = [
   { path: 'notifications', component: AppNotificationsComponent }, //NOT NEEDED SINCE THE CANDIDATE IS GONNA BE LOGGED IN WHILE THE SYSTEM MATCHES THEM WITH JOBS, THE CANDIDATE INITIATES THE MATCHING PROCESS AND AWAITS THE RESULTS!
@@ -14,7 +15,7 @@ export const routes: Routes = [
   { path: 'matches', component: MatchesComponentComponent }, //DONE
   { path: 'recommendation', component: RecommendedCandidatesComponent },
   { path: 'profile', component: UserProfileComponent },
-  { path: 'home', component: UserProfileComponent },
+  { path: 'home', component: AccueilComponent },
   // Parent route for Jobs with child routes
   { path: 'jobs', component: AllJobsComponent,}, //DONE
   { path: 'jobDetails/:id', component: JobDetailComponent }, //DONE
