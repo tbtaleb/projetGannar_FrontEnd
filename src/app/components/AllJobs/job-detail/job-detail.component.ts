@@ -41,6 +41,6 @@ export class JobDetailComponent implements OnInit{
   }
   // Function to navigate back
   navigateBack() {
-    this.location.back();  // Navigates to the previous page
+    this.location.back();
   }
 }
