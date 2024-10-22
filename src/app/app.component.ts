@@ -9,11 +9,34 @@ import { UserStoryNavComponent } from "./components/prototype/user-story-nav/use
 import { JobComponent } from "./components/AllJobs/job/job.component";
 import { JobsListComponent } from "./components/AllJobs/jobs-list/jobs-list.component";
 import { AllJobsComponent } from "./components/AllJobs/all-jobs/all-jobs.component";
+import { HttpClientModule } from '@angular/common/http';
+import { UploadCvComponent } from "./components/landing page/upload-cv/upload-cv.component";
+import { HomeComponent } from "./components/landing page/home/home.component";
+import { AccueilComponent } from "./components/landing page/accueil/accueil.component";
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, AppNotificationsComponent, CandidateInfoComponent, RecommendedCandidatesComponent, JobDetailsComponent, MatchesComponentComponent, UserStoryNavComponent, JobComponent, JobsListComponent, AllJobsComponent],
+  imports: [
+    RouterOutlet,
+    AppNotificationsComponent,
+    CandidateInfoComponent,
+    RecommendedCandidatesComponent,
+    JobDetailsComponent,
+    MatchesComponentComponent,
+    UserStoryNavComponent,
+    JobComponent,
+    JobsListComponent,
+    AllJobsComponent,
+    UploadCvComponent,
+    HomeComponent,
+    AccueilComponent,
+    NavbarComponent
+],
+  providers: [
+    HttpClientModule
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

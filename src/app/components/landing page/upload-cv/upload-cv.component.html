@@ -1,0 +1,20 @@
+<div class="p-4 bg-blue-300 min-h-lvh flex items-center">
+    <img src="assets/Artboard1.png" class="absolute inset-0 w-full h-full object-cover z-0" alt="Background">
+
+    <div class="w-full max-w-3xl ml-8">
+        <div class="bg-white/10 p-8 rounded-xl shadow-md backdrop-blur-sm border max-w-lg min-h border-blue-100 text-white">
+            <h1 class="text-4xl font-bold text-gray-800 mb-8">Find if Your Resume is ATS-Optimized with Jobify's Resume Scanner
+            </h1>
+            <p class="text-xl text-gray-600 mb-8">Get your ATS compatibility score instantly with our free, AI-powered
+                resume scanner</p>
+            <div class="upload-section">
+                <input type="file" (change)="onFileSelected($event)" accept=".pdf,.doc,.docx" id="resume-upload"
+                    class="hidden">
+                <button (click)="triggerFileInput()"
+                    class="bg-white hover:bg-blue-600 text-black font-bold py-3 px-6 rounded-lg transition duration-300">
+                    Upload Your Resume <i class="fa-solid fa-file-arrow-up"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

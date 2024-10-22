@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { JobOffer } from '../../../classes/job-offer';
+import { JobsListComponent } from '../jobs-list/jobs-list.component';
 
 @Component({
   selector: 'app-job',
@@ -11,7 +13,11 @@ import { Router } from '@angular/router';
 export class JobComponent {
   constructor(private router: Router){}
 
+  @Input() jobOffer!: JobOffer 
+
   goToJobDetails() {
-    this.router.navigate(['jobDetails']);
+    this.router.navigate([`jobDetails/${this.jobOffer.Id}`]);
   }
+
+  
 }
