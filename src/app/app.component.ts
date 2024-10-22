@@ -10,8 +10,11 @@ import { JobComponent } from "./components/AllJobs/job/job.component";
 import { JobsListComponent } from "./components/AllJobs/jobs-list/jobs-list.component";
 import { AllJobsComponent } from "./components/AllJobs/all-jobs/all-jobs.component";
 import { HttpClientModule } from '@angular/common/http';
-import { UploadCvComponent } from "./components/upload-cv/upload-cv.component";
+import { UploadCvComponent } from "./components/landing page/upload-cv/upload-cv.component";
+import { HomeComponent } from "./components/landing page/home/home.component";
+import { AccueilComponent } from "./components/landing page/accueil/accueil.component";
 import { NavbarComponent } from './components/navbar/navbar.component';
+
 
 @Component({
   selector: 'app-root',
@@ -28,7 +31,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     JobsListComponent,
     AllJobsComponent,
     UploadCvComponent,
-    NavbarComponent
+    HomeComponent,
+    AccueilComponent,
+    NavbarComponent,
+    
 ],
   providers: [
     HttpClientModule
