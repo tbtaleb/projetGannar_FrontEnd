@@ -10,26 +10,32 @@ import { NewJobFormComponent } from './components/new-job-form/new-job-form.comp
 import { AccueilComponent } from './components/landing page/accueil/accueil.component';
 import { LoginCompComponent } from './components/AuthComponents/login-comp/login-comp.component';
 import { SignUpCompComponent } from './components/AuthComponents/sign-up-comp/sign-up-comp.component';
+import { HomeComponent } from './components/landing page/home/home.component';
+import { AllExpiredJobsComponent } from './components/expiredJobs/all-expired-jobs/all-expired-jobs.component';
 
 export const routes: Routes = [
-  { path: 'notifications', component: AppNotificationsComponent }, //NOT NEEDED SINCE THE CANDIDATE IS GONNA BE LOGGED IN WHILE THE SYSTEM MATCHES THEM WITH JOBS, THE CANDIDATE INITIATES THE MATCHING PROCESS AND AWAITS THE RESULTS!
-  { path: 'candidate-detail', component: CandidateInfoComponent },
-  { path: 'matches', component: MatchesComponentComponent }, //DONE
-  { path: 'recommendation', component: RecommendedCandidatesComponent },
-  { path: 'profile', component: UserProfileComponent },
-  { path: 'home', component: AccueilComponent },
-  // Parent route for Jobs with child routes
-  { path: 'jobs', component: AllJobsComponent }, //DONE
-  { path: 'jobDetails/:id', component: JobDetailComponent }, //DONE
-
-  { path: 'newJob', component: NewJobFormComponent },
-  { path: 'login', component: LoginCompComponent },
+   {
+    path: '',
+    component: HomeComponent,
+    children: [
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: 'home', component: AccueilComponent },
+      { path: 'notifications', component: AppNotificationsComponent },
+      { path: 'candidate-detail', component: CandidateInfoComponent },
+      { path: 'matches', component: MatchesComponentComponent },
+      { path: 'recommendation', component: RecommendedCandidatesComponent },
+      { path: 'profile', component: UserProfileComponent },
+      { path: 'jobs', component: AllJobsComponent },
+      { path: 'jobDetails/:id', component: JobDetailComponent },
+      { path: 'newJob', component: NewJobFormComponent },
+      { path: 'expired', component: AllExpiredJobsComponent }
+    ]
+  },
   { path: 'signup', component: SignUpCompComponent },
-  
-
+  { path: 'login', component: LoginCompComponent },
+  { path: '**', redirectTo: '' },
   // Redirect default route
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 
-  // Wildcard route for 404
-  { path: '**', redirectTo: '/home' },
+
 ];
