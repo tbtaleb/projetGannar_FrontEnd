@@ -1,16 +1,16 @@
 <div class="bg-white h-48 rounded-lg p-3 flex flex-col justify-between space-y-2">
     <h1 class="font-bold text-4xl">
-        job title
+        {{jobOffer.name}}
+        
     </h1>
     <p class="line-clamp-3">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nam aliquam nihil explicabo. Eum eligendi, nesciunt,
-        facilis doloremque rem nihil, sint inventore adipisci iusto itaque dolores corporis vitae sed ea maiores.
+        {{jobOffer.description}}
     </p>
     <hr class="border-t border-gray-300 my-2">
     <div class="flex gap-2 items-center">
-        <p><span class="font-bold">Salary:</span> 69</p>
+        <p><span class="font-bold">Salary:</span> {{jobOffer.salary}}</p>
         <p>|</p>
-        <p><span class="font-bold">Location:</span> haddih, adojbnd</p>
+        <p><span class="font-bold">Location:</span> {{jobOffer.location}}</p>
         <p>|</p>
         <p><i class="fa-solid fa-user"></i> 14</p>
 
@@ -21,5 +21,5 @@
     </div>
 </div>
 <p-dialog header="Job Details" [(visible)]="visible" modal="true" [closable]="true" [resizable]="false">
-    <app-exp-job-details></app-exp-job-details>
+    <app-exp-job-details [jobOfferId]="jobOffer.Id"></app-exp-job-details>
 </p-dialog>
