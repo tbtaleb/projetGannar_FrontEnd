@@ -8,6 +8,8 @@ import { JobDetailComponent } from './components/AllJobs/job-detail/job-detail.c
 import { AllJobsComponent } from './components/AllJobs/all-jobs/all-jobs.component';
 import { NewJobFormComponent } from './components/new-job-form/new-job-form.component';
 import { AccueilComponent } from './components/landing page/accueil/accueil.component';
+import { LoginCompComponent } from './components/AuthComponents/login-comp/login-comp.component';
+import { SignUpCompComponent } from './components/AuthComponents/sign-up-comp/sign-up-comp.component';
 
 export const routes: Routes = [
   { path: 'notifications', component: AppNotificationsComponent }, //NOT NEEDED SINCE THE CANDIDATE IS GONNA BE LOGGED IN WHILE THE SYSTEM MATCHES THEM WITH JOBS, THE CANDIDATE INITIATES THE MATCHING PROCESS AND AWAITS THE RESULTS!
@@ -21,10 +23,12 @@ export const routes: Routes = [
   { path: 'jobDetails/:id', component: JobDetailComponent }, //DONE
 
   { path: 'newJob', component: NewJobFormComponent },
+  { path: 'login', component: LoginCompComponent },
+  { path: 'signup', component: SignUpCompComponent },
+  
 
   // Redirect default route
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-
 
   // Wildcard route for 404
   { path: '**', redirectTo: '/home' },
