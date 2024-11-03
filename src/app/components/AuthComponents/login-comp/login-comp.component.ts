@@ -29,7 +29,7 @@ export class LoginCompComponent implements OnInit {
       const loginData = this.loginForm.value;
       console.log('Login data', loginData);
 
-      // this.http.post('https://your-backend-api.com/login', loginData).subscribe(
+      // this.http.post('7ot il api ya ghzela', loginData).subscribe(
       //   (response) => {
       //     console.log('Login successful', response);
       //   },

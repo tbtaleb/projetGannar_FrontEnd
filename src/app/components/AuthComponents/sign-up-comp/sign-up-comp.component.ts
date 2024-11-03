@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up-comp',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule,RouterModule],
   templateUrl: './sign-up-comp.component.html',
   styleUrl: './sign-up-comp.component.css',
 })
@@ -29,7 +30,7 @@ export class SignUpCompComponent implements OnInit {
       console.log('Sign-up data', signUpData);
       
       // this.http
-      //   .post('https://your-backend-api.com/signup', signUpData)
+      //   .post('7ot il api ya ghzela', signUpData)
       //   .subscribe(
       //     (response) => {
       //       console.log('Sign-up successful', response);
