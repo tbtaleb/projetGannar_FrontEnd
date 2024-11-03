@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { MatDialog } from '@angular/material/dialog';
+
 import { AppNotificationsComponent } from '../RecruiterNotificationComp/app-notifications/app-notifications.component';
 import { Router } from '@angular/router';
 
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']  // Corrected this line
 })
 export class NavbarComponent {
-  constructor(private dialog: MatDialog, private router:Router) {}
+  constructor( private router:Router) {}
 
   openNotificationDialog() {
     this.router.navigate(['notifications']);
