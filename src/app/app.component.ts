@@ -14,6 +14,8 @@ import { UploadCvComponent } from "./components/landing page/upload-cv/upload-cv
 import { HomeComponent } from "./components/landing page/home/home.component";
 import { AccueilComponent } from "./components/landing page/accueil/accueil.component";
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { AllExpiredJobsComponent } from "./components/expiredJobs/all-expired-jobs/all-expired-jobs.component";
+import { ExpJobDetailsComponent } from "./components/expiredJobs/exp-job-details/exp-job-details.component";
 
 
 @Component({
@@ -34,7 +36,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     HomeComponent,
     AccueilComponent,
     NavbarComponent,
-    
+    AllExpiredJobsComponent,
+    ExpJobDetailsComponent
 ],
   providers: [
     HttpClientModule
