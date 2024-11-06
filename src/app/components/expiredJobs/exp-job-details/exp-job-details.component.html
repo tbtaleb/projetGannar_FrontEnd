@@ -16,7 +16,7 @@
         <div class="col-span-1 max-h-96 border-2 flex flex-col border-blue-950 rounded-xl p-4 items-center">
             <h1 class="text-3xl font-medium">Candidates</h1>
             <div class="bg-slate-200 w-full h-full rounded-xl p-4 overflow-scroll scrollbar-custom">
-                @for (candidate of jobApplicants; track candidate.Id){
+                @for (candidate of jobApplicants; track candidate.id){
                     <div class="bg-white w-full min-h-20 rounded-xl p-4 flex mb-2">
                         <img src="assets/user.png" alt="" class="h-16 mr-2">
                         <div>

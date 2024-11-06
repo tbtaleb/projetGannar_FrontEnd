@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Match } from '../../classes/match';
 import { JobOfferService } from '../../services/job-offer.service';
 import { ApplicationsService } from '../../services/applications.service';
+import { CandidateService } from '../../services/candidate.service';
 
 @Component({
   selector: 'app-match',
@@ -12,25 +13,34 @@ import { ApplicationsService } from '../../services/applications.service';
 })
 export class MatchComponent implements OnInit{
 
-  constructor(private jobOfferService:JobOfferService,private applicationService:ApplicationsService){}
+  constructor(private jobOfferService:JobOfferService,private applicationService:ApplicationsService,private candidateService:CandidateService){}
 
   job:any
-
+  candidate:any = {}
   ngOnInit(): void {
     this.jobOfferService.getJobOfferById(Number(this.jobMatch.jobOffer)).subscribe( data => {
       this.job = data
       console.log(this.job)
     })
+    this.loginUser();
   }
 
   applyForJob(){
-    this.applicationService.apply(1,this.job.Id).subscribe( data => {
+    this.applicationService.apply(this.candidate.id,this.job.Id).subscribe( data => {
       console.log(data)
     })
   }
 
   @Input() jobMatch!:Match
 
-
+  async loginUser(){
+    try {
+      const token = 'your-access-token';
+      this.candidate = await this.candidateService.getCandidate();
+      console.log('Candidate data:', this.candidate);
+    } catch (error) {
+      console.error('Error fetching candidate:', error);
+    }
+  }
 
 }

@@ -14,7 +14,7 @@ export class ExpJobDetailsComponent implements OnInit{
 
   @Input() jobOfferId!: number
   jobOffer:any = {}
-  jobApplicants: Candidate[] = [];
+  jobApplicants: any[] = [];
   constructor(private jobOfferService:JobOfferService){}
 
   ngOnInit(): void {

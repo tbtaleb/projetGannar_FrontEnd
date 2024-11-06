@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { JobsListComponent } from "../jobs-list/jobs-list.component";
 
 @Component({
@@ -8,6 +8,7 @@ import { JobsListComponent } from "../jobs-list/jobs-list.component";
   templateUrl: './all-jobs.component.html',
   styleUrl: './all-jobs.component.css'
 })
-export class AllJobsComponent {
+export class AllJobsComponent{
+
 
 }

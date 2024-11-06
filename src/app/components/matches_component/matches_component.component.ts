@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatchesService } from '../../services/matches.service';
 import { Match } from '../../classes/match';
 import { MatchComponent } from '../match/match.component';
+import { CandidateService } from '../../services/candidate.service';
 
 @Component({
   selector: 'app-matches-component',
@@ -14,14 +15,23 @@ import { MatchComponent } from '../match/match.component';
 export class MatchesComponentComponent implements OnInit{
 
   candidateMatches:Match[] = []
-
-  constructor(private matchService:MatchesService){}
+  candidate:any = {}
+  constructor(private matchService:MatchesService,private candidateService:CandidateService){}
 
   ngOnInit(): void {
-    this.matchService.getAllMatches(1).subscribe( data => {
+    this.matchService.getAllMatches(this.candidate.id).subscribe( data => {
       this.candidateMatches = data;
       console.log(this.candidateMatches);
     })
   }
-  
+
+  async loginUser(){
+    try {
+      const token = 'your-access-token';
+      this.candidate = await this.candidateService.getCandidate();
+      console.log('Candidate data:', this.candidate);
+    } catch (error) {
+      console.error('Error fetching candidate:', error);
+    }
+  }
 }

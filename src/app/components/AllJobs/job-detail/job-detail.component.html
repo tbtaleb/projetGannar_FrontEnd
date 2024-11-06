@@ -3,7 +3,7 @@
         <button (click)="navigateBack()" class="self-start border-2 border-MainDark bg-MainDark text-white text-2xl font-bold py-1 px-4 rounded-full shadow-md hover:bg-MainLight hover:text-MainDark transition duration-300 hover:scale-105 hover:shadow-lg">Back</button>
     </div>
     <div class="w-1/2 h-10/12 rounded-lg shadow-xl p-8 bg-white">
-        <p class="text-2xl text-MainShade mb-4"><span class="text-5xl font-bold text-MainDark">{{jobOffer?.name}}.</span> Company Name</p>
+        <p class="text-2xl text-MainShade mb-4"><span class="text-5xl font-bold text-MainDark">{{jobOffer?.name}}.</span> {{jobOffer?.company}}</p>
         <hr>
         <h1 class="text-MainShade text-2xl font-bold my-2">Job Description :</h1>
         <p class="text-lg text-MainDark">{{jobOffer?.description}}</p>

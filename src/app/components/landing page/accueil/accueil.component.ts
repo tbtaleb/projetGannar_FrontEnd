@@ -1,6 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UploadCvComponent } from "../upload-cv/upload-cv.component";
 import { JobComponent } from "../../AllJobs/job/job.component";
+import { JobOffer } from '../../../classes/job-offer';
+import { JobOfferService } from '../../../services/job-offer.service';
+import { RecruiterService } from '../../../services/recruiter.service';
+import { CandidateService } from '../../../services/candidate.service';
+import { Candidate } from '../../../classes/candidate';
 
 @Component({
   selector: 'app-accueil',
@@ -9,8 +14,34 @@ import { JobComponent } from "../../AllJobs/job/job.component";
   templateUrl: './accueil.component.html',
   styleUrl: './accueil.component.css'
 })
-export class AccueilComponent {
- 
+export class AccueilComponent implements OnInit{
+
+  jobOffers:JobOffer[] = []
+  candidate:any = {}
+
+  constructor(private jobOfferService:JobOfferService,private recruiterService:RecruiterService,private candidateService:CandidateService){}
+
+  ngOnInit(): void {
+    this.getAllJobOffers();
+    //this.getLoggedCandidate();
+    this.loginUser();
+    
+  }
+
+  //getLoggedCandidate(){
+  //  this.candidateService.getCandidate().subscribe(data => {
+  //    console.log(data)
+  //  })
+  //}
+
+  getAllJobOffers(){
+    this.jobOfferService.getAllJobOffers().subscribe(data => {
+      this.jobOffers = data
+      console.log(this.jobOffers)
+    })
+  }
+  
+
   scrollLeft() {
     const scrollContainer = document.getElementById('scrollContainer');
     if (scrollContainer) {
@@ -31,16 +62,13 @@ export class AccueilComponent {
     }
   }
 
-  jobOffers = [
-    { title: 'Software Engineer', company: 'TechCorp', shift: 'Full-time', payment: '$80,000 - $120,000/year', icon: 'fa-solid fa-laptop-code' },
-    { title: 'Data Analyst', company: 'DataInsights', shift: 'Part-time', payment: '$30 - $40/hour', icon: 'fa-solid fa-chart-line' },
-    { title: 'UX Designer', company: 'DesignHub', shift: 'Contract', payment: '$70,000 - $90,000/year', icon: 'fa-solid fa-pencil-ruler' },
-    { title: 'Project Manager', company: 'AgileWorks', shift: 'Full-time', payment: '$90,000 - $130,000/year', icon: 'fa-solid fa-tasks' },
-    { title: 'Marketing Specialist', company: 'BrandBoost', shift: 'Remote', payment: '$60,000 - $80,000/year', icon: 'fa-solid fa-bullhorn' },
-    { title: 'Software Engineer', company: 'TechCorp', shift: 'Full-time', payment: '$80,000 - $120,000/year', icon: 'fa-solid fa-laptop-code' },
-    { title: 'Data Analyst', company: 'DataInsights', shift: 'Part-time', payment: '$30 - $40/hour', icon: 'fa-solid fa-chart-line' },
-    { title: 'UX Designer', company: 'DesignHub', shift: 'Contract', payment: '$70,000 - $90,000/year', icon: 'fa-solid fa-pencil-ruler' },
-    { title: 'Project Manager', company: 'AgileWorks', shift: 'Full-time', payment: '$90,000 - $130,000/year', icon: 'fa-solid fa-tasks' },
-    
-  ];
+  async loginUser(){
+    try {
+      const token = 'your-access-token';
+      this.candidate = await this.candidateService.getCandidate();
+      console.log('Candidate data:', this.candidate);
+    } catch (error) {
+      console.error('Error fetching candidate:', error);
+    }
+  }
 }

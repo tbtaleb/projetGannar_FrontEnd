@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']  // Corrected this line
 })
 export class NavbarComponent {
-  constructor( private router:Router) {}
+  constructor(private router:Router) {}
 
   openNotificationDialog() {
     this.router.navigate(['notifications']);

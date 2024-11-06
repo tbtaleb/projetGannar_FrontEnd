@@ -3,7 +3,14 @@
     <h2 class="text-2xl font-bold mb-6 text-center text-[#00203a]">Job Offers Sign Up</h2>
     <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
       <div class="mb-4">
-        <label for="name" class="block text-gray-700">Name</label>
+        <label for="name" class="block text-gray-700">Username</label>
+        <input type="text" id="name" formControlName="username" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00203a] focus:border-transparent" placeholder="Enter your name">
+        <div *ngIf="signUpForm.get('name')?.invalid && signUpForm.get('name')?.touched" class="text-red-500 text-sm mt-1">
+          Please enter your name.
+        </div>
+      </div>
+      <div class="mb-4">
+        <label for="fullname" class="block text-gray-700">Full Name</label>
         <input type="text" id="name" formControlName="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00203a] focus:border-transparent" placeholder="Enter your name">
         <div *ngIf="signUpForm.get('name')?.invalid && signUpForm.get('name')?.touched" class="text-red-500 text-sm mt-1">
           Please enter your name.

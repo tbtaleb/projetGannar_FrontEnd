@@ -3,7 +3,7 @@
     <div class="flex justify-between">
       <div class="flex space-x-7">
         <!-- Logo -->
-        <a href="#" class="flex items-center py-4">
+        <a [routerLink]="['/home']" class="flex items-center py-4">
           <img src="assets/suitcase.png" alt="Logo" class="h-8 w-auto mr-2">
         </a>
         <!-- Primary Navbar items -->
@@ -11,7 +11,7 @@
           <a [routerLink]="['/home']" routerLinkActive="text-blue-500" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Home</a>
           <a [routerLink]="['/jobs']" routerLinkActive="text-blue-500" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Jobs</a>
           <a [routerLink]="['/matches']" routerLinkActive="text-blue-500" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Matches</a>
-          <a [routerLink]="['/expired']" routerLinkActive="text-blue-500" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Expired jobs</a>
+          <a [routerLink]="['/expired/1']" routerLinkActive="text-blue-500" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Expired jobs</a>
         </div>
       </div>
       <!-- Login Button -->
@@ -28,8 +28,6 @@
       <li><a [routerLink]="['/matches']" routerLinkActive="text-blue-500" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">Matches</a></li>
       <li><a [routerLink]="['/login']" class="block text-sm px-2 py-4 bg-[#00203a] text-white font-semibold rounded-lg hover:bg-[#001a33] transition duration-300">Login</a></li>
       <li><a [routerLink]="['/expired']" routerLinkActive="text-blue-500" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Expired jobs</a></li>
-      
-      
     </ul>
   </div>
 </nav>

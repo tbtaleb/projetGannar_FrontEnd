@@ -9,8 +9,11 @@ import { CV } from '../classes/cv';
 })
 export class CandidateService {
 
+
   candidatesURL:string = "http://127.0.0.1:8000/api/candidates";
+  tokenURL:string = "http://127.0.0.1:8000/api/token";
   resumesURL:string = "http://127.0.0.1:8000/api/resumes";
+
 
   constructor(private httpClient:HttpClient) {}
 
@@ -22,6 +25,7 @@ export class CandidateService {
     return this.httpClient.get<Candidate>(`${this.candidatesURL}/${candidateId}`)
   }
 
+
   createCandidate(candidate:Candidate){
     return this.httpClient.post<Candidate>(`${this.candidatesURL}`,candidate)
   }
@@ -29,6 +33,14 @@ export class CandidateService {
   deleteCandidate(candidateId:number):Observable<Candidate>{
     return this.httpClient.delete<Candidate>(`${this.candidatesURL}/${candidateId}`)
   }
+
+  login(candidate:Candidate){
+    return this.httpClient.post<Candidate>(`${this.tokenURL}`,candidate,{
+      withCredentials: true
+    })
+  }
+  
+
 
   uploadCV(file: File):Observable<any>{
 
@@ -47,5 +59,15 @@ export class CandidateService {
     return this.httpClient.request(req);
   }
 
-  
+  async getCandidate(): Promise<any>{
+    const headers = new HttpHeaders({
+      //'Authorization': `Bearer ${token}`,
+      'Content-Type': 'application/json'
+    });
+
+    return await this.httpClient.post<any>('http://127.0.0.1:8000/api/candidate', {}, {
+      headers,
+      withCredentials: true
+    }).toPromise();
+  }
 }

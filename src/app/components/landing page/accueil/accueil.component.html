@@ -37,15 +37,15 @@
 
         <!-- Job Offer Cards -->
         <div class="inline-flex space-x-4 px-12">
-            @for (job of jobOffers; track job){
+            @for (job of jobOffers; track job.Id){
             <div class="w-64 bg-white rounded-lg shadow-md p-4">
                 <div class="flex justify-between items-start mb-2">
-                    <h3 class="font-bold text-lg">{{job.title}}</h3>
-                    <i [class]="job.icon + ' text-2xl text-gray-600'"></i>
+                    <h3 class="font-bold text-lg">{{job.name}}</h3>
+                    <!--<i [class]="job.icon + ' text-2xl text-gray-600'"></i>-->
                 </div>
                 <p class="text-sm text-gray-600 mb-2">{{job.company}}</p>
-                <p class="text-sm mb-1"><i class="fa-regular fa-clock mr-2"></i>{{job.shift}}</p>
-                <p class="text-sm"><i class="fa-solid fa-dollar-sign mr-2"></i>{{job.payment}}</p>
+                <p class="text-sm mb-1"><i class="fa-regular fa-clock mr-2"></i>{{job.workTime}}</p>
+                <p class="text-sm"><i class="fa-solid fa-dollar-sign mr-2"></i>{{job.salary}}</p>
             </div>
             }
         </div>

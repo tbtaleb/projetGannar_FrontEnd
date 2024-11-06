@@ -28,7 +28,7 @@ export const routes: Routes = [
       { path: 'jobs', component: AllJobsComponent },
       { path: 'jobDetails/:id', component: JobDetailComponent },
       { path: 'newJob', component: NewJobFormComponent },
-      { path: 'expired', component: AllExpiredJobsComponent }
+      { path: 'expired/:id', component: AllExpiredJobsComponent }
     ]
   },
   { path: 'signup', component: SignUpCompComponent },
