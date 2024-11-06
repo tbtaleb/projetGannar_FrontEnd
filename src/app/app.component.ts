@@ -16,6 +16,9 @@ import { AccueilComponent } from "./components/landing page/accueil/accueil.comp
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AllExpiredJobsComponent } from "./components/expiredJobs/all-expired-jobs/all-expired-jobs.component";
 import { ExpJobDetailsComponent } from "./components/expiredJobs/exp-job-details/exp-job-details.component";
+import { LoginCompComponent } from "./components/AuthComponents/login-comp/login-comp.component";
+import { BrowserModule } from '@angular/platform-browser';
+import { SignUpCompComponent } from "./components/AuthComponents/sign-up-comp/sign-up-comp.component";
 
 
 @Component({
@@ -37,11 +40,11 @@ import { ExpJobDetailsComponent } from "./components/expiredJobs/exp-job-details
     AccueilComponent,
     NavbarComponent,
     AllExpiredJobsComponent,
-    ExpJobDetailsComponent
+    ExpJobDetailsComponent,
+    LoginCompComponent,
+    SignUpCompComponent
 ],
-  providers: [
-    HttpClientModule
-  ],
+  providers: [BrowserModule, HttpClientModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

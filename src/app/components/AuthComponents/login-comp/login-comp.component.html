@@ -1,0 +1,27 @@
+<div class="flex items-center justify-center min-h-screen bg-gray-100 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d');">
+  <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+    <h2 class="text-2xl font-bold mb-6 text-center text-[#00203a]">Job Offers Login</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="mb-4">
+        <label for="email" class="block text-gray-700">Email</label>
+        <input type="email" id="email" formControlName="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00203a] focus:border-transparent" placeholder="Enter your email">
+        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="text-red-500 text-sm mt-1">
+          Please enter a valid email.
+        </div>
+      </div>
+      <div class="mb-6">
+        <label for="password" class="block text-gray-700">Password</label>
+        <input type="password" id="password" formControlName="password" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00203a] focus:border-transparent" placeholder="Enter your password">
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-red-500 text-sm mt-1">
+          Password must be at least 6 characters long.
+        </div>
+      </div>
+      <div class="flex items-center justify-between">
+        <button type="submit" class="bg-[#00203a] text-white px-4 py-2 rounded-lg hover:bg-[#001a33] transition duration-300" [disabled]="loginForm.invalid">Login</button>
+      </div>
+    </form>
+    <div class="mt-4 text-center">
+      <a [routerLink]="['/signup']"  class="text-[#00203a] hover:underline">New here?</a>
+    </div>
+  </div>
+</div>
