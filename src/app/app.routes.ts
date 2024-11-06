@@ -3,7 +3,7 @@ import { AppNotificationsComponent } from './components/RecruiterNotificationCom
 import { CandidateInfoComponent } from './components/RecruiterNotificationComp/candidate-info/candidate-info.component';
 import { MatchesComponentComponent } from './components/matches_component/matches_component.component';
 import { RecommendedCandidatesComponent } from './components/recommendedCandidatesPage/recommended-candidates/recommended-candidates.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
+
 import { JobDetailComponent } from './components/AllJobs/job-detail/job-detail.component';
 import { AllJobsComponent } from './components/AllJobs/all-jobs/all-jobs.component';
 import { NewJobFormComponent } from './components/new-job-form/new-job-form.component';
@@ -12,6 +12,7 @@ import { LoginCompComponent } from './components/AuthComponents/login-comp/login
 import { SignUpCompComponent } from './components/AuthComponents/sign-up-comp/sign-up-comp.component';
 import { HomeComponent } from './components/landing page/home/home.component';
 import { AllExpiredJobsComponent } from './components/expiredJobs/all-expired-jobs/all-expired-jobs.component';
+import { UserProfileComponent } from './components/user-profile/user-profile.component';
 
 export const routes: Routes = [
    {

@@ -8,12 +8,13 @@ import { log } from 'console';
 @Component({
   selector: 'app-login-comp',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule,RouterModule],
+  imports: [ReactiveFormsModule, CommonModule, RouterModule],
   templateUrl: './login-comp.component.html',
   styleUrl: './login-comp.component.css',
 })
 export class LoginCompComponent implements OnInit {
   loginForm!: FormGroup;
+  selectedRole: string = 'candidate';
 
   constructor(private fb: FormBuilder, private http: HttpClient) {}
 
@@ -24,19 +25,29 @@ export class LoginCompComponent implements OnInit {
     });
   }
 
+  selectRole(role: string): void {
+    this.selectedRole = role;
+  }
+
   onSubmit(): void {
     if (this.loginForm.valid) {
-      const loginData = this.loginForm.value;
-      console.log('Login data', loginData);
+      const loginData = {
+        ...this.loginForm.value,
+        role: this.selectedRole,
+      };
+      console.log(loginData);
+      
+    //   this.http.post('3ayet lil backend ya ghzela', loginData).subscribe(
+    //     (response) => {
+    //       console.log('Login successful', response);
+    //     },
+    //     (error) => {
+    //       console.error('Login failed', error);
+    //     }
+    //   );
+    // }
+  }
 
-      // this.http.post('7ot il api ya ghzela', loginData).subscribe(
-      //   (response) => {
-      //     console.log('Login successful', response);
-      //   },
-      //   (error) => {
-      //     console.error('Login failed', error);
-      //   }
-      // );
-    }
+  
   }
 }
