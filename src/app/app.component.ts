@@ -14,6 +14,8 @@ import { UploadCvComponent } from "./components/landing page/upload-cv/upload-cv
 import { HomeComponent } from "./components/landing page/home/home.component";
 import { AccueilComponent } from "./components/landing page/accueil/accueil.component";
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { FormComponent } from "./components/form/form/form.component";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @Component({
@@ -34,7 +36,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     HomeComponent,
     AccueilComponent,
     NavbarComponent,
-    
+    FormComponent,
+    FormsModule,
+    ReactiveFormsModule  // Add FormsModule here
+
 ],
   providers: [
     HttpClientModule
