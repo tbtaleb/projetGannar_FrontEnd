@@ -1,6 +1,6 @@
 <div class="flex items-center justify-center min-h-screen bg-gray-100 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d');">
   <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-    <h2 class="text-2xl font-bold mb-6 text-center text-[#00203a]">Job Offers Sign Up</h2>
+    <h2 class="text-2xl font-bold mb-6 text-center text-[#00203a]">Sign Up</h2>
     <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
       <div class="mb-6 flex justify-center">
         <button type="button" (click)="selectRole('candidate')" [ngClass]="{'bg-[#00203a] text-white border-2 border-[#00203a]': selectedRole === 'candidate', 'bg-white text-[#00203a] border-2 border-gray-300': selectedRole !== 'candidate'}" class="px-4 py-2 rounded-l-full transition duration-300">Candidate</button>
