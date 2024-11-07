@@ -28,7 +28,7 @@ export class SignUpCompComponent implements OnInit {
   ngOnInit(): void {
     this.signUpForm = this.fb.group(
       {
-        name: ['', [Validators.required]],
+        username: ['', [Validators.required]],
         fullName: [''],
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(6)]],
@@ -65,10 +65,10 @@ export class SignUpCompComponent implements OnInit {
       this.signUpForm.get('domain')!.setValidators([Validators.required]);
       this.signUpForm.get('phoneNumber')!.setValidators([Validators.required]);
       this.signUpForm.get('address')!.setValidators([Validators.required]);
-      this.signUpForm.get('name')!.clearValidators();
+      //this.signUpForm.get('name')!.clearValidators();
       this.signUpForm.get('dateOfBirth')!.clearValidators();
     } else {
-      this.signUpForm.get('name')!.setValidators([Validators.required]);
+      //this.signUpForm.get('name')!.setValidators([Validators.required]);
       this.signUpForm.get('phoneNumber')!.setValidators([Validators.required]);
       this.signUpForm.get('address')!.setValidators([Validators.required]);
       this.signUpForm.get('dateOfBirth')!.setValidators([Validators.required]);
@@ -85,7 +85,7 @@ export class SignUpCompComponent implements OnInit {
     this.signUpForm.get('domain')!.updateValueAndValidity();
     this.signUpForm.get('phoneNumber')!.updateValueAndValidity();
     this.signUpForm.get('address')!.updateValueAndValidity();
-    this.signUpForm.get('name')!.updateValueAndValidity();
+    //this.signUpForm.get('name')!.updateValueAndValidity();
     this.signUpForm.get('dateOfBirth')!.updateValueAndValidity();
   }
 
@@ -94,7 +94,7 @@ export class SignUpCompComponent implements OnInit {
       if (this.selectedRole === 'candidate') {
         const candidate = new Candidate(
           0, // Assuming ID is auto-generated
-          this.signUpForm.get('name')!.value,
+          this.signUpForm.get('username')!.value,
           this.signUpForm.get('email')!.value,
           this.signUpForm.get('password')!.value,
           this.signUpForm.get('phoneNumber')!.value,
