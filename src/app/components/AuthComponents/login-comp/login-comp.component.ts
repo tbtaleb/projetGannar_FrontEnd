@@ -9,14 +9,15 @@ import { CandidateService } from '../../../services/candidate.service';
 @Component({
   selector: 'app-login-comp',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule,RouterModule],
+  imports: [ReactiveFormsModule, CommonModule, RouterModule],
   templateUrl: './login-comp.component.html',
   styleUrl: './login-comp.component.css',
 })
 export class LoginCompComponent implements OnInit {
   loginForm!: FormGroup;
+  selectedRole: string = 'candidate';
   candidate:any = {}
-  constructor(private fb: FormBuilder, private http: HttpClient,private candidateService:CandidateService,private router:Router) {}
+  constructor(private fb: FormBuilder, private http: HttpClient) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -25,18 +26,15 @@ export class LoginCompComponent implements OnInit {
     });
   }
 
+  selectRole(role: string): void {
+    this.selectedRole = role;
+  }
+
   onSubmit(): void {
     if (this.loginForm.valid) {
       const loginData = this.loginForm.value;
       console.log('Login data', loginData);
-      this.candidateService.login(this.loginForm.value).subscribe(
-        (response) => {
-          console.log('Login successful', response);
-          this.router.navigate(['/home']);
-        },
-        (error) => {
-          console.error('Login failed', error);
-        })
+
       // this.http.post('7ot il api ya ghzela', loginData).subscribe(
       //   (response) => {
       //     console.log('Login successful', response);

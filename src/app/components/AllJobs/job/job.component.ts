@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { JobOffer } from '../../../classes/job-offer';
-import { JobsListComponent } from '../jobs-list/jobs-list.component';
 
 @Component({
   selector: 'app-job',
