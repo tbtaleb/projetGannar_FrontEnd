@@ -16,6 +16,44 @@
       </div>
       <!-- Login Button -->
       <div class="hidden md:flex items-center space-x-1">
+         <div class="m-2 flex justify-content-center">
+          
+          <i class="pi pi-bell text-3xl" style="color: darkblue" pBadge value="{{ nbNotifications }}" (click)="op.toggle($event)"></i>
+        </div>
+        <div>
+          <p-overlayPanel #op>
+            <div>
+              <span class="text-900 block font-bold mb-2">Notifications</span>
+              <hr class="my-2 w-full border-t-2 border-black">
+              <div *ngIf="notifications.length == 0">
+                <span class="text-gray-400">All notifications are read.</span>
+              </div>
+              <ul class="list-none p-0 m-0">
+                <li *ngFor="let notif of notifications" class="flex items-center gap-3 p-3 border-b border-gray-200">
+                  <div class="flex flex-col flex-1">
+                  <span class="font-medium text-black-alpha-10">
+                    {{ notif?.content }}</span>
+                  <div class="text-sm text-gray-400">
+                    {{ notif?.medcin?.nom }}
+                  </div>
+                  <div class="text-sm text-gray-400">
+                    <span>{{
+                      notif?.created_at | date: " hh:mm le dd MMMM YYYY "
+                    }}</span>
+                     <i class="pi pi-calendar"></i>
+                  </div>
+                </div>
+                </li>
+              </ul>
+              <div class="mt-4">
+                <button *ngIf="notifications.length > 0" (click)="allRead()"
+                  class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                  Mark As Read
+                </button>
+              </div>
+            </div>
+          </p-overlayPanel>
+        </div>
         <a [routerLink]="['/login']" class="py-2 px-4 bg-[#00203a] text-white font-semibold rounded-lg transition duration-300 transform hover:bg-[#001a33] hover:scale-105">Login</a>
       </div>
     </div>
