@@ -65,7 +65,7 @@ export class CandidateService {
       'Content-Type': 'application/json'
     });
 
-    return await this.httpClient.post<any>('http://127.0.0.1:8000/api/candidate', {}, {
+    return this.httpClient.post<any>('http://127.0.0.1:8000/api/candidate', {}, {
       headers,
       withCredentials: true
     }).toPromise();

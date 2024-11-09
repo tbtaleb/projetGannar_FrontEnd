@@ -100,6 +100,7 @@ export class SignUpCompComponent implements OnInit {
           this.signUpForm.get('phoneNumber')!.value,
           this.signUpForm.get('address')!.value,
           this.signUpForm.get('dateOfBirth')!.value
+          
         );
         this.candidateService.createCandidate(candidate).subscribe(
           (response) => {

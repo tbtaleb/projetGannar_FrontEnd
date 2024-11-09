@@ -10,6 +10,7 @@ import { NotificationsService } from '../../services/notifications.service';
 import { SidebarModule } from 'primeng/sidebar';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
+import { CandidateService } from '../../services/candidate.service';
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -28,9 +29,11 @@ export class NavbarComponent {
   notifications: any[] = [];
   nbNotifications: number = 0;
   sidebarVisible: boolean = false;
+  candidate:any = {}
   constructor(
     private router: Router,
-    private notificationsService: NotificationsService
+    private notificationsService: NotificationsService,
+    private candidateService:CandidateService
   ) {}
 
   openNotificationDialog() {
@@ -78,5 +81,14 @@ export class NavbarComponent {
         console.error('Failed to mark all notifications as read', error);
       }
     );
+  }
+  async loginUser(){
+    try {
+      const token = 'your-access-token';
+      this.candidate = await this.candidateService.getCandidate();
+      console.log('Candidate data:', this.candidate);
+    } catch (error) {
+      console.error('Error fetching candidate:', error);
+    }
   }
 }

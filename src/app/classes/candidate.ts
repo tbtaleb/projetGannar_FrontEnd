@@ -9,7 +9,7 @@ export class Candidate {
 
   constructor(
     id: number,
-    username: string,
+    name: string,
     email: string,
     password: string,
     phoneNumber: string,
@@ -17,7 +17,7 @@ export class Candidate {
     dateOfBirth: string
   ) {
     this.id = id;
-    this.name = username;
+    this.name = name;
     this.email = email;
     this.password = password;
     this.phoneNumber = phoneNumber;

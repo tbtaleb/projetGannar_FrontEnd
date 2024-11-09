@@ -45,6 +45,10 @@
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 16px;
+    max-height: 200px;
+    min-height: 200px;
+    overflow-y: scroll;
+  
   }
   
   .job-title {

@@ -11,11 +11,19 @@
         <p class="text-lg text-MainDark">{{jobOffer?.workTime}}</p>
         <h1 class="text-MainShade text-2xl font-bold my-2">Salary :</h1>
         <p class="text-lg text-MainDark">{{jobOffer?.salary}} DT</p>
+        <h1 class="text-MainShade text-2xl font-bold my-2">Requirements :</h1>
+        <p class="text-lg text-MainDark">{{jobOffer?.skills}}</p>
         <div class="flex justify-end items-center text-MainDark">
             <div class="flex">
                 <!--<button class="border-2 border-MainDark text-2xl font-bold py-1 px-4 rounded-full bg-white shadow-md hover:bg-MainDark hover:text-white transition duration-300 hover:scale-105 hover:shadow-lg">Save</button>-->
                 <button (click)="applyForJob()" class="border-2 border-MainDark bg-MainDark text-white text-2xl font-bold py-1 px-4 rounded-full ml-4 shadow-md hover:bg-white hover:text-MainDark transition duration-300 hover:scale-105 hover:shadow-lg">Apply</button>
             </div>
+        </div>
+        <div *ngIf="ApplicationExists" class="text-red-500 text-2xl mt-1 font-bold">
+            You have Already Applied for this job
+        </div>
+        <div *ngIf="ApplicationCreated" class="text-green-500 text-2xl mt-1 font-bold">
+            You have Applied for this Job!
         </div>
     </div>
 </div>
