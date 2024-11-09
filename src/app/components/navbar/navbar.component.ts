@@ -29,7 +29,7 @@ export class NavbarComponent {
   notifications: any[] = [];
   nbNotifications: number = 0;
   sidebarVisible: boolean = false;
-  candidate:any = {}
+  user:any = {}
   constructor(
     private router: Router,
     private notificationsService: NotificationsService,
@@ -56,7 +56,12 @@ export class NavbarComponent {
       }
     );
   }
-
+  isCandidate(){
+    return this.user.role=='candidate'
+  }
+  isRecruiter(){
+    return this.user.role=='recruiter'
+  }
   markAsRead(notificationId: number): void {
     this.notificationsService.markNotificationAsRead(notificationId).subscribe(
       (response) => {
@@ -82,11 +87,12 @@ export class NavbarComponent {
       }
     );
   }
+  
   async loginUser(){
     try {
       const token = 'your-access-token';
-      this.candidate = await this.candidateService.getCandidate();
-      console.log('Candidate data:', this.candidate);
+      this.user = await this.candidateService.getCandidate();
+      console.log('Candidate data:', this.user);
     } catch (error) {
       console.error('Error fetching candidate:', error);
     }

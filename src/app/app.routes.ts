@@ -25,7 +25,7 @@ export const routes: Routes = [
       { path: 'candidate-detail', component: CandidateInfoComponent },
       { path: 'matches', component: MatchesComponentComponent },
       { path: 'recommendation', component: RecommendedCandidatesComponent },
-      { path: 'profile', component: UserProfileComponent },
+      { path: 'uploadCV', component: UserProfileComponent },
       { path: 'jobs', component: AllJobsComponent },
       { path: 'jobDetails/:id', component: JobDetailComponent },
       { path: 'newJob', component: NewJobFormComponent },

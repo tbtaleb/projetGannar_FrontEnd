@@ -10,8 +10,10 @@
         <div class="hidden md:flex items-center space-x-1">
           <a [routerLink]="['/home']" routerLinkActive="active-link" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Home</a>
           <a [routerLink]="['/jobs']" routerLinkActive="active-link" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Jobs</a>
-          <a [routerLink]="['/matches']" routerLinkActive="active-link" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Matches</a>
-          <a href="http://localhost:8501" routerLinkActive="active-link" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Upload your CV</a>
+          <div *ngIf="isCandidate()">
+            <a [routerLink]="['/matches']" routerLinkActive="active-link" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Matches</a>
+            <a [routerLink]="['/uploadCV']" routerLinkActive="active-link" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Upload your CV</a>
+          </div>
         </div>
       </div>
       <!-- Login Button -->
@@ -61,7 +63,7 @@
               <hr class="my-2 border-t-4 border-gray-300">
             </div>
             <ul class="list-none p-0">
-              <li class="mb-2">
+              <li class="mb-2" *ngIf="isRecruiter()">
                 <a [routerLink]="['/newJob']" routerLinkActive="active-sidebar-link" class="block py-2 px-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-300">Create Job Offer</a>
               </li>
               <li class="mb-2">
