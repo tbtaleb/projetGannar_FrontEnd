@@ -16,7 +16,7 @@
       </div>
       <!-- Login Button -->
       <div class="hidden md:flex items-center space-x-1">
-        <div class="m-2 flex justify-content-center">
+        <div *ngIf="authenticated" class="m-2 flex justify-content-center">
           <i class="pi pi-bell text-3xl" style="color: darkblue" pBadge value="{{ nbNotifications }}" (click)="op.toggle($event)"></i>
         </div>
         <div>
