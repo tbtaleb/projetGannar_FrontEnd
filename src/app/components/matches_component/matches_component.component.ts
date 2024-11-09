@@ -19,17 +19,22 @@ export class MatchesComponentComponent implements OnInit{
   constructor(private matchService:MatchesService,private candidateService:CandidateService){}
 
   ngOnInit(): void {
-    this.matchService.getAllMatches(this.candidate.id).subscribe( data => {
+    this.loginUser();
+    
+  }
+  getMatches(id:number){
+    this.matchService.getAllMatches(id).subscribe( data => {
       this.candidateMatches = data;
       console.log(this.candidateMatches);
     })
   }
-
+  
   async loginUser(){
     try {
       const token = 'your-access-token';
       this.candidate = await this.candidateService.getCandidate();
       console.log('Candidate data:', this.candidate);
+      this.getMatches(this.candidate.id)
     } catch (error) {
       console.error('Error fetching candidate:', error);
     }

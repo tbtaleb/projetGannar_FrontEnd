@@ -1,4 +1,4 @@
-import { Location } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { JobOffer } from '../../../classes/job-offer';
@@ -11,7 +11,7 @@ import { CandidateService } from '../../../services/candidate.service';
 @Component({
   selector: 'app-job-detail',
   standalone: true,
-  imports: [],
+  imports: [ CommonModule],
   templateUrl: './job-detail.component.html',
   styleUrl: './job-detail.component.css'
 })
@@ -20,6 +20,8 @@ export class JobDetailComponent implements OnInit{
   id:any
   jobOffer:any = {}
   candidate:any = {}
+  ApplicationExists=false
+  ApplicationCreated=false
   constructor(private location: Location,private activatedRoute:ActivatedRoute,private jobService:JobOfferService,private applicationService:ApplicationsService,private candidateService:CandidateService) {}
 
 
@@ -38,9 +40,16 @@ export class JobDetailComponent implements OnInit{
   }
 
   applyForJob(){
-    this.applicationService.apply(this.candidate.id,this.jobOffer.Id).subscribe( data => {
-      console.log(data)
-    })
+    this.applicationService.apply(this.candidate.id,this.jobOffer.Id).subscribe( 
+      data => {
+        console.log(data);
+        this.ApplicationCreated=true
+      },
+      error => {
+        console.error("An error occurred:", error);
+        this.ApplicationExists=true
+      }
+    )
   }
   // Function to navigate back
   navigateBack() {
