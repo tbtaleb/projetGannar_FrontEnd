@@ -62,7 +62,7 @@
             </div>
             <ul class="list-none p-0">
               <li class="mb-2">
-                <a [routerLink]="['/newJob']" routerLinkActive="active-sidebar-link" class="block py-2 px-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-300"> Profile</a>
+                <a [routerLink]="['/profile']" routerLinkActive="active-sidebar-link" class="block py-2 px-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-300"> Profile</a>
               </li>
               <li *ngIf="authService.getRole()=='recruiter'" class="mb-2">
                 <a [routerLink]="['/newJob']" routerLinkActive="active-sidebar-link" class="block py-2 px-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-300">Create Job Offer</a>
@@ -71,19 +71,19 @@
                 <a [routerLink]="['/jobs']" routerLinkActive="active-sidebar-link" class="block py-2 px-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-300">Your job offers</a>
               </li>
               <li *ngIf="authService.getRole()=='recruiter'" class="mb-2">
-                <a [routerLink]="['/jobs']" routerLinkActive="active-sidebar-link" class="block py-2 px-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-300">List of candidates</a>
+                <a [routerLink]="['/a']" routerLinkActive="active-sidebar-link" class="block py-2 px-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-300">List of candidates</a>
               </li>
               <li *ngIf="authService.getRole()=='candidate'" class="mb-2">
-                <a [routerLink]="['/jobs']" routerLinkActive="active-sidebar-link" class="block py-2 px-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-300">Your skills</a>
+                <a [routerLink]="['/r']" routerLinkActive="active-sidebar-link" class="block py-2 px-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-300">Your skills</a>
               </li>
               <li *ngIf="authService.getRole()=='candidate'" class="mb-2">
-                <a [routerLink]="['/jobs']" routerLinkActive="active-sidebar-link" class="block py-2 px-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-300">Skills recommanded</a>
+                <a [routerLink]="['/rrr']" routerLinkActive="active-sidebar-link" class="block py-2 px-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-300">Skills recommanded</a>
               </li>
               <li *ngIf="authService.getRole()=='candidate'" class="mb-2">
-                <a [routerLink]="['/jobs']" routerLinkActive="active-sidebar-link" class="block py-2 px-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-300">Helpful Sources</a>
+                <a [routerLink]="['/rr']" routerLinkActive="active-sidebar-link" class="block py-2 px-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-300">Helpful Sources</a>
               </li>
               <li *ngIf="authService.getRole()=='candidate'" class="mb-2">
-                <a [routerLink]="['/jobs']" routerLinkActive="active-sidebar-link" class="block py-2 px-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-300">Your resume</a>
+                <a [routerLink]="['/r']" routerLinkActive="active-sidebar-link" class="block py-2 px-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-300">Your resume</a>
               </li>
               <li class="mb-2">
                 <a (click)="logout()" [routerLink]="['/logout']" routerLinkActive="active-sidebar-link" class="block py-2 px-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-300">Logout</a>

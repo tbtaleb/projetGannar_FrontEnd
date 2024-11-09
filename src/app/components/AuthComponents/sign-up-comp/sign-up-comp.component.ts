@@ -7,11 +7,14 @@ import { CandidateService } from '../../../services/candidate.service';
 import { RecruiterService } from '../../../services/recruiter.service';
 import { Candidate } from '../../../classes/candidate';
 import { Recruiter } from '../../../classes/recruiter';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-sign-up-comp',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, RouterModule],
+  imports: [ReactiveFormsModule, CommonModule, RouterModule,ToastModule],
+  providers: [MessageService],
   templateUrl: './sign-up-comp.component.html',
   styleUrls: ['./sign-up-comp.component.css'],
 })
@@ -23,7 +26,8 @@ export class SignUpCompComponent implements OnInit {
     private fb: FormBuilder,
     private candidateService: CandidateService,
     private recruiterService: RecruiterService,
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -104,9 +108,19 @@ export class SignUpCompComponent implements OnInit {
         );
         this.candidateService.createCandidate(candidate).subscribe(
           (response) => {
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Success',
+              detail: 'Candidate sign-up successful',
+            });
             console.log('Candidate sign-up successful', response);
           },
           (error) => {
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Failed',
+              detail: 'Signup failed' + error.message,
+            });
             console.error('Candidate sign-up failed', error);
           }
         );
@@ -127,6 +141,11 @@ export class SignUpCompComponent implements OnInit {
             console.log('Recruiter sign-up successful', response);
           },
           (error) => {
+             this.messageService.add({
+               severity: 'error',
+               summary: 'Failed',
+               detail: 'Signup failed' + error.message,
+             });
             console.error('Recruiter sign-up failed', error);
           }
         );

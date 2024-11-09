@@ -8,11 +8,14 @@ import {
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../services/auth/auth.service';
-
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 @Component({
   selector: 'app-login-comp',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, RouterModule],
+
+  providers: [MessageService],
+  imports: [ReactiveFormsModule, CommonModule, RouterModule, ToastModule],
   templateUrl: './login-comp.component.html',
   styleUrls: ['./login-comp.component.css'],
 })
@@ -23,13 +26,14 @@ export class LoginCompComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
+      password: ['', [Validators.required, Validators.minLength(3)]],
     });
   }
 
@@ -40,24 +44,35 @@ export class LoginCompComponent implements OnInit {
   onSubmit(): void {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
-      console.log('Attempting login with:', email, 'Role:', this.selectedRole);
 
       this.authService.login(email, password, this.selectedRole).subscribe({
         next: (response) => {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: 'Login successful',
+          });
           console.log('Login successful:', response);
-          console.log('Access Token:', this.authService.getToken());
-          console.log('Role:', this.authService.getRole());
-          console.log('user:', this.authService.getUser());
-          console.log('user:', this.authService.isAuthenticated());
+        
 
           // Redirect to home or dashboard
           this.router.navigate(['/home']);
         },
         error: (error) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Failed',
+            detail: 'Login failed' + error.message,
+          });
           console.error('Login failed:', error);
         },
       });
     } else {
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'Invalid',
+        detail: 'Form is invalid',
+      });
       console.warn('Form is invalid');
     }
   }
