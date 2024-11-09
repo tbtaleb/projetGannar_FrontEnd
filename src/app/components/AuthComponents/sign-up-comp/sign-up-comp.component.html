@@ -8,15 +8,15 @@
       </div>
       <div class="mb-4" *ngIf="selectedRole === 'candidate'">
         <label for="name" class="block text-gray-700">Name</label>
-        <input type="text" id="name" formControlName="username" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00203a] focus:border-transparent" placeholder="Enter your name">
+        <input type="text" id="name" formControlName="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00203a] focus:border-transparent" placeholder="Enter your name">
         <div *ngIf="signUpForm.get('name')?.invalid && signUpForm.get('name')?.touched" class="text-red-500 text-sm mt-1">
           Please enter your name.
         </div>
       </div>
       <div class="mb-4" *ngIf="selectedRole === 'recruiter'">
         <label for="fullName" class="block text-gray-700">Full Name</label>
-        <input type="text" id="fullName" formControlName="fullName" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00203a] focus:border-transparent" placeholder="Enter your full name">
-        <div *ngIf="signUpForm.get('fullName')?.invalid && signUpForm.get('fullName')?.touched" class="text-red-500 text-sm mt-1">
+        <input type="text" id="fullName" formControlName="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00203a] focus:border-transparent" placeholder="Enter your full name">
+        <div *ngIf="signUpForm.get('name')?.invalid && signUpForm.get('name')?.touched" class="text-red-500 text-sm mt-1">
           Please enter your full name.
         </div>
       </div>

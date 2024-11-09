@@ -5,6 +5,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router, RouterModule } from '@angular/router';
 import { log } from 'console';
 import { CandidateService } from '../../../services/candidate.service';
+import { Candidate } from '../../../classes/candidate';
+import { RecruiterService } from '../../../services/recruiter.service';
 
 @Component({
   selector: 'app-login-comp',
@@ -17,7 +19,7 @@ export class LoginCompComponent implements OnInit {
   loginForm!: FormGroup;
   selectedRole: string = 'candidate';
   candidate:any = {}
-  constructor(private fb: FormBuilder, private http: HttpClient) {}
+  constructor(private router: Router,private fb: FormBuilder, private http: HttpClient,private candidateService:CandidateService,private recruiterService:RecruiterService) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -31,9 +33,21 @@ export class LoginCompComponent implements OnInit {
   }
 
   onSubmit(): void {
+    const loginData = this.loginForm.value;
+    console.log('Login data', loginData);
     if (this.loginForm.valid) {
-      const loginData = this.loginForm.value;
-      console.log('Login data', loginData);
+      if (this.selectedRole === 'candidate'){
+        this.candidateService.login(loginData).subscribe(data => {
+          console.log(data)
+          this.router.navigate([`/home`]);
+        })
+      }else if (this.selectedRole === 'recruiter'){
+        this.recruiterService.login(loginData).subscribe(data => {
+          console.log(data)
+          this.router.navigate([`/home`]);
+        })
+      }
+
 
       // this.http.post('7ot il api ya ghzela', loginData).subscribe(
       //   (response) => {

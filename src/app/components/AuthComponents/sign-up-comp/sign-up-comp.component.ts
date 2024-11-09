@@ -28,8 +28,8 @@ export class SignUpCompComponent implements OnInit {
   ngOnInit(): void {
     this.signUpForm = this.fb.group(
       {
-        username: ['', [Validators.required]],
-        fullName: [''],
+        name: ['', [Validators.required]],
+        
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(6)]],
         confirmPassword: ['', [Validators.required]],
@@ -56,7 +56,7 @@ export class SignUpCompComponent implements OnInit {
   selectRole(role: string): void {
     this.selectedRole = role;
     if (role === 'recruiter') {
-      this.signUpForm.get('fullName')!.setValidators([Validators.required]);
+      this.signUpForm.get('name')!.setValidators([Validators.required]);
       this.signUpForm.get('company')!.setValidators([Validators.required]);
       this.signUpForm
         .get('companyAddress')!
@@ -72,13 +72,13 @@ export class SignUpCompComponent implements OnInit {
       this.signUpForm.get('phoneNumber')!.setValidators([Validators.required]);
       this.signUpForm.get('address')!.setValidators([Validators.required]);
       this.signUpForm.get('dateOfBirth')!.setValidators([Validators.required]);
-      this.signUpForm.get('fullName')!.clearValidators();
+      this.signUpForm.get('name')!.clearValidators();
       this.signUpForm.get('company')!.clearValidators();
       this.signUpForm.get('companyAddress')!.clearValidators();
       this.signUpForm.get('post')!.clearValidators();
       this.signUpForm.get('domain')!.clearValidators();
     }
-    this.signUpForm.get('fullName')!.updateValueAndValidity();
+    this.signUpForm.get('name')!.updateValueAndValidity();
     this.signUpForm.get('company')!.updateValueAndValidity();
     this.signUpForm.get('companyAddress')!.updateValueAndValidity();
     this.signUpForm.get('post')!.updateValueAndValidity();
@@ -94,7 +94,7 @@ export class SignUpCompComponent implements OnInit {
       if (this.selectedRole === 'candidate') {
         const candidate = new Candidate(
           0, // Assuming ID is auto-generated
-          this.signUpForm.get('username')!.value,
+          this.signUpForm.get('name')!.value,
           this.signUpForm.get('email')!.value,
           this.signUpForm.get('password')!.value,
           this.signUpForm.get('phoneNumber')!.value,
@@ -112,7 +112,7 @@ export class SignUpCompComponent implements OnInit {
       } else if (this.selectedRole === 'recruiter') {
         const recruiter = new Recruiter(
           0, // Assuming ID is auto-generated
-          this.signUpForm.get('fullName')!.value,
+          this.signUpForm.get('name')!.value,
           this.signUpForm.get('password')!.value,
           this.signUpForm.get('email')!.value,
           this.signUpForm.get('company')!.value,
@@ -120,7 +120,7 @@ export class SignUpCompComponent implements OnInit {
           this.signUpForm.get('post')!.value,
           this.signUpForm.get('domain')!.value,
           this.signUpForm.get('phoneNumber')!.value,
-          this.signUpForm.get('address')!.value
+          
         );
         this.recruiterService.createRecruiter(recruiter).subscribe(
           (response) => {

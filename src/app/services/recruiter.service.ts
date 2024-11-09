@@ -9,6 +9,8 @@ import { Recruiter } from '../classes/recruiter';
 export class RecruiterService {
 
   recruitersURL:string = "http://127.0.0.1:8000/api/recruiters";
+  tokenURL:string = "http://127.0.0.1:8000/api/recruiter-token";
+
 
   constructor(private httpClient:HttpClient) {}
 
@@ -28,4 +30,9 @@ export class RecruiterService {
     return this.httpClient.delete<Recruiter>(`${this.recruitersURL}/${recruiterId}`)
   }
 
+  login(recruiter:any){
+    return this.httpClient.post<any>(`${this.tokenURL}`,recruiter,{
+      withCredentials: true
+    })
+  }
 }

@@ -1,6 +1,6 @@
 export class Candidate {
   public id: number;
-  public username: string;
+  public name: string;
   public email: string;
   public password: string;
   public phoneNumber: string;
@@ -17,7 +17,7 @@ export class Candidate {
     dateOfBirth: string
   ) {
     this.id = id;
-    this.username = username;
+    this.name = username;
     this.email = email;
     this.password = password;
     this.phoneNumber = phoneNumber;

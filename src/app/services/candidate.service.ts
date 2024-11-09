@@ -11,7 +11,7 @@ export class CandidateService {
 
 
   candidatesURL:string = "http://127.0.0.1:8000/api/candidates";
-  tokenURL:string = "http://127.0.0.1:8000/api/token";
+  tokenURL:string = "http://127.0.0.1:8000/api/candidate-token";
   resumesURL:string = "http://127.0.0.1:8000/api/resumes";
 
 
@@ -34,8 +34,8 @@ export class CandidateService {
     return this.httpClient.delete<Candidate>(`${this.candidatesURL}/${candidateId}`)
   }
 
-  login(candidate:Candidate){
-    return this.httpClient.post<Candidate>(`${this.tokenURL}`,candidate,{
+  login(candidate:any){
+    return this.httpClient.post<any>(`${this.tokenURL}`,candidate,{
       withCredentials: true
     })
   }

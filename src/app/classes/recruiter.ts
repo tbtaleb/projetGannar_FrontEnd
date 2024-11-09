@@ -1,6 +1,6 @@
 export class Recruiter {
   public id: number;
-  public fullName: string;
+  public name: string;
   public password: string;
   public email: string;
   public company: string;
@@ -8,11 +8,11 @@ export class Recruiter {
   public post: string;
   public domain: string;
   public phoneNumber: string;
-  public address: string;
+
 
   constructor(
     id: number,
-    fullName: string,
+    name: string,
     password: string,
     email: string,
     company: string,
@@ -20,10 +20,10 @@ export class Recruiter {
     post: string,
     domain: string,
     phoneNumber: string,
-    address: string
+    
   ) {
     this.id = id;
-    this.fullName = fullName;
+    this.name = name;
     this.password = password;
     this.email = email;
     this.company = company;
@@ -31,6 +31,6 @@ export class Recruiter {
     this.post = post;
     this.domain = domain;
     this.phoneNumber = phoneNumber;
-    this.address = address;
+
   }
 }
