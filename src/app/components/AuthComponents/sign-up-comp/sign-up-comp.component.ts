@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CandidateService } from '../../../services/candidate.service';
 import { RecruiterService } from '../../../services/recruiter.service';
 import { Candidate } from '../../../classes/candidate';
@@ -22,14 +22,15 @@ export class SignUpCompComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private candidateService: CandidateService,
-    private recruiterService: RecruiterService
+    private recruiterService: RecruiterService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.signUpForm = this.fb.group(
       {
         name: ['', [Validators.required]],
-        
+
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(6)]],
         confirmPassword: ['', [Validators.required]],
@@ -100,7 +101,6 @@ export class SignUpCompComponent implements OnInit {
           this.signUpForm.get('phoneNumber')!.value,
           this.signUpForm.get('address')!.value,
           this.signUpForm.get('dateOfBirth')!.value
-          
         );
         this.candidateService.createCandidate(candidate).subscribe(
           (response) => {
@@ -120,8 +120,7 @@ export class SignUpCompComponent implements OnInit {
           this.signUpForm.get('companyAddress')!.value,
           this.signUpForm.get('post')!.value,
           this.signUpForm.get('domain')!.value,
-          this.signUpForm.get('phoneNumber')!.value,
-          
+          this.signUpForm.get('phoneNumber')!.value
         );
         this.recruiterService.createRecruiter(recruiter).subscribe(
           (response) => {
@@ -133,5 +132,9 @@ export class SignUpCompComponent implements OnInit {
         );
       }
     }
+  }
+
+  navigateHome() {
+    this.router.navigate(['/home']);
   }
 }

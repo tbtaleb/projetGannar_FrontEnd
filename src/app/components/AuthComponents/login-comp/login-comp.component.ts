@@ -61,4 +61,8 @@ export class LoginCompComponent implements OnInit {
       console.warn('Form is invalid');
     }
   }
+
+  navigateHome(): void {
+    this.router.navigate(['/home']);
+  }
 }

@@ -1,8 +1,15 @@
 import { Location } from '@angular/common';
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { JobOffer } from '../../classes/job-offer';
 import { JobOfferService } from '../../services/job-offer.service';
+import { AuthService } from '../../services/auth/auth.service';
+
 
 @Component({
   selector: 'app-new-job-form',
@@ -11,12 +18,13 @@ import { JobOfferService } from '../../services/job-offer.service';
   templateUrl: './new-job-form.component.html',
   styleUrl: './new-job-form.component.css',
 })
-export class NewJobFormComponent {
+export class NewJobFormComponent implements OnInit {
   jobOfferForm!: FormGroup;
 
   constructor(
     private fb: FormBuilder,
-    private jobOfferService: JobOfferService
+    private jobOfferService: JobOfferService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -36,9 +44,15 @@ export class NewJobFormComponent {
 
   onSubmit(): void {
     if (this.jobOfferForm.valid) {
+      const recruiter = this.authService.getUser();
+      if (!recruiter) {
+        console.error('No recruiter found');
+        return;
+      }
+
       const jobOffer: JobOffer = {
         Id: 0, // Assuming ID is auto-generated
-        recruiter: 1, // Replace with the actual recruiter ID
+        recruiter: recruiter.id, // Use the recruiter ID from the auth service
         ...this.jobOfferForm.value,
       };
 

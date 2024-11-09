@@ -19,7 +19,7 @@ import { ExpJobDetailsComponent } from "./components/expiredJobs/exp-job-details
 import { LoginCompComponent } from "./components/AuthComponents/login-comp/login-comp.component";
 import { BrowserModule } from '@angular/platform-browser';
 import { SignUpCompComponent } from "./components/AuthComponents/sign-up-comp/sign-up-comp.component";
-import { FormComponent } from "./components/form/form/form.component";
+
 
 
 @Component({
@@ -44,7 +44,7 @@ import { FormComponent } from "./components/form/form/form.component";
     ExpJobDetailsComponent,
     LoginCompComponent,
     SignUpCompComponent,
-    FormComponent
+   
 ],
   providers: [BrowserModule, HttpClientModule],
   templateUrl: './app.component.html',
