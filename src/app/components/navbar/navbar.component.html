@@ -15,8 +15,8 @@
         </div>
       </div>
       <!-- Login Button -->
-      <div class="hidden md:flex items-center space-x-1">
-        <div *ngIf="authenticated" class="m-2 flex justify-content-center">
+      <div  class="hidden md:flex items-center space-x-1">
+        <div *ngIf="authService.isAuthenticated()" class="m-2 flex justify-content-center">
           <i class="pi pi-bell text-3xl" style="color: darkblue" pBadge value="{{ nbNotifications }}" (click)="op.toggle($event)"></i>
         </div>
         <div>
@@ -52,9 +52,9 @@
             </div>
           </p-overlayPanel>
         </div>
-        <a [routerLink]="['/login']" class="py-2 px-4 bg-[#00203a] text-white font-semibold rounded-lg transition duration-300 transform hover:bg-[#001a33] hover:scale-105">Login</a>
+        <a *ngIf="!authService.isAuthenticated()" [routerLink]="['/login']" class="py-2 px-4 bg-[#00203a] text-white font-semibold rounded-lg transition duration-300 transform hover:bg-[#001a33] hover:scale-105">Login</a>
 
-        <div class="card flex justify-content-center">
+        <div *ngIf="authService.isAuthenticated()" class="card flex justify-content-center">
           <p-sidebar [(visible)]="sidebarVisible">
             <div class="p-4">
               <h3 class="text-xl font-bold">ghzela</h3>
@@ -68,7 +68,7 @@
                 <a [routerLink]="['/jobs']" routerLinkActive="active-sidebar-link" class="block py-2 px-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-300">List of Job Offers</a>
               </li>
               <li class="mb-2">
-                <a [routerLink]="['/logout']" routerLinkActive="active-sidebar-link" class="block py-2 px-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-300">Logout</a>
+                <a (click)="logout()" [routerLink]="['/logout']" routerLinkActive="active-sidebar-link" class="block py-2 px-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-300">Logout</a>
               </li>
             </ul>
           </p-sidebar>
