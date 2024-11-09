@@ -5,3 +5,24 @@
   color: #3b82f6; /* text-blue-500 */
   border-radius: 0.5rem; /* rounded-lg */
 }
+
+.active-sidebar-link {
+  border: 1px solid #3b82f6; /* border-blue-500 */
+  background-color: #ebf8ff; /* bg-blue-100 */
+  color: #3b82f6; /* text-blue-500 */
+  border-radius: 0.5rem; /* rounded-lg */
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #3b82f6; /* text-blue-500 */
+  transition: color 0.3s;
+}
+
+.close-btn:hover {
+  color: #1e40af; /* hover:text-blue-700 */
+}

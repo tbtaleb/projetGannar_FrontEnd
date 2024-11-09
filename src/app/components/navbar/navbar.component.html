@@ -1,5 +1,5 @@
 <nav class="bg-white shadow-lg">
-  <div class="max-w-6xl mx-auto px-4">
+  <div class="max-w-6xl mx-auto px-">
     <div class="flex justify-between">
       <div class="flex space-x-7">
         <!-- Logo -->
@@ -11,45 +11,41 @@
           <a [routerLink]="['/home']" routerLinkActive="active-link" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Home</a>
           <a [routerLink]="['/jobs']" routerLinkActive="active-link" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Jobs</a>
           <a [routerLink]="['/matches']" routerLinkActive="active-link" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Matches</a>
-          <a [routerLink]="['/expired/1']" routerLinkActive="active-link" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Expired jobs</a>
           <a href="http://localhost:8501" routerLinkActive="active-link" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Upload your CV</a>
-          <a [routerLink]="['/newJob']" routerLinkActive="active-link" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Create Job Offer</a>
         </div>
       </div>
       <!-- Login Button -->
       <div class="hidden md:flex items-center space-x-1">
-         <div class="m-2 flex justify-content-center">
-          
+        <div class="m-2 flex justify-content-center">
           <i class="pi pi-bell text-3xl" style="color: darkblue" pBadge value="{{ nbNotifications }}" (click)="op.toggle($event)"></i>
         </div>
         <div>
           <p-overlayPanel #op>
             <div>
               <span class="font-medium text-900 block mb-2">Notifications</span>
-              <hr class="my-2 w-full border-t-4 rounded-xl border-black">
+              <hr class="my-2 w-full border-t-4 rounded-xl border-black" />
               <div *ngIf="notifications.length == 0">
                 <span class="text-gray-400">All notifications are read.</span>
               </div>
               <ul class="list-none p-0 m-0">
                 <li *ngFor="let notif of notifications" (click)="markAsRead(notif.id)" class="flex items-center gap-3 p-3 border-b border-gray-200 cursor-pointer hover:bg-gray-100 transition duration-300 rounded-xl">
                   <div class="flex flex-col flex-1">
-                  <span class="font-medium text-black-alpha-10">
-                    {{ notif?.content }}</span>
-                  <div class="text-sm text-gray-400">
-                    {{ notif?.medcin?.nom }}
+                    <span class="font-medium text-black-alpha-10">
+                      {{ notif?.content }}</span>
+                    <div class="text-sm text-gray-400">
+                      {{ notif?.medcin?.nom }}
+                    </div>
+                    <div class="text-sm text-gray-400">
+                      <span>{{
+                        notif?.created_at | date : " hh:mm le dd MMMM YYYY "
+                      }}</span>
+                      <i class="pi pi-calendar"></i>
+                    </div>
                   </div>
-                  <div class="text-sm text-gray-400">
-                    <span>{{
-                      notif?.created_at | date: " hh:mm le dd MMMM YYYY "
-                    }}</span>
-                     <i class="pi pi-calendar"></i>
-                  </div>
-                </div>
                 </li>
               </ul>
               <div class="mt-4">
-                <button *ngIf="notifications.length > 0" (click)="allRead()"
-                  class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                <button *ngIf="notifications.length > 0" (click)="allRead()" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
                   Mark All As Read
                 </button>
               </div>
@@ -57,17 +53,48 @@
           </p-overlayPanel>
         </div>
         <a [routerLink]="['/login']" class="py-2 px-4 bg-[#00203a] text-white font-semibold rounded-lg transition duration-300 transform hover:bg-[#001a33] hover:scale-105">Login</a>
+
+        <div class="card flex justify-content-center">
+          <p-sidebar [(visible)]="sidebarVisible">
+            <div class="p-4">
+              <h3 class="text-xl font-bold">ghzela</h3>
+              <hr class="my-2 border-t-4 border-gray-300">
+            </div>
+            <ul class="list-none p-0">
+              <li class="mb-2">
+                <a [routerLink]="['/newJob']" routerLinkActive="active-sidebar-link" class="block py-2 px-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-300">Create Job Offer</a>
+              </li>
+              <li class="mb-2">
+                <a [routerLink]="['/jobs']" routerLinkActive="active-sidebar-link" class="block py-2 px-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-300">List of Job Offers</a>
+              </li>
+              <li class="mb-2">
+                <a [routerLink]="['/logout']" routerLinkActive="active-sidebar-link" class="block py-2 px-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-300">Logout</a>
+              </li>
+            </ul>
+          </p-sidebar>
+          <p-button (onClick)="sidebarVisible = true" icon="pi pi-user"></p-button>
+        </div>
       </div>
     </div>
   </div>
   <!-- Mobile menu -->
   <div class="hidden mobile-menu md:hidden">
     <ul class="">
-      <li><a [routerLink]="['/home']" routerLinkActive="active-link" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">Home</a></li>
-      <li><a [routerLink]="['/jobs']" routerLinkActive="active-link" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">Jobs</a></li>
-      <li><a [routerLink]="['/matches']" routerLinkActive="active-link" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">Matches</a></li>
-      <li><a [routerLink]="['/login']" class="block text-sm px-2 py-4 bg-[#00203a] text-white font-semibold rounded-lg hover:bg-[#001a33] transition duration-300">Login</a></li>
-      <li><a [routerLink]="['/expired']" routerLinkActive="active-link" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Expired jobs</a></li>
+      <li>
+        <a [routerLink]="['/home']" routerLinkActive="active-link" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">Home</a>
+      </li>
+      <li>
+        <a [routerLink]="['/jobs']" routerLinkActive="active-link" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">Jobs</a>
+      </li>
+      <li>
+        <a [routerLink]="['/matches']" routerLinkActive="active-link" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">Matches</a>
+      </li>
+      <li>
+        <a [routerLink]="['/login']" class="block text-sm px-2 py-4 bg-[#00203a] text-white font-semibold rounded-lg hover:bg-[#001a33] transition duration-300">Login</a>
+      </li>
+      <li>
+        <a [routerLink]="['/expired']" routerLinkActive="active-link" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Expired jobs</a>
+      </li>
     </ul>
   </div>
 </nav>

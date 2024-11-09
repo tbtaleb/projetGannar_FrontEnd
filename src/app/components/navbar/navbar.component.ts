@@ -7,19 +7,27 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { BadgeModule } from 'primeng/badge';
 import { BrowserModule } from '@angular/platform-browser';
 import { NotificationsService } from '../../services/notifications.service';
+import { SidebarModule } from 'primeng/sidebar';
 import { CommonModule } from '@angular/common';
-
+import { ButtonModule } from 'primeng/button';
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, RouterModule, OverlayPanelModule, BadgeModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    OverlayPanelModule,
+    BadgeModule,
+    SidebarModule,
+    ButtonModule,
+  ],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'], // Corrected this line
 })
 export class NavbarComponent {
   notifications: any[] = [];
   nbNotifications: number = 0;
-
+  sidebarVisible: boolean = false;
   constructor(
     private router: Router,
     private notificationsService: NotificationsService
@@ -50,7 +58,7 @@ export class NavbarComponent {
     this.notificationsService.markNotificationAsRead(notificationId).subscribe(
       (response) => {
         console.log('Notification marked as read', response);
-        
+
         this.loadNotifications(); // Reload notifications
       },
       (error) => {
