@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-navbar',
-  standalone : true,
+  standalone: true,
   imports: [CommonModule, RouterModule, OverlayPanelModule, BadgeModule],
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'], // Corrected this line
@@ -42,6 +42,19 @@ export class NavbarComponent {
       },
       (error) => {
         console.error('Failed to load notifications', error);
+      }
+    );
+  }
+
+  markAsRead(notificationId: number): void {
+    this.notificationsService.markNotificationAsRead(notificationId).subscribe(
+      (response) => {
+        console.log('Notification marked as read', response);
+        
+        this.loadNotifications(); // Reload notifications
+      },
+      (error) => {
+        console.error('Failed to mark notification as read', error);
       }
     );
   }

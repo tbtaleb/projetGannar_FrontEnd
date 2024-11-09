@@ -1,0 +1,7 @@
+.active-link {
+  height: 60%;
+   /* border-blue-500 */
+ /* bg-blue-100 */
+  color: #3b82f6; /* text-blue-500 */
+  border-radius: 0.5rem; /* rounded-lg */
+}

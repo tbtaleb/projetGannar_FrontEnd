@@ -1,55 +1,82 @@
-<div class="flex flex-col h-screen items-center justify-center bg-MainLight">
-    <div class="w-1/2 mb-4">
-      <button (click)="navigateBack()" class="self-start border-2 border-MainDark bg-MainDark text-white text-2xl font-bold py-1 px-4 rounded-full shadow-md hover:bg-MainLight hover:text-MainDark transition duration-300 hover:scale-105 hover:shadow-lg">Back</button>
-    </div>
-  
-    <div class="w-1/2 h-10/12 rounded-lg shadow-xl p-8 bg-white">
-      <form>
+<div class="flex flex-col items-center justify-center bg-MainLight mt-3 min-h-screen">
+  <div class="w-3/4 rounded-lg shadow-xl p-8 bg-white">
+    <form [formGroup]="jobOfferForm" (ngSubmit)="onSubmit()">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <!-- Job Title -->
         <div class="mb-4">
-          <label class="block text-MainShade text-2xl font-bold mb-2" for="jobTitle">
+          <label class="block text-MainShade text-2xl font-bold mb-2" for="name">
             Job Title
           </label>
-          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-MainDark leading-tight focus:outline-none focus:shadow-outline" id="jobTitle" type="text" placeholder="Enter Job Title">
+          <input type="text" id="name" formControlName="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-MainShade focus:border-transparent" placeholder="Enter job title">
         </div>
-  
-        <!-- Job Description -->
+        <!-- Description -->
         <div class="mb-4">
-          <label class="block text-MainShade text-2xl font-bold mb-2" for="jobDescription">
-            Job Description
+          <label class="block text-MainShade text-2xl font-bold mb-2" for="description">
+            Description
           </label>
-          <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-MainDark leading-tight focus:outline-none focus:shadow-outline" id="jobDescription" rows="4" placeholder="Enter Job Description"></textarea>
+          <textarea id="description" formControlName="description" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-MainShade focus:border-transparent" placeholder="Enter job description"></textarea>
         </div>
-  
-        <!-- Working Hours -->
+        <!-- Work Time -->
         <div class="mb-4">
-          <label class="block text-MainShade text-2xl font-bold mb-2" for="workingHours">
-            Working Hours
+          <label class="block text-MainShade text-2xl font-bold mb-2" for="workTime">
+            Work Time
           </label>
-          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-MainDark leading-tight focus:outline-none focus:shadow-outline" id="workingHours" type="text" placeholder="Enter Working Hours">
+          <input type="text" id="workTime" formControlName="workTime" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-MainShade focus:border-transparent" placeholder="Enter work time">
         </div>
-  
+        <!-- Location -->
+        <div class="mb-4">
+          <label class="block text-MainShade text-2xl font-bold mb-2" for="location">
+            Location
+          </label>
+          <input type="text" id="location" formControlName="location" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-MainShade focus:border-transparent" placeholder="Enter location">
+        </div>
         <!-- Salary -->
         <div class="mb-4">
           <label class="block text-MainShade text-2xl font-bold mb-2" for="salary">
             Salary
           </label>
-          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-MainDark leading-tight focus:outline-none focus:shadow-outline" id="salary" type="text" placeholder="Enter Salary">
+          <input type="number" id="salary" formControlName="salary" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-MainShade focus:border-transparent" placeholder="Enter salary">
         </div>
-  
-        <!-- Skills Needed -->
+        <!-- Skills -->
         <div class="mb-4">
-          <label class="block text-MainShade text-2xl font-bold mb-2" for="skillsNeeded">
-            Skills Needed
+          <label class="block text-MainShade text-2xl font-bold mb-2" for="skills">
+            Skills
           </label>
-          <input class="shadow appearance-none border rounded w-full py-2 px-3 text-MainDark leading-tight focus:outline-none focus:shadow-outline" id="skillsNeeded" type="text" placeholder="Enter Skills Needed">
+          <input type="text" id="skills" formControlName="skills" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-MainShade focus:border-transparent" placeholder="Enter skills">
         </div>
-  
-        <!-- Buttons (Save and Submit) -->
-        <div class="flex justify-end items-center">
-            <button class="border-2 border-MainDark bg-MainDark text-white text-2xl font-bold py-1 px-4 rounded-full ml-4 shadow-md hover:bg-white hover:text-MainDark transition duration-300 hover:scale-105 hover:shadow-lg" type="submit">Submit</button>
+        <!-- Company -->
+        <div class="mb-4">
+          <label class="block text-MainShade text-2xl font-bold mb-2" for="company">
+            Company
+          </label>
+          <input type="text" id="company" formControlName="company" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-MainShade focus:border-transparent" placeholder="Enter company name">
         </div>
-      </form>
-    </div>
+        <!-- Email -->
+        <div class="mb-4">
+          <label class="block text-MainShade text-2xl font-bold mb-2" for="email">
+            Email
+          </label>
+          <input type="email" id="email" formControlName="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-MainShade focus:border-transparent" placeholder="Enter email">
+        </div>
+        <!-- Phone Number -->
+        <div class="mb-4">
+          <label class="block text-MainShade text-2xl font-bold mb-2" for="numtel">
+            Phone Number
+          </label>
+          <input type="text" id="numtel" formControlName="numtel" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-MainShade focus:border-transparent" placeholder="Enter phone number">
+        </div>
+        <!-- Expiration Date -->
+        <div class="mb-4">
+          <label class="block text-MainShade text-2xl font-bold mb-2" for="expirationDate">
+            Expiration Date
+          </label>
+          <input type="date" id="expirationDate" formControlName="expirationDate" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-MainShade focus:border-transparent" placeholder="Enter expiration date">
+        </div>
+      </div>
+      <!-- Submit Button -->
+      <div class="flex items-center justify-between mt-4">
+        <button type="submit" class="bg-MainShade text-white px-4 py-2 rounded-lg hover:bg-MainDark transition duration-300" [disabled]="jobOfferForm.invalid">Create Job Offer</button>
+      </div>
+    </form>
   </div>
-  
+</div>
