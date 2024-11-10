@@ -3,6 +3,7 @@ import { JobOffer } from '../../../classes/job-offer';
 import { JobOfferService } from '../../../services/job-offer.service';
 import { Candidate } from '../../../classes/candidate';
 import { ApplicationsService } from '../../../services/applications.service';
+import { AuthService } from '../../../services/auth/auth.service';
 
 @Component({
   selector: 'app-exp-job-details',
@@ -16,11 +17,13 @@ export class ExpJobDetailsComponent implements OnInit{
   @Input() jobOfferId!: number
   jobOffer:any = {}
   jobApplicants: any[] = [];
-  constructor(private jobOfferService:JobOfferService,public applicationService:ApplicationsService){}
+  candidateId!:number;
+  constructor(private jobOfferService:JobOfferService,public applicationService:ApplicationsService,private authService:AuthService){}
 
   ngOnInit(): void {
     this.getJobOfferById(this.jobOfferId)
     this.getApplicantsByJobOfferId(this.jobOfferId)
+    
   }
   getApplicantsByJobOfferId(jobOfferId:number){
     this.jobOfferService.getAllApplicantsByJobOfferId(jobOfferId).subscribe(data => {

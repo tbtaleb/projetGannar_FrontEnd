@@ -26,7 +26,7 @@ export const routes: Routes = [
       { path: 'candidate-detail', component: CandidateInfoComponent },
       { path: 'matches', component: MatchesComponentComponent,canActivate: [AuthGuard] },
       { path: 'recommendation', component: RecommendedCandidatesComponent },
-      { path: 'uploadCV', component: UserProfileComponent },
+      { path: 'uploadCV/:id', component: UserProfileComponent },
       { path: 'jobs', component: AllJobsComponent },
       { path: 'jobDetails/:id', component: JobDetailComponent },
       { path: 'newJob', component: NewJobFormComponent , canActivate: [AuthGuard] },

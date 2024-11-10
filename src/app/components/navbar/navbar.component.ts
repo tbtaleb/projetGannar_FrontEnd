@@ -30,7 +30,7 @@ export class NavbarComponent implements OnInit {
   notifications: any[] = [];
   nbNotifications: number = 0;
   sidebarVisible: boolean = false;
-
+  candidateId!:number;
   constructor(
     public authService: AuthService,
     private notificationsService: NotificationsService
@@ -40,6 +40,8 @@ export class NavbarComponent implements OnInit {
     if (this.authService.isAuthenticated()) {
       this.loadNotifications();
     }
+    this.candidateId = this.authService.getUser().id
+    console.log(this.candidateId)
   }
 
   loadNotifications(): void {
