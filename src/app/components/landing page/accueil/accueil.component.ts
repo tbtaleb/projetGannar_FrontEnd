@@ -10,7 +10,7 @@ import { Candidate } from '../../../classes/candidate';
 @Component({
   selector: 'app-accueil',
   standalone: true,
-  imports: [UploadCvComponent, JobComponent],
+  imports: [UploadCvComponent],
   templateUrl: './accueil.component.html',
   styleUrl: './accueil.component.css'
 })
@@ -22,7 +22,7 @@ export class AccueilComponent implements OnInit{
   constructor(private jobOfferService:JobOfferService,private recruiterService:RecruiterService,private candidateService:CandidateService){}
 
   ngOnInit(): void {
-    //this.getAllJobOffers();
+    this.getAllJobOffers();
     //this.getLoggedCandidate();
     // this.loginUser();
     

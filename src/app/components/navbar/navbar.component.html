@@ -12,6 +12,7 @@
           <a [routerLink]="['/jobs']" routerLinkActive="active-link" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Jobs</a>
           <a *ngIf="authService.getRole()=='candidate'" [routerLink]="['/matches']" routerLinkActive="active-link" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Matches</a>
           <a *ngIf="authService.getRole()=='candidate'" href="http://localhost:8501" routerLinkActive="active-link" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Upload your CV</a>
+          <a *ngIf="authService.getRole()=='recruiter'" [routerLink]="['/expired/'+id]" routerLinkActive="active-link" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Expired jobs</a>
         </div>
       </div>
       <!-- Login Button -->
@@ -32,9 +33,6 @@
                   <div class="flex flex-col flex-1">
                     <span class="font-medium text-black-alpha-10">
                       {{ notif?.content }}</span>
-                    <div class="text-sm text-gray-400">
-                      {{ notif?.medcin?.nom }}
-                    </div>
                     <div class="text-sm text-gray-400">
                       <span>{{
                         notif?.created_at | date : " hh:mm le dd MMMM YYYY "

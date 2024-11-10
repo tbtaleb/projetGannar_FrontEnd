@@ -5,7 +5,7 @@ import { AppNotificationsComponent } from "./components/RecruiterNotificationCom
 import { CandidateInfoComponent } from "./components/RecruiterNotificationComp/candidate-info/candidate-info.component";
 import { RecommendedCandidatesComponent } from './components/recommendedCandidatesPage/recommended-candidates/recommended-candidates.component';
 import { JobDetailsComponent } from './components/recommendedCandidatesPage/job-details/job-details.component';
-import { UserStoryNavComponent } from "./components/prototype/user-story-nav/user-story-nav.component";
+
 import { JobComponent } from "./components/AllJobs/job/job.component";
 import { JobsListComponent } from "./components/AllJobs/jobs-list/jobs-list.component";
 import { AllJobsComponent } from "./components/AllJobs/all-jobs/all-jobs.component";
@@ -32,7 +32,6 @@ import { SignUpCompComponent } from "./components/AuthComponents/sign-up-comp/si
     RecommendedCandidatesComponent,
     JobDetailsComponent,
     MatchesComponentComponent,
-    UserStoryNavComponent,
     JobComponent,
     JobsListComponent,
     AllJobsComponent,
@@ -44,15 +43,13 @@ import { SignUpCompComponent } from "./components/AuthComponents/sign-up-comp/si
     ExpJobDetailsComponent,
     LoginCompComponent,
     SignUpCompComponent,
-    
-   
 ],
   providers: [BrowserModule, HttpClientModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'FrontEndGannar2';
+  title = 'Jobify';
 
   selectedCandidate: any;
 

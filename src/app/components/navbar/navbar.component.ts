@@ -27,10 +27,11 @@ import { AuthService } from '../../services/auth/auth.service';
   styleUrls: ['./navbar.component.css'], // Corrected this line
 })
 export class NavbarComponent implements OnInit {
+
   notifications: any[] = [];
   nbNotifications: number = 0;
   sidebarVisible: boolean = false;
-
+  id: number = 0
   constructor(
     public authService: AuthService,
     private notificationsService: NotificationsService
@@ -38,8 +39,10 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.authService.isAuthenticated()) {
+      this.id = this.authService.getUser().id;
       this.loadNotifications();
     }
+
   }
 
   loadNotifications(): void {
@@ -47,6 +50,7 @@ export class NavbarComponent implements OnInit {
     this.notificationsService.getUnreadNotifications(recruiterId).subscribe(
       (data) => {
         this.notifications = data;
+        
         this.nbNotifications = data.length;
       },
       (error) => {
@@ -63,7 +67,7 @@ export class NavbarComponent implements OnInit {
   markAsRead(notificationId: number): void {
     this.notificationsService.markNotificationAsRead(notificationId).subscribe(
       (response) => {
-        console.log('Notification marked as read', response);
+        
         this.loadNotifications(); // Reload notifications
       },
       (error) => {
@@ -76,7 +80,6 @@ export class NavbarComponent implements OnInit {
     const recruiterId = 1; // Replace with the actual recruiter ID
     this.notificationsService.markAllNotificationsAsRead(recruiterId).subscribe(
       (response) => {
-        console.log('All notifications marked as read', response);
         this.loadNotifications(); // Reload notifications
       },
       (error) => {
