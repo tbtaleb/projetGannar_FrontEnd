@@ -11,6 +11,7 @@ import { SidebarModule } from 'primeng/sidebar';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { CandidateService } from '../../services/candidate.service';
+import { AuthService } from '../../services/auth/auth.service';
 @Component({
   selector: 'app-navbar',
   standalone: true,
@@ -29,19 +30,26 @@ export class NavbarComponent {
   notifications: any[] = [];
   nbNotifications: number = 0;
   sidebarVisible: boolean = false;
-  user:any = {}
+  candidate: any = {};
+ 
+
+  authenticated: boolean;
+
   constructor(
     private router: Router,
     private notificationsService: NotificationsService,
-    private candidateService:CandidateService
-  ) {}
-
+    private authservice: AuthService
+  ) {
+    this.authenticated = this.authservice.isAuthenticated();
+  }
   openNotificationDialog() {
     this.router.navigate(['notifications']);
   }
 
   ngOnInit(): void {
     this.loadNotifications();
+    console.log(this.authenticated);
+    
   }
 
   loadNotifications(): void {
@@ -56,12 +64,12 @@ export class NavbarComponent {
       }
     );
   }
-  isCandidate(){
-    return this.user.role=='candidate'
-  }
-  isRecruiter(){
-    return this.user.role=='recruiter'
-  }
+  //isCandidate(){
+  //  return this.user.role=='candidate'
+  //}
+  //isRecruiter(){
+  //  return this.user.role=='recruiter'
+  //}
   markAsRead(notificationId: number): void {
     this.notificationsService.markNotificationAsRead(notificationId).subscribe(
       (response) => {
@@ -87,14 +95,5 @@ export class NavbarComponent {
       }
     );
   }
-  
-  async loginUser(){
-    try {
-      const token = 'your-access-token';
-      this.user = await this.candidateService.getCandidate();
-      console.log('Candidate data:', this.user);
-    } catch (error) {
-      console.error('Error fetching candidate:', error);
-    }
-  }
+
 }
