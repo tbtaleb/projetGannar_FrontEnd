@@ -39,16 +39,28 @@ export class AuthService {
   }
 
   private setSession(token: string, role: string): void {
-    localStorage.setItem(this.accessTokenKey, token);
-    localStorage.setItem(this.roleKey, role);
+    if (this.isBrowser()) {
+      localStorage.setItem(this.accessTokenKey, token);
+      localStorage.setItem(this.roleKey, role);
+    }
+    
   }
 
   getToken(): string | null {
-    return localStorage.getItem(this.accessTokenKey);
+    if (this.isBrowser()) {
+       return localStorage.getItem(this.accessTokenKey);
+      
+    }
+    return null;
   }
 
   getRole(): string | null {
-    return localStorage.getItem(this.roleKey);
+    if (this.isBrowser()) {
+      
+       return localStorage.getItem(this.roleKey);
+    }
+    return null;
+   
   }
 
   decodeToken(): any {
@@ -66,16 +78,24 @@ export class AuthService {
           email: decodedToken.email,
         }
       : null;
-  } 
+  }
 
   isAuthenticated(): boolean {
     return !!this.getToken();
   }
 
   logout() {
-    localStorage.removeItem(this.accessTokenKey);
-    localStorage.removeItem(this.roleKey);
+    if (this.isBrowser()) {
+      localStorage.removeItem(this.accessTokenKey);
+      localStorage.removeItem(this.roleKey);
+      
+    }
+    
     this.isAuthenticatedSubject.next(false);
     this.router.navigate(['/login']);
+  }
+
+  private isBrowser(): boolean {
+    return typeof window !== 'undefined' && typeof localStorage !== 'undefined';
   }
 }

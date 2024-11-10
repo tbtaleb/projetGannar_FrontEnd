@@ -6,12 +6,12 @@ export class Application {
     public Id:number;
     public candidate!:Candidate;
     public jobOffer!:JobOffer;
-    public score!:number
+    public candidate_score!:number;
 
     constructor(Id:number,candidate:Candidate,jobOffer:JobOffer,candidate_score:number){
         this.Id = Id
         this.candidate = candidate
         this.jobOffer = jobOffer
-        this.score = candidate_score
+        this.candidate_score = candidate_score;
     }
 }

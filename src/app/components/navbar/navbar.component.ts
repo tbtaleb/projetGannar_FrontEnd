@@ -45,7 +45,7 @@ export class NavbarComponent implements OnInit {
   }
 
   loadNotifications(): void {
-    const recruiterId = 1; // Replace with the actual recruiter ID
+    const recruiterId = this.authService.getUser().id // Replace with the actual recruiter ID
     this.notificationsService.getUnreadNotifications(recruiterId).subscribe(
       (data) => {
         this.notifications = data;
