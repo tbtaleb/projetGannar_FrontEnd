@@ -54,7 +54,12 @@ export class NavbarComponent implements OnInit {
       }
     );
   }
-
+  //isCandidate(){
+  //  return this.user.role=='candidate'
+  //}
+  //isRecruiter(){
+  //  return this.user.role=='recruiter'
+  //}
   markAsRead(notificationId: number): void {
     this.notificationsService.markNotificationAsRead(notificationId).subscribe(
       (response) => {

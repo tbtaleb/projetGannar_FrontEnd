@@ -23,7 +23,7 @@ export class RecruiterService {
   }
 
   createRecruiter(recruiter:Recruiter){
-    return this.httpClient.post<Recruiter>(`${this.recruitersURL}`,recruiter)
+    return this.httpClient.post<Recruiter>(`${this.recruitersURL}/register`,recruiter)
   }
 
   deleteRecruiter(recruiterId:number):Observable<Recruiter>{

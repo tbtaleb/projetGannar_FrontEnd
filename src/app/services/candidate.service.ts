@@ -27,7 +27,7 @@ export class CandidateService {
 
 
   createCandidate(candidate:Candidate){
-    return this.httpClient.post<Candidate>(`${this.candidatesURL}`,candidate)
+    return this.httpClient.post<Candidate>(`${this.candidatesURL}/register`,candidate)
   }
 
   deleteCandidate(candidateId:number):Observable<Candidate>{

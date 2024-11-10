@@ -44,6 +44,7 @@ import { SignUpCompComponent } from "./components/AuthComponents/sign-up-comp/si
     ExpJobDetailsComponent,
     LoginCompComponent,
     SignUpCompComponent,
+    
    
 ],
   providers: [BrowserModule, HttpClientModule],
