@@ -19,7 +19,7 @@ export class MatchesComponentComponent implements OnInit{
   constructor(private matchService:MatchesService,private candidateService:CandidateService){}
 
   ngOnInit(): void {
-    this.loginUser();
+    // this.loginUser();
     
   }
   getMatches(id:number){
@@ -29,14 +29,14 @@ export class MatchesComponentComponent implements OnInit{
     })
   }
   
-  async loginUser(){
-    try {
-      const token = 'your-access-token';
-      this.candidate = await this.candidateService.getCandidate();
-      console.log('Candidate data:', this.candidate);
-      this.getMatches(this.candidate.id)
-    } catch (error) {
-      console.error('Error fetching candidate:', error);
-    }
-  }
+  // async loginUser(){
+  //   try {
+  //     const token = 'your-access-token';
+  //     this.candidate = await this.candidateService.getCandidate();
+  //     console.log('Candidate data:', this.candidate);
+  //     this.getMatches(this.candidate.id)
+  //   } catch (error) {
+  //     console.error('Error fetching candidate:', error);
+  //   }
+  // }
 }

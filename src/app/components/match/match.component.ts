@@ -22,7 +22,7 @@ export class MatchComponent implements OnInit{
   ApplicationCreated=false
   ngOnInit(): void {
     
-    this.loginUser();
+    // this.loginUser();
   }
 
   applyForJob(){
@@ -40,18 +40,18 @@ export class MatchComponent implements OnInit{
 
   @Input() jobMatch!:Match
 
-  async loginUser(){
-    try {
-      const token = 'your-access-token';
-      this.candidate = await this.candidateService.getCandidate();
-      this.jobOfferService.getJobOfferById(Number(this.jobMatch.jobOffer)).subscribe( data => {
-        this.job = data
-        console.log(this.job)
-      })
-      console.log('Candidate data:', this.candidate);
-    } catch (error) {
-      console.error('Error fetching candidate:', error);
-    }
-  }
+  // async loginUser(){
+  //   try {
+  //     const token = 'your-access-token';
+  //     this.candidate = await this.candidateService.getCandidate();
+  //     this.jobOfferService.getJobOfferById(Number(this.jobMatch.jobOffer)).subscribe( data => {
+  //       this.job = data
+  //       console.log(this.job)
+  //     })
+  //     console.log('Candidate data:', this.candidate);
+  //   } catch (error) {
+  //     console.error('Error fetching candidate:', error);
+  //   }
+  // }
 
 }

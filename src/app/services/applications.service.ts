@@ -16,7 +16,7 @@ export class ApplicationsService {
   getAllApplications(candidateId:number):Observable<Application[]>{
     return this.httpClient.get<Application[]>(`${this.applicationsURL}/${candidateId}`);
   }
-  getApplicationByCandidateIdAndJobOfferId(candidateId:number,jobOfferId:number){
+  getApplicationByCandidateIdAndJobOfferId(candidateId:number,jobOfferId:number):Observable<Application>{
     return this.httpClient.get<Application>(`${this.specificapplicationURL}/${candidateId}/and/${jobOfferId}`);
   }
   apply(candidateId:number,jobOfferId:number):Observable<Application>{

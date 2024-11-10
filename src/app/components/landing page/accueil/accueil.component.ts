@@ -24,18 +24,18 @@ export class AccueilComponent implements OnInit{
   ngOnInit(): void {
     //this.getAllJobOffers();
     //this.getLoggedCandidate();
-    this.loginUser();
+    // this.loginUser();
     
   }
-  async loginUser(){
-    try {
-      const token = 'your-access-token';
-      this.candidate = await this.candidateService.getCandidate();
-      console.log('Candidate data:', this.candidate);
-    } catch (error) {
-      console.error('Error fetching candidate:', error);
-    }
-  }
+  // async loginUser(){
+  //   try {
+  //     const token = 'your-access-token';
+  //     this.candidate = await this.candidateService.getCandidate();
+  //     console.log('Candidate data:', this.candidate);
+  //   } catch (error) {
+  //     console.error('Error fetching candidate:', error);
+  //   }
+  // }
 
 
 

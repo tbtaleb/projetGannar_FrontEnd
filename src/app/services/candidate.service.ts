@@ -59,15 +59,15 @@ export class CandidateService {
     return this.httpClient.request(req);
   }
 
-  async getCandidate(): Promise<any>{
-    const headers = new HttpHeaders({
-      //'Authorization': `Bearer ${token}`,
-      'Content-Type': 'application/json'
-    });
+  // async getCandidate(): Promise<any>{
+  //   const headers = new HttpHeaders({
+  //     //'Authorization': `Bearer ${token}`,
+  //     'Content-Type': 'application/json'
+  //   });
 
-    return this.httpClient.post<any>('http://127.0.0.1:8000/api/candidate', {}, {
-      headers,
-      withCredentials: true
-    }).toPromise();
-  }
+  //   return this.httpClient.post<any>('http://127.0.0.1:8000/api/candidate', {}, {
+  //     headers,
+  //     withCredentials: true
+  //   }).toPromise();
+  // }
 }
