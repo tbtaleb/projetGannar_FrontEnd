@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { JobOffer } from '../../../classes/job-offer';
 import { JobOfferService } from '../../../services/job-offer.service';
 import { Candidate } from '../../../classes/candidate';
+import { ApplicationsService } from '../../../services/applications.service';
 
 @Component({
   selector: 'app-exp-job-details',
@@ -15,7 +16,7 @@ export class ExpJobDetailsComponent implements OnInit{
   @Input() jobOfferId!: number
   jobOffer:any = {}
   jobApplicants: any[] = [];
-  constructor(private jobOfferService:JobOfferService){}
+  constructor(private jobOfferService:JobOfferService,public applicationService:ApplicationsService){}
 
   ngOnInit(): void {
     this.getJobOfferById(this.jobOfferId)
@@ -27,6 +28,9 @@ export class ExpJobDetailsComponent implements OnInit{
       console.log(this.jobApplicants)
     })
   }
+  //getApplicationByCandidateIdAndJobOfferId(candidateId:number,jobOfferId:number){
+  //  this.applcationService
+  //}
   getJobOfferById(jobOfferId:number){
     this.jobOfferService.getJobOfferById(jobOfferId).subscribe(data => {
       this.jobOffer = data

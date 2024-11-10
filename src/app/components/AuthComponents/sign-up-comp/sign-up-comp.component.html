@@ -1,4 +1,7 @@
 <div class="flex items-center justify-center min-h-screen bg-gray-100 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d');">
+  <button (click)="navigateHome()" class="absolute top-4 right-4 bg-blue-500 text-white px-4 py-2 rounded-lg flex items-center hover:bg-blue-700 transition duration-300">
+    <i class="pi pi-arrow-left mr-2"></i> Back to Home
+  </button>
   <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
     <h2 class="text-2xl font-bold mb-6 text-center text-[#00203a]">Sign Up</h2>
     <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
@@ -90,3 +93,4 @@
     </div>
   </div>
 </div>
+<p-toast position="top-right"></p-toast>

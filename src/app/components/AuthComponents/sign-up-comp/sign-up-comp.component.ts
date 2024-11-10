@@ -2,16 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CandidateService } from '../../../services/candidate.service';
 import { RecruiterService } from '../../../services/recruiter.service';
 import { Candidate } from '../../../classes/candidate';
 import { Recruiter } from '../../../classes/recruiter';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-sign-up-comp',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, RouterModule],
+  imports: [ReactiveFormsModule, CommonModule, RouterModule,ToastModule],
+  providers: [MessageService],
   templateUrl: './sign-up-comp.component.html',
   styleUrls: ['./sign-up-comp.component.css'],
 })
@@ -22,14 +25,16 @@ export class SignUpCompComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private candidateService: CandidateService,
-    private recruiterService: RecruiterService
+    private recruiterService: RecruiterService,
+    private router: Router,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
     this.signUpForm = this.fb.group(
       {
         name: ['', [Validators.required]],
-        
+
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required, Validators.minLength(6)]],
         confirmPassword: ['', [Validators.required]],
@@ -100,13 +105,22 @@ export class SignUpCompComponent implements OnInit {
           this.signUpForm.get('phoneNumber')!.value,
           this.signUpForm.get('address')!.value,
           this.signUpForm.get('dateOfBirth')!.value
-          
         );
         this.candidateService.createCandidate(candidate).subscribe(
           (response) => {
+            this.messageService.add({
+              severity: 'success',
+              summary: 'Success',
+              detail: 'Candidate sign-up successful',
+            });
             console.log('Candidate sign-up successful', response);
           },
           (error) => {
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Failed',
+              detail: 'Signup failed' + error.message,
+            });
             console.error('Candidate sign-up failed', error);
           }
         );
@@ -120,18 +134,26 @@ export class SignUpCompComponent implements OnInit {
           this.signUpForm.get('companyAddress')!.value,
           this.signUpForm.get('post')!.value,
           this.signUpForm.get('domain')!.value,
-          this.signUpForm.get('phoneNumber')!.value,
-          
+          this.signUpForm.get('phoneNumber')!.value
         );
         this.recruiterService.createRecruiter(recruiter).subscribe(
           (response) => {
             console.log('Recruiter sign-up successful', response);
           },
           (error) => {
+             this.messageService.add({
+               severity: 'error',
+               summary: 'Failed',
+               detail: 'Signup failed' + error.message,
+             });
             console.error('Recruiter sign-up failed', error);
           }
         );
       }
     }
+  }
+
+  navigateHome() {
+    this.router.navigate(['/home']);
   }
 }

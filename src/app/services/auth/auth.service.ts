@@ -2,25 +2,22 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   private apiUrl = 'http://127.0.0.1:8000/api';
-  private currentUserSubject: BehaviorSubject<any>;
-  public currentUser: Observable<any>;
+  private accessTokenKey = 'access_token';
+  private roleKey = 'role';
 
-  constructor(private http: HttpClient, private router: Router) {
-    this.currentUserSubject = new BehaviorSubject<any>(
-      JSON.parse(localStorage.getItem('currentUser') || '{}')
-    );
-    this.currentUser = this.currentUserSubject.asObservable();
-  }
+  private isAuthenticatedSubject = new BehaviorSubject<boolean>(
+    this.isAuthenticated()
+  );
+  isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
 
-  public get currentUserValue(): any {
-    return this.currentUserSubject.value;
-  }
+  constructor(private http: HttpClient, private router: Router) {}
 
   login(
     email: string,
@@ -28,33 +25,57 @@ export class AuthService {
     role: 'candidate' | 'recruiter'
   ): Observable<any> {
     const url = `${this.apiUrl}/${role}/login`;
-    return this.http.post<any>(url, { email, password }).pipe(
-      tap((response) => {
-        // Store user details and JWT token in local storage
-        localStorage.setItem('role',role);
-        //this.currentUserSubject.next(response);
-        //console.log(this.currentUserSubject);
-        
+    return this.http
+      .post<{ access_token: string; refresh_token: string }>(url, {
+        email,
+        password,
       })
-    );
+      .pipe(
+        tap((response) => {
+          this.setSession(response.access_token, role);
+          this.isAuthenticatedSubject.next(true);
+        })
+      );
   }
 
-  logout(): void {
-    // Remove user from local storage and set current user to null
-    localStorage.removeItem('currentUser');
-    this.currentUserSubject.next(null);
-    this.router.navigate(['/login']);
+  private setSession(token: string, role: string): void {
+    localStorage.setItem(this.accessTokenKey, token);
+    localStorage.setItem(this.roleKey, role);
   }
+
+  getToken(): string | null {
+    return localStorage.getItem(this.accessTokenKey);
+  }
+
+  getRole(): string | null {
+    return localStorage.getItem(this.roleKey);
+  }
+
+  decodeToken(): any {
+    const token = this.getToken();
+    if (!token) return null;
+    return jwtDecode(token);
+  }
+
+  getUser(): any {
+    const decodedToken = this.decodeToken();
+    return decodedToken
+      ? {
+          id: decodedToken.id,
+          name: decodedToken.name,
+          email: decodedToken.email,
+        }
+      : null;
+  } 
 
   isAuthenticated(): boolean {
-    return !!this.currentUserValue;
+    return !!this.getToken();
   }
 
-  getRole(): string {
-    return this.currentUserValue?.role || null;
-  }
-
-  getToken(): string {
-    return this.currentUserValue?.access_token || null;
+  logout() {
+    localStorage.removeItem(this.accessTokenKey);
+    localStorage.removeItem(this.roleKey);
+    this.isAuthenticatedSubject.next(false);
+    this.router.navigate(['/login']);
   }
 }

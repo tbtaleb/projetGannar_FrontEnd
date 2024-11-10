@@ -1,16 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../../../services/auth/auth.service';
-
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 @Component({
   selector: 'app-login-comp',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, RouterModule],
+
+  providers: [MessageService],
+  imports: [ReactiveFormsModule, CommonModule, RouterModule, ToastModule],
   templateUrl: './login-comp.component.html',
-  styleUrl: './login-comp.component.css',
+  styleUrls: ['./login-comp.component.css'],
 })
 export class LoginCompComponent implements OnInit {
   loginForm!: FormGroup;
@@ -19,30 +26,58 @@ export class LoginCompComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, ]],
+      password: ['', [Validators.required, Validators.minLength(3)]],
     });
   }
 
   selectRole(role: 'candidate' | 'recruiter'): void {
     this.selectedRole = role;
   }
+
   onSubmit(): void {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
-      this.authService.login(email, password, this.selectedRole).subscribe(
-        (response) => {
-          console.log('Login successful', response);
+
+      this.authService.login(email, password, this.selectedRole).subscribe({
+        next: (response) => {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Success',
+            detail: 'Login successful',
+          });
+          console.log('Login successful:', response);
+        
+
+          // Redirect to home or dashboard
+          this.router.navigate(['/home']);
         },
-        (error) => {
-          console.error('Login failed', error);
-        }
-      );
+        error: (error) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Failed',
+            detail: 'Login failed' + error.message,
+          });
+          console.error('Login failed:', error);
+        },
+      });
+    } else {
+      this.messageService.add({
+        severity: 'warn',
+        summary: 'Invalid',
+        detail: 'Form is invalid',
+      });
+      console.warn('Form is invalid');
     }
+  }
+
+  navigateHome(): void {
+    this.router.navigate(['/home']);
   }
 }

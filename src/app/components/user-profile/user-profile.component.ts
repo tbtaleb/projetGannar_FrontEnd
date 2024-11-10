@@ -1,15 +1,38 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MessageService } from 'primeng/api';
+import { FileUploadEvent, FileUploadModule } from 'primeng/fileupload';
+import { ToastModule } from 'primeng/toast';
+
+interface UploadEvent {
+  originalEvent: Event;
+  files: File[];
+}
 @Component({
   selector: 'app-user-profile',
   standalone: true,
-  imports: [CommonModule],
+  imports: [FileUploadModule, ToastModule, CommonModule],
+  providers: [MessageService],
   templateUrl: './user-profile.component.html',
-  styleUrl: './user-profile.component.css'
+  styleUrl: './user-profile.component.css',
 })
 export class UserProfileComponent {
-   test:boolean = false;
-  fileUploaded(event:any){
-    this.test = true;
+  test: boolean = false;
+  uploadedFiles: any[] = [];
+
+  constructor(private messageService: MessageService) {}
+
+  onUpload(event: FileUploadEvent) {
+     this.messageService.add({
+       severity: 'info',
+       summary: 'File Uploaded',
+       detail: '',
+     });
+    this.test = true
+    for (let file of event.files) {
+      this.uploadedFiles.push(file);
+    }
+
+   
   }
 }

@@ -13,6 +13,7 @@ import { SignUpCompComponent } from './components/AuthComponents/sign-up-comp/si
 import { HomeComponent } from './components/landing page/home/home.component';
 import { AllExpiredJobsComponent } from './components/expiredJobs/all-expired-jobs/all-expired-jobs.component';
 import { UserProfileComponent } from './components/user-profile/user-profile.component';
+import { AuthGuard } from './services/guard/auth.guard';
 
 export const routes: Routes = [
    {
@@ -23,12 +24,12 @@ export const routes: Routes = [
       { path: 'home', component: AccueilComponent },
       { path: 'notifications', component: AppNotificationsComponent },
       { path: 'candidate-detail', component: CandidateInfoComponent },
-      { path: 'matches', component: MatchesComponentComponent },
+      { path: 'matches', component: MatchesComponentComponent,canActivate: [AuthGuard] },
       { path: 'recommendation', component: RecommendedCandidatesComponent },
       { path: 'uploadCV', component: UserProfileComponent },
       { path: 'jobs', component: AllJobsComponent },
       { path: 'jobDetails/:id', component: JobDetailComponent },
-      { path: 'newJob', component: NewJobFormComponent },
+      { path: 'newJob', component: NewJobFormComponent , canActivate: [AuthGuard] },
       { path: 'expired/:id', component: AllExpiredJobsComponent }
     ]
   },

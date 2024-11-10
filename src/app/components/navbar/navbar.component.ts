@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { AppNotificationsComponent } from '../RecruiterNotificationComp/app-notifications/app-notifications.component';
@@ -26,30 +26,20 @@ import { AuthService } from '../../services/auth/auth.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css'], // Corrected this line
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit {
   notifications: any[] = [];
   nbNotifications: number = 0;
   sidebarVisible: boolean = false;
-  candidate: any = {};
- 
-
-  authenticated: boolean;
 
   constructor(
-    private router: Router,
-    private notificationsService: NotificationsService,
-    private authservice: AuthService
-  ) {
-    this.authenticated = this.authservice.isAuthenticated();
-  }
-  openNotificationDialog() {
-    this.router.navigate(['notifications']);
-  }
+    public authService: AuthService,
+    private notificationsService: NotificationsService
+  ) {}
 
   ngOnInit(): void {
-    this.loadNotifications();
-    console.log(this.authenticated);
-    
+    if (this.authService.isAuthenticated()) {
+      this.loadNotifications();
+    }
   }
 
   loadNotifications(): void {
@@ -74,7 +64,6 @@ export class NavbarComponent {
     this.notificationsService.markNotificationAsRead(notificationId).subscribe(
       (response) => {
         console.log('Notification marked as read', response);
-
         this.loadNotifications(); // Reload notifications
       },
       (error) => {
@@ -96,4 +85,7 @@ export class NavbarComponent {
     );
   }
 
+  logout(): void {
+    this.authService.logout();
+  }
 }
