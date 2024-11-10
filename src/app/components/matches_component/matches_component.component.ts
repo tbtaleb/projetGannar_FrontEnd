@@ -4,6 +4,7 @@ import { MatchesService } from '../../services/matches.service';
 import { Match } from '../../classes/match';
 import { MatchComponent } from '../match/match.component';
 import { CandidateService } from '../../services/candidate.service';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-matches-component',
@@ -16,11 +17,12 @@ export class MatchesComponentComponent implements OnInit{
 
   candidateMatches:Match[] = []
   candidate:any = {}
-  constructor(private matchService:MatchesService,private candidateService:CandidateService){}
+  constructor(private matchService:MatchesService,private candidateService:CandidateService,private authService:AuthService){}
 
   ngOnInit(): void {
     // this.loginUser();
-    
+
+    this.getMatches(this.authService.getUser().id)
   }
   getMatches(id:number){
     this.matchService.getAllMatches(id).subscribe( data => {

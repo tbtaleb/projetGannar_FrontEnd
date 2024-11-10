@@ -50,7 +50,7 @@ export class AccueilComponent implements OnInit{
   getAllJobOffers(){
     this.jobOfferService.getAllJobOffers().subscribe(data => {
       this.jobOffers = data
-      console.log(this.jobOffers)
+      
     })
   }
   

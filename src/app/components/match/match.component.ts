@@ -4,6 +4,7 @@ import { JobOfferService } from '../../services/job-offer.service';
 import { ApplicationsService } from '../../services/applications.service';
 import { CandidateService } from '../../services/candidate.service';
 import { CommonModule } from '@angular/common';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-match',
@@ -14,28 +15,34 @@ import { CommonModule } from '@angular/common';
 })
 export class MatchComponent implements OnInit{
 
-  constructor(private jobOfferService:JobOfferService,private applicationService:ApplicationsService,private candidateService:CandidateService){}
+  constructor(private jobOfferService:JobOfferService,private applicationService:ApplicationsService,private candidateService:CandidateService,private authService:AuthService){}
 
   job:any
   candidate:any = {}
   ApplicationExists=false
   ApplicationCreated=false
+  candidateid!: number;
   ngOnInit(): void {
-    
+    this.candidateid = this.authService.getUser().id;
+        this.jobOfferService.getJobOfferById(Number(this.jobMatch.jobOffer)).subscribe( data => {
+          this.job = data
+          
+        })
+     this.candidateid=this.authService.getUser().id;   
     // this.loginUser();
   }
 
   applyForJob(){
-    this.applicationService.apply(this.candidate.id,this.job.Id).subscribe( 
-      data => {
+    this.applicationService.apply(this.candidateid, this.job.Id).subscribe(
+      (data) => {
         console.log(data);
-        this.ApplicationCreated=true
+        this.ApplicationCreated = true;
       },
-      error => {
-        console.error("An error occurred:", error);
-        this.ApplicationExists=true
+      (error) => {
+        console.error('An error occurred:', error);
+        this.ApplicationExists = true;
       }
-    )
+    );
   }
 
   @Input() jobMatch!:Match
