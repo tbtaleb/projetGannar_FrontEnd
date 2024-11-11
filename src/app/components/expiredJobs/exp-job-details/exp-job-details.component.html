@@ -1,24 +1,43 @@
 <div class="max-w-4xl">
-  <h1 class="text-5xl font-bold">Job Title</h1>
-  <p class="text-xl">{{jobOffer.description}}</p>
-  <hr class="border-t border-gray-300 my-4">
+  <h1 class="text-5xl font-bold">{{ jobOffer.name }}</h1>
+  <p class="text-xl">{{ jobOffer.description }}</p>
+  <hr class="border-t border-gray-300 my-4" />
   <div class="grid grid-cols-2">
     <div class="col-span-1 text-xl space-y-3">
-      <p><i class="fa-regular fa-clock mr-1"></i> <span class="font-bold">Work Time:</span> {{jobOffer.workTime}} hours</p>
-      <p><i class="fa-solid fa-coins mr-1"></i> <span class="font-bold">Salary:</span> {{jobOffer.salary}} dinars</p>
-      <p><i class="fa-solid fa-location-dot mr-1"></i> <span class="font-bold">Location:</span> {{jobOffer.location}}</p>
-      <p><i class="fa-solid fa-list mr-1"></i> <span class="font-bold">Skills:</span> {{jobOffer.skills}}</p>
+      <p>
+        <i class="fa-regular fa-clock mr-1"></i>
+        <span class="font-bold">Work Time:</span> {{ jobOffer.workTime }} hours
+      </p>
+      <p>
+        <i class="fa-solid fa-coins mr-1"></i>
+        <span class="font-bold">Salary:</span> {{ jobOffer.salary }} dinars
+      </p>
+      <p>
+        <i class="fa-solid fa-location-dot mr-1"></i>
+        <span class="font-bold">Location:</span> {{ jobOffer.location }}
+      </p>
+      <p>
+        <i class="fa-solid fa-list mr-1"></i>
+        <span class="font-bold">Skills:</span> {{ jobOffer.skills }}
+      </p>
     </div>
-    <div class="col-span-1 max-h-96 border-2 flex flex-col border-blue-950 rounded-xl p-4 items-center">
+    <div
+      class="col-span-1 max-h-96 border-2 flex flex-col border-blue-950 rounded-xl p-4 items-center"
+    >
       <h1 class="text-3xl font-medium">Candidates</h1>
-      <div class="bg-slate-200 w-full h-full rounded-xl p-4 overflow-scroll scrollbar-custom">
+      <div
+        class="bg-slate-200 w-full h-full rounded-xl p-4 overflow-scroll scrollbar-custom"
+      >
         <div *ngFor="let candidate of jobApplicants">
           <div class="bg-white w-full min-h-20 rounded-xl p-4 flex mb-2">
-            <img src="assets/user.png" alt="" class="h-16 mr-2">
+            <img src="assets/user.png" alt="" class="h-16 mr-2" />
             <div>
-              <p class="font-bold text-lg">{{candidate.name}}</p>
-              <p><span class="font-bold">Email:</span> {{candidate.email}}</p>
-              <p><span class="font-bold">Score:</span> {{applicationScores.get(candidate.id) || 'N/A'}}</p>
+              <p class="font-bold text-lg">{{ candidate.name }}</p>
+              <p><span class="font-bold">Email:</span> {{ candidate.email }}</p>
+              <p>
+                <span class="font-bold">Score:</span>
+                {{ applicationScores.get(candidate.id) || "N/A" }}
+              </p>
             </div>
           </div>
         </div>

@@ -16,7 +16,7 @@
         <div class="flex justify-end items-center text-MainDark">
             <div class="flex">
                 <!--<button class="border-2 border-MainDark text-2xl font-bold py-1 px-4 rounded-full bg-white shadow-md hover:bg-MainDark hover:text-white transition duration-300 hover:scale-105 hover:shadow-lg">Save</button>-->
-                <button [disabled]="authService.getRole()!='candidate'" (click)="applyForJob()" class="border-2 border-MainDark bg-MainDark text-white text-2xl font-bold py-1 px-4 rounded-full ml-4 shadow-md hover:bg-white hover:text-MainDark transition duration-300 hover:scale-105 hover:shadow-lg">Apply</button>
+                <button *ngIf="authService.getRole()=='candidate'" [disabled]="authService.getRole()!='candidate'" (click)="applyForJob()" class="border-2 border-MainDark bg-MainDark text-white text-2xl font-bold py-1 px-4 rounded-full ml-4 shadow-md hover:bg-white hover:text-MainDark transition duration-300 hover:scale-105 hover:shadow-lg">Apply</button>
             </div>
         </div>
         <div *ngIf="ApplicationExists" class="text-red-500 text-2xl mt-1 font-bold">
