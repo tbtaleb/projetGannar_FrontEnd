@@ -15,6 +15,7 @@ import { UserProfileComponent } from './components/user-profile/user-profile.com
 import { AuthGuard } from './services/guard/auth.guard';
 import { MyJobOfferListComponent } from './components/Recruiter/my-job-offer-list/my-job-offer-list.component';
 import { AppliedCandidatesrListComponent } from './components/Recruiter/applied-candidatesr-list/applied-candidatesr-list.component';
+import { CandidateCVDisplayComponent } from './components/Recruiter/candidateCVDisplay/candidate-cvdisplay.component';
 
 export const routes: Routes = [
   {
@@ -36,6 +37,7 @@ export const routes: Routes = [
       { path: 'jobDetails/:id', component: JobDetailComponent },
       { path: 'recruiterJobOfferList', component: MyJobOfferListComponent },
       { path: 'appliedCandidatesList', component: AppliedCandidatesrListComponent },
+      { path: 'displayCV/:id', component:CandidateCVDisplayComponent},
       {
         path: 'newJob',
         component: NewJobFormComponent,

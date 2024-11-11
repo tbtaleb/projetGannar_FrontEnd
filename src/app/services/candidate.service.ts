@@ -34,6 +34,11 @@ export class CandidateService {
     return this.httpClient.delete<Candidate>(`${this.candidatesURL}/${candidateId}`)
   }
 
+  getCVByCandidateId(candidateId:number):Observable<CV>{
+    return this.httpClient.get<CV>(`http://127.0.0.1:8000/api/candidateCV/${candidateId}`)
+  }
+
+
   login(candidate:any){
     return this.httpClient.post<any>(`${this.tokenURL}`,candidate,{
       withCredentials: true

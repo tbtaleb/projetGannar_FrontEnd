@@ -3,6 +3,7 @@ import { Candidate } from '../../../classes/candidate';
 import { RecruiterService } from '../../../services/recruiter.service';
 import { AuthService } from '../../../services/auth/auth.service';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-applied-candidatesr-list',
@@ -16,13 +17,16 @@ export class AppliedCandidatesrListComponent {
 
   constructor(
     private recruiterService: RecruiterService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {
     this.loadJobOffersWithCandidates();
   }
-
+  DisplayCV(candidateId:number){
+    this.router.navigate(['/displayCV',candidateId]);
+  }
   loadJobOffersWithCandidates(): void {
     const recruiter = this.authService.getUser();
     if (recruiter) {
