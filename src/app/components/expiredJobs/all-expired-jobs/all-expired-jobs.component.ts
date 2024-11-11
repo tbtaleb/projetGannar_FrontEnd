@@ -3,11 +3,12 @@ import { ExpJobDivComponent } from "../exp-job-div/exp-job-div.component";
 import { JobOffer } from '../../../classes/job-offer';
 import { JobOfferService } from '../../../services/job-offer.service';
 import { ActivatedRoute } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-all-expired-jobs',
   standalone: true,
-  imports: [ExpJobDivComponent],
+  imports: [ExpJobDivComponent,CommonModule],
   templateUrl: './all-expired-jobs.component.html',
   styleUrl: './all-expired-jobs.component.css'
 })
