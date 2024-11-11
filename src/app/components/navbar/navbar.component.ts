@@ -27,11 +27,11 @@ import { AuthService } from '../../services/auth/auth.service';
   styleUrls: ['./navbar.component.css'], // Corrected this line
 })
 export class NavbarComponent implements OnInit {
-
   notifications: any[] = [];
   nbNotifications: number = 0;
   sidebarVisible: boolean = false;
   id: number = 0
+  isOpen: boolean = false;
   authenticated!:boolean
   constructor(
     public authService: AuthService,
@@ -44,15 +44,14 @@ export class NavbarComponent implements OnInit {
       this.id = this.authService.getUser().id;
       this.loadNotifications();
     }
-
   }
 
   loadNotifications(): void {
-    const recruiterId = this.authService.getUser().id // Replace with the actual recruiter ID
+    const recruiterId = this.authService.getUser().id; // Replace with the actual recruiter ID
     this.notificationsService.getUnreadNotifications(recruiterId).subscribe(
       (data) => {
         this.notifications = data;
-        
+
         this.nbNotifications = data.length;
       },
       (error) => {
@@ -69,7 +68,6 @@ export class NavbarComponent implements OnInit {
   markAsRead(notificationId: number): void {
     this.notificationsService.markNotificationAsRead(notificationId).subscribe(
       (response) => {
-        
         this.loadNotifications(); // Reload notifications
       },
       (error) => {
@@ -92,5 +90,13 @@ export class NavbarComponent implements OnInit {
 
   logout(): void {
     this.authService.logout();
+  }
+
+  toggleMobileMenu(): void {
+    this.isOpen = !this.isOpen;
+    const mobileMenu = document.querySelector('.mobile-menu');
+    if (mobileMenu) {
+      mobileMenu.classList.toggle('hidden');
+    }
   }
 }
