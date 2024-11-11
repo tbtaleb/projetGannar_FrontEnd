@@ -1,0 +1,31 @@
+<div class="container mx-auto p-4">
+  <div class="max-w-3xl mx-auto">
+    <h1 class="text-2xl font-bold mb-4">Applied Candidates</h1>
+    <div *ngIf="jobOffersWithCandidates.length > 0; else noJobOffers">
+      <div *ngFor="let jobOfferWithCandidates of jobOffersWithCandidates" class="bg-white shadow-md rounded-lg p-4 mb-4">
+        <h2 class="text-xl font-bold mb-2">{{ jobOfferWithCandidates.job_offer.name }}</h2>
+        <p class="mb-2">{{ jobOfferWithCandidates.job_offer.description }}</p>
+        <p class="mb-2"><span class="font-bold">Location:</span> {{ jobOfferWithCandidates.job_offer.location }}</p>
+        <p class="mb-2"><span class="font-bold">Salary:</span> {{ jobOfferWithCandidates.job_offer.salary }}</p>
+        <div class="mt-4">
+          <h3 class="text-lg font-bold mb-2">Candidates</h3>
+          <div *ngIf="jobOfferWithCandidates.candidates.length > 0; else noCandidates">
+            <div *ngFor="let candidate of jobOfferWithCandidates.candidates" class="bg-gray-100 shadow-sm rounded-lg p-4 mb-2">
+              <p class="font-bold text-lg">{{ candidate.name }}</p>
+              <p class="mb-2"><span class="font-bold">Email:</span> {{ candidate.email }}</p>
+              <p class="mb-2"><span class="font-bold">Phone Number:</span> {{ candidate.phoneNumber }}</p>
+              <p class="mb-2"><span class="font-bold">Address:</span> {{ candidate.address }}</p>
+              <p class="mb-2"><span class="font-bold">Date of Birth:</span> {{ candidate.dateOfBirth }}</p>
+            </div>
+          </div>
+          <ng-template #noCandidates>
+            <p class="text-center text-gray-500">No candidates found.</p>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+    <ng-template #noJobOffers>
+      <p class="text-center text-gray-500">No job offers found.</p>
+    </ng-template>
+  </div>
+</div>
