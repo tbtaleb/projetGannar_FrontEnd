@@ -1,4 +1,4 @@
-<nav class="bg-white shadow-lg">
+<nav class="bg-white shadow-lg z-20">
   <div class="max-w-6xl mx-auto px-4">
     <div class="flex justify-between items-center">
       <div class="flex space-x-7">
@@ -74,22 +74,22 @@
                 <a [routerLink]="['/newJob']" routerLinkActive="active-sidebar-link" class="block py-2 px-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-300">Create Job Offer</a>
               </li>
               <li *ngIf="authService.getRole()=='recruiter'" class="mb-2">
-                <a [routerLink]="['/recruiterJobOfferList']" routerLinkActive="active-sidebar-link" class="block py-2 px-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-300">Your job offers</a>
+                <a [routerLink]="['/recruiterJobOfferList']" routerLinkActive="active-sidebar-link" class="block py-2 px-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-300">My job offers</a>
               </li>
               <li *ngIf="authService.getRole()=='recruiter'" class="mb-2">
                 <a [routerLink]="['/appliedCandidatesList']" routerLinkActive="active-sidebar-link" class="block py-2 px-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-300">List of candidates</a>
               </li>
               <li *ngIf="authService.getRole()=='candidate'" class="mb-2">
-                <a [routerLink]="['/candidateApplication']" routerLinkActive="active-sidebar-link" class="block py-2 px-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-300">My Applicants</a>
+                <a [routerLink]="['/candidateApplication']" routerLinkActive="active-sidebar-link" class="block py-2 px-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-300">My Applications</a>
               </li>
-              <li *ngIf="authService.getRole()=='candidate'" class="mb-2">
+              <!-- <li *ngIf="authService.getRole()=='candidate'" class="mb-2">
                 <a [routerLink]="['/rrr']" routerLinkActive="active-sidebar-link" class="block py-2 px-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-300">Skills recommanded</a>
               </li>
               <li *ngIf="authService.getRole()=='candidate'" class="mb-2">
                 <a [routerLink]="['/rr']" routerLinkActive="active-sidebar-link" class="block py-2 px-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-300">Helpful Sources</a>
-              </li>
+              </li> -->
               <li *ngIf="authService.getRole()=='candidate'" class="mb-2">
-                <a [routerLink]="['/r']" routerLinkActive="active-sidebar-link" class="block py-2 px-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-300">Your resume</a>
+                <a [routerLink]="['/displayCV' + id]" routerLinkActive="active-sidebar-link" class="block py-2 px-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-300">My resume</a>
               </li>
               <li class="mb-2">
                 <a (click)="logout()" [routerLink]="['/logout']" routerLinkActive="active-sidebar-link" class="block py-2 px-4 border border-gray-300 rounded-lg bg-gray-100 hover:bg-gray-200 transition duration-300">Logout</a>
@@ -129,22 +129,22 @@
         <a [routerLink]="['/newJob']" routerLinkActive="active-link" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">Create Job Offer</a>
       </li>
       <li *ngIf="authService.isAuthenticated() && authService.getRole()=='recruiter'">
-        <a [routerLink]="['/recruiterJobOfferList']" routerLinkActive="active-link" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">Your job offers</a>
+        <a [routerLink]="['/recruiterJobOfferList']" routerLinkActive="active-link" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">My job offers</a>
       </li>
       <li *ngIf="authService.isAuthenticated() && authService.getRole()=='recruiter'">
         <a [routerLink]="['/appliedCandidatesList']" routerLinkActive="active-link" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">List of candidates</a>
       </li>
       <li *ngIf="authService.isAuthenticated() && authService.getRole()=='candidate'">
-        <a [routerLink]="['/r']" routerLinkActive="active-link" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">Your skills</a>
+        <a [routerLink]="['/candidateApplication']" routerLinkActive="active-link" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">My applications</a>
       </li>
-      <li *ngIf="authService.isAuthenticated() && authService.getRole()=='candidate'">
+      <!-- <li *ngIf="authService.isAuthenticated() && authService.getRole()=='candidate'">
         <a [routerLink]="['/rrr']" routerLinkActive="active-link" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">Skills recommanded</a>
-      </li>
-      <li *ngIf="authService.isAuthenticated() && authService.getRole()=='candidate'">
+      </li> -->
+      <!-- <li *ngIf="authService.isAuthenticated() && authService.getRole()=='candidate'">
         <a [routerLink]="['/rr']" routerLinkActive="active-link" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">Helpful Sources</a>
-      </li>
+      </li> -->
       <li *ngIf="authService.isAuthenticated() && authService.getRole()=='candidate'">
-        <a [routerLink]="['/r']" routerLinkActive="active-link" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">Your resume</a>
+        <a [routerLink]="['/displayCV'+id]" routerLinkActive="active-link" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">My resume</a>
       </li>
       <li *ngIf="authService.isAuthenticated()">
         <a (click)="logout()" [routerLink]="['/logout']" routerLinkActive="active-link" class="block text-sm px-2 py-4 hover:bg-blue-500 hover:text-white transition duration-300">Logout</a>

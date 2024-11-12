@@ -4,13 +4,16 @@ import { JobOffer } from '../../../classes/job-offer';
 import { AuthService } from '../../../services/auth/auth.service';
 import { JobOfferService } from '../../../services/job-offer.service';
 import { CommonModule } from '@angular/common';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'app-my-job-offer-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,ToastModule],
   templateUrl: './my-job-offer-list.component.html',
   styleUrl: './my-job-offer-list.component.css',
+  providers: [MessageService],
 })
 export class MyJobOfferListComponent {
   jobOffers: JobOffer[] = [];
@@ -18,7 +21,8 @@ export class MyJobOfferListComponent {
   constructor(
     private jobOfferService: JobOfferService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
@@ -46,6 +50,11 @@ export class MyJobOfferListComponent {
     this.jobOfferService.deleteJobOffer(jobOfferId).subscribe(
       (response) => {
         console.log('Job offer deleted successfully', response);
+         this.messageService.add({
+           severity: 'success',
+           summary: 'Deleted',
+           detail: 'Application deleted successfully',
+         });
         this.loadJobOffers(); // Reload the job offers after deletion
       },
       (error) => {
