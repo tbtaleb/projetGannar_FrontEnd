@@ -10,15 +10,16 @@
         <div class="mt-4">
           <h3 class="text-lg font-bold mb-2">Candidates</h3>
           <div *ngIf="jobOfferWithCandidates.candidates.length > 0; else noCandidates">
-            <div *ngFor="let candidate of jobOfferWithCandidates.candidates" class="bg-gray-100 shadow-sm rounded-lg p-4 mb-2">
-              <p class="font-bold text-lg">{{ candidate.name }}</p>
-              <p class="mb-2"><span class="font-bold">Email:</span> {{ candidate.email }}</p>
-              <p class="mb-2"><span class="font-bold">Phone Number:</span> {{ candidate.phoneNumber }}</p>
-              <p class="mb-2"><span class="font-bold">Address:</span> {{ candidate.address }}</p>
-              <p class="mb-2"><span class="font-bold">Date of Birth:</span> {{ candidate.dateOfBirth }}</p>
-              <button (click)="DisplayCV(candidate.id)" class="bg-MainDark text-white py-2 px-4 font-semibold rounded-full shadow hover:scale-105 transition duration-100 ease-in-out hover:shadow-lg mr-4 mt-2">View CV</button>
+            <div *ngFor="let candidate of jobOfferWithCandidates.candidates" class="bg-gray-100 shadow-sm rounded-lg p-4 mb-2 flex justify-between items-center">
+              <div>
+                <p class="font-bold text-lg">{{ candidate.name }}</p>
+                <p class="mb-2"><span class="font-bold">Email:</span> {{ candidate.email }}</p>
+                <p class="mb-2"><span class="font-bold">Phone Number:</span> {{ candidate.phoneNumber }}</p>
+                <p class="mb-2"><span class="font-bold">Address:</span> {{ candidate.address }}</p>
+                <p class="mb-2"><span class="font-bold">Date of Birth:</span> {{ candidate.dateOfBirth }}</p>
+              </div>
+              <button (click)="DisplayCV(candidate.id)" class="bg-MainDark text-white py-2 px-4 font-semibold rounded-full shadow hover:scale-105 transition duration-100 ease-in-out hover:shadow-lg ml-4">View CV</button>
             </div>
-            
           </div>
           <ng-template #noCandidates>
             <p class="text-center text-gray-500">No candidates found.</p>
