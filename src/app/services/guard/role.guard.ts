@@ -15,7 +15,7 @@ export class RoleGuard implements CanActivate {
 
   canActivate(): boolean {
     const role = this.authService.getRole();
-    if (this.authService.isAuthenticated() && role === 'recruiter') {
+    if (this.authService.isAuthenticated() && role === 'candidate') {
       return true;
     }
     this.snackBar.open(
