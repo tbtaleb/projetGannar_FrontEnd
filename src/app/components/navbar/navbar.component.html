@@ -11,7 +11,7 @@
           <a [routerLink]="['/home']" routerLinkActive="active-link" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Home</a>
           <a *ngIf="authService.isAuthenticated()" [routerLink]="['/jobs']" routerLinkActive="active-link" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Jobs</a>
           <a *ngIf="authService.getRole()=='candidate'" [routerLink]="['/matches']" routerLinkActive="active-link" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Matches</a>
-          <a *ngIf="authService.getRole()=='candidate'" [routerLink]="['/uploadCV',id]" routerLinkActive="active-link" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Upload your CV</a>
+          <a [routerLink]="['/uploadCV',id]" routerLinkActive="active-link" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Upload your CV</a>
           <a *ngIf="authService.getRole()=='recruiter'" [routerLink]="['/expired/'+id]" routerLinkActive="active-link" class="py-4 px-2 text-gray-500 font-semibold hover:text-blue-500 transition duration-300">Expired jobs</a>
         </div>
       </div>
