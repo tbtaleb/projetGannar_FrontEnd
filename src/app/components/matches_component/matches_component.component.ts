@@ -21,8 +21,14 @@ export class MatchesComponentComponent implements OnInit{
 
   ngOnInit(): void {
     // this.loginUser();
-
+    this.candidate = this.authService.getUser();
     this.getMatches(this.authService.getUser().id)
+  }
+  matchCandidate(){
+    this.matchService.matchCandidateWithJobs(this.candidate.id).subscribe(data => {
+      this.candidateMatches = data
+      this.getMatches(this.candidate.id)
+    })
   }
   getMatches(id:number){
     this.matchService.getAllMatches(id).subscribe( data => {

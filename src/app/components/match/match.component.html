@@ -13,17 +13,17 @@
     </div>
 
      <div class="offer-content">
-        <h4 class="job-title">{{job.name}}</h4>
+        <h4 class="job-title">{{job?.name}}</h4>
         <p class="job-type"></p>
-        <p class="description">{{job.description}}</p>
-        <p class="description">{{job.salary}}DT</p>
-        <div class="matching-score">{{jobMatch.candidate_score}} %</div>
+        <p class="description">{{job?.description}}</p>
+        <p class="description">{{job?.salary}}DT</p>
+        <div class="matching-score px-2 py">{{jobMatch.candidate_score}}%</div>
     </div>
     <div *ngIf="ApplicationExists" class="text-red-500 text-2xl mt-1 font-bold">
         You have Already Applied for this job
     </div>
-    <div *ngIf="ApplicationCreated" class="text-green-500 text-2xl mt-1 font-bold">
+    <!-- <div *ngIf="ApplicationCreated" class="text-green-500 text-2xl mt-1 font-bold">
         You have Applied for this Job!
-    </div> 
-    <button (click)="applyForJob()" class="bg-MainDark text-white py-2 px-4 font-semibold rounded-full shadow hover:scale-105 transition duration-100 ease-in-out hover:shadow-lg mr-4 mt-2">Apply</button>
+    </div>  -->
+    <button *ngIf="ApplicationCreated" (click)="applyForJob()" class="bg-MainDark text-white py-2 px-4 font-semibold rounded-full shadow hover:scale-105 transition duration-100 ease-in-out hover:shadow-lg mr-4 mt-2">Apply</button>
 </div>
