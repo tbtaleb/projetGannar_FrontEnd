@@ -1,18 +1,12 @@
-<div
-  class="bg-white shadow-md rounded-lg p-6 mb-4 h-64 flex flex-col justify-between m-4"
->
+<div class="bg-white shadow-md rounded-lg p-6 mb-4 h-full flex flex-col justify-between">
   <div>
     <div class="flex flex-col md:flex-row items-center justify-around mb-4">
       <div class="flex-shrink-0 mb-4 md:mb-0">
-        <img
-          src="../../../assets/jobs.jpg"
-          alt="Company Logo"
-          class="h-12 w-12 rounded-full"
-        />
+        <img src="../../../assets/jobs.jpg" alt="Company Logo" class="h-12 w-12 rounded-full">
       </div>
       <div class="ml-0 md:ml-4 text-center md:text-left">
-        <h4 class="text-sm font-bold text-gray-800">{{ job.name }}</h4>
-        <p class="text-xs text-gray-600">{{ job.company }}</p>
+        <h4 class="text-xl font-bold text-gray-800">{{ job.name }}</h4>
+        <p class="text-sm text-gray-600">{{ job.company }}</p>
       </div>
     </div>
     <div class="mb-4">
@@ -22,24 +16,15 @@
   </div>
   <div>
     <div class="flex flex-col md:flex-row justify-between items-center">
-      <div class="text-blue-500 font-bold mb-4 md:mb-0">
-        {{ jobMatch.candidate_score }} % Match
-      </div>
-      <button
-      *ngIf="ApplicationCreated"
-        (click)="applyForJob()"
-        class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300"
-      >
+      <div class="text-blue-500 font-bold mb-4 md:mb-0">{{ jobMatch.candidate_score }} % Match</div>
+      <button *ngIf="ApplicationExists" (click)="applyForJob()" class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300">
         Apply
       </button>
     </div>
-    <div *ngIf="ApplicationExists" class="text-red-500 text-xs mt-2 ">
+    <div *ngIf="ApplicationExists" class="text-red-500 text-lg mt-2 font-bold">
       You have already applied for this job
     </div>
-    <div
-      *ngIf="ApplicationCreated"
-      class="text-green-500 text-xs mt-2 "
-    >
+    <div *ngIf="ApplicationCreated" class="text-green-500 text-lg mt-2 font-bold">
       Application created successfully
     </div>
   </div>

@@ -33,7 +33,7 @@ export class MatchComponent implements OnInit{
   }
 
   applyForJob(){
-    this.applicationService.apply(this.candidateid, this.job.Id).subscribe(
+    this.applicationService.apply(this.job.Id, this.candidateid).subscribe(
       (data) => {
         console.log(data);
         this.ApplicationCreated = true;

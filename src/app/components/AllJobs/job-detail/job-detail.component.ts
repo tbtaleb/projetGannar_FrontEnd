@@ -62,7 +62,7 @@ export class JobDetailComponent implements OnInit {
     }
 
     this.applicationService
-      .apply(this.candidate.id, this.jobOffer.Id)
+      .apply(this.jobOffer.Id, this.candidate.id)
       .subscribe(
         (data) => {
           console.log(data);
