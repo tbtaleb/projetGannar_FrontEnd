@@ -1,7 +1,8 @@
 <div class="matches-container">
     <h2>Your Matches</h2>
     <p>These offers are shown based on your matching score</p>
-    <div class="offers-grid flex">
+    <button (click)="matchCandidate()" class="bg-[#00203a] text-white px-6 py-3 rounded-lg text-lg hover:bg-[#001a33] hover:scale-105 transition duration-300 cursor-pointer" >Find Matches</button>
+    <div class="offers-grid">
         @for (match of candidateMatches; track match.Id){
             <app-match [jobMatch]="match"></app-match>
         }

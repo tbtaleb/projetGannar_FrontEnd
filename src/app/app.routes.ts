@@ -18,6 +18,7 @@ import { AppliedCandidatesrListComponent } from './components/Recruiter/applied-
 import { CandidateCVDisplayComponent } from './components/Recruiter/candidateCVDisplay/candidate-cvdisplay.component';
 
 import { ApplicationsListComponent } from './components/Candidate/applications-list/applications-list.component';
+import { ProfileComponent } from './components/Candidate/profile/profile.component';
 export const routes: Routes = [
   {
     path: '',
@@ -34,6 +35,7 @@ export const routes: Routes = [
       },
       { path: 'recommendation', component: RecommendedCandidatesComponent },
       { path: 'uploadCV/:id', component: UserProfileComponent },
+      { path: 'profile', component: ProfileComponent },
       { path: 'jobs', component: AllJobsComponent },
       { path: 'candidateApplication', component: ApplicationsListComponent },
       { path: 'jobDetails/:id', component: JobDetailComponent },

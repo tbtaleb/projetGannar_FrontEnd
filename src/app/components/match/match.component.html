@@ -26,6 +26,7 @@
         {{ jobMatch.candidate_score }} % Match
       </div>
       <button
+      *ngIf="ApplicationCreated"
         (click)="applyForJob()"
         class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300"
       >
