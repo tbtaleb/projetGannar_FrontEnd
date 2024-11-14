@@ -1,7 +1,7 @@
 <div class="matches-container">
     <h2>Your Matches</h2>
     <p>These offers are shown based on your matching score</p>
-    <div class="offers-grid">
+    <div class="offers-grid flex">
         @for (match of candidateMatches; track match.Id){
             <app-match [jobMatch]="match"></app-match>
         }
