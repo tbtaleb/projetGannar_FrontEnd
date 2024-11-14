@@ -4,49 +4,51 @@ import { JobOffer } from '../../../classes/job-offer';
 import { JobOfferService } from '../../../services/job-offer.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CandidateService } from '../../../services/candidate.service';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-jobs-list',
   standalone: true,
-  imports: [JobComponent, HttpClientModule],
+  imports: [JobComponent, HttpClientModule, CommonModule, FormsModule],
   templateUrl: './jobs-list.component.html',
-  styleUrl: './jobs-list.component.css'
+  styleUrl: './jobs-list.component.css',
 })
 export class JobsListComponent implements OnInit {
-
   jobOffers: JobOffer[] = [];
-  searchTerm: string = ''; // Terme de recherche pour filtrer les offres
-  candidate:any = {}
-  constructor(private jobOfferService: JobOfferService,private candidateService:CandidateService) { }
+  filteredJobOffers: JobOffer[] = [];
+  filters = {
+    name: '',
+    location: '',
+    salary: 10000,
+  };
+  candidate: any = {};
+
+  constructor(
+    private jobOfferService: JobOfferService,
+    private candidateService: CandidateService
+  ) {}
 
   ngOnInit(): void {
     this.getAllJobOffers();
-    // this.loginUser();
   }
 
   getAllJobOffers() {
-    this.jobOfferService.getAllJobOffers().subscribe(data => {
+    this.jobOfferService.getAllJobOffers().subscribe((data) => {
       this.jobOffers = data;
-      console.log(this.jobOffers);
+      this.filteredJobOffers = data;
     });
   }
 
-  // Méthode pour filtrer les offres d'emploi en fonction du terme de recherche
-  filteredJobOffers() {
-    if (!this.searchTerm) {
-      return this.jobOffers; // Si aucun terme de recherche, retourner toutes les offres
-    }
-    return this.jobOffers.filter(job =>
-      job.name.toLowerCase().includes(this.searchTerm.toLowerCase())
-    );
+  applyFilters() {
+    this.filteredJobOffers = this.jobOffers.filter((job) => {
+      return (
+        job.name.toLowerCase().includes(this.filters.name.toLowerCase()) &&
+        job.location
+          .toLowerCase()
+          .includes(this.filters.location.toLowerCase()) &&
+        job.salary <= this.filters.salary
+      );
+    });
   }
-  // async loginUser(){
-  //   try {
-  //     const token = 'your-access-token';
-  //     this.candidate = await this.candidateService.getCandidate();
-  //     console.log('Candidate data:', this.candidate);
-  //   } catch (error) {
-  //     console.error('Error fetching candidate:', error);
-  //   }
-  // }
 }
