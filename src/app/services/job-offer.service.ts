@@ -3,14 +3,15 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { JobOffer } from '../classes/job-offer';
 import { Candidate } from '../classes/candidate';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class JobOfferService {
-  jobOffersURL: string = 'http://127.0.0.1:8000/api/jobs';
-  jobOffersHistoryURL: string = 'http://127.0.0.1:8000/api/jobs-history';
-  applicantsURL: string = 'http://127.0.0.1:8000/api/applicationCandidates';
+  jobOffersURL: string = `${environment.apiUrl}/jobs`;
+  jobOffersHistoryURL: string = `${environment.apiUrl}/jobs-history`;
+  applicantsURL: string = `${environment.apiUrl}/applicationCandidates`;
 
   constructor(private httpClient: HttpClient) {}
 

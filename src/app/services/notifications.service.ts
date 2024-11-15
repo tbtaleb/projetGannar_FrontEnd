@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class NotificationsService {
-  private notificationsURL = 'http://127.0.0.1:8000/api/notifications';
+  private notificationsURL = `${environment.apiUrl}/notifications`;
 
   constructor(private httpClient: HttpClient) {}
 

@@ -3,12 +3,12 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { jwtDecode } from 'jwt-decode';
-
+import { environment } from '../../../environments/environment';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'http://127.0.0.1:8000/api';
+  private apiUrl = environment.apiUrl;
   private accessTokenKey = 'access_token';
   private roleKey = 'role';
 
@@ -43,24 +43,20 @@ export class AuthService {
       localStorage.setItem(this.accessTokenKey, token);
       localStorage.setItem(this.roleKey, role);
     }
-    
   }
 
   getToken(): string | null {
     if (this.isBrowser()) {
-       return localStorage.getItem(this.accessTokenKey);
-      
+      return localStorage.getItem(this.accessTokenKey);
     }
     return null;
   }
 
   getRole(): string | null {
     if (this.isBrowser()) {
-      
-       return localStorage.getItem(this.roleKey);
+      return localStorage.getItem(this.roleKey);
     }
     return null;
-   
   }
 
   decodeToken(): any {
@@ -88,9 +84,8 @@ export class AuthService {
     if (this.isBrowser()) {
       localStorage.removeItem(this.accessTokenKey);
       localStorage.removeItem(this.roleKey);
-      
     }
-    
+
     this.isAuthenticatedSubject.next(false);
     this.router.navigate(['/login']);
   }

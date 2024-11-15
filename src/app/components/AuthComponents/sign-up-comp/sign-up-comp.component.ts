@@ -113,15 +113,15 @@ export class SignUpCompComponent implements OnInit {
               summary: 'Success',
               detail: 'Candidate sign-up successful',
             });
-            console.log('Candidate sign-up successful', response);
+           
           },
           (error) => {
             this.messageService.add({
               severity: 'error',
-              summary: 'Failed',
-              detail: 'Signup failed' + error.message,
+              summary: 'Signup failed',
+              detail: 'Candidate sign-up failed',
             });
-            console.error('Candidate sign-up failed', error);
+            
           }
         );
       } else if (this.selectedRole === 'recruiter') {
@@ -143,10 +143,10 @@ export class SignUpCompComponent implements OnInit {
           (error) => {
              this.messageService.add({
                severity: 'error',
-               summary: 'Failed',
-               detail: 'Signup failed' + error.message,
+               summary: 'Signup failed',
+               detail: 'Recruiter sign-up failed' ,
              });
-            console.error('Recruiter sign-up failed', error);
+            
           }
         );
       }

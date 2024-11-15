@@ -44,7 +44,7 @@ export class ApplicationsListComponent implements OnInit {
       this.applicationsService.getAllApplications(candidate.id).subscribe(
         (data) => {
           this.applications = data;
-          console.log(this.applications);
+          
           this.loadJobOffers();
         },
         (error) => {

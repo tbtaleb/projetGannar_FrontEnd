@@ -19,6 +19,8 @@ export class JobDetailComponent implements OnInit {
   candidate: any = {};
   ApplicationExists = false;
   ApplicationCreated = false;
+  errorMessage: string | null = null;
+  successMessage: string | null = null;
 
   constructor(
     private location: Location,
@@ -38,7 +40,7 @@ export class JobDetailComponent implements OnInit {
     this.jobService.getJobOfferById(id).subscribe(
       (data) => {
         this.jobOffer = data;
-        console.log(this.jobOffer);
+        this.checkIfApplied();
       },
       (error) => {
         console.error('An error occurred:', error);
@@ -55,6 +57,29 @@ export class JobDetailComponent implements OnInit {
     }
   }
 
+  checkIfApplied(): void {
+    if (!this.candidate || !this.jobOffer) {
+      return;
+    }
+
+    this.applicationService
+      .getApplicationByCandidateIdAndJobOfferId(
+        this.candidate.id,
+        this.jobOffer.Id
+      )
+      .subscribe(
+        (data) => {
+          if (data) {
+            this.ApplicationExists = true;
+            this.errorMessage = 'You already applied for this job.';
+          }
+        },
+        (error) => {
+          console.error('An error occurred:', error);
+        }
+      );
+  }
+
   applyForJob(): void {
     if (!this.candidate || !this.jobOffer) {
       console.error('Candidate or Job Offer not found');
@@ -65,12 +90,14 @@ export class JobDetailComponent implements OnInit {
       .apply(this.jobOffer.Id, this.candidate.id)
       .subscribe(
         (data) => {
-          console.log(data);
           this.ApplicationCreated = true;
+          this.successMessage = 'You have Applied for this Job!';
+          this.errorMessage = null;
         },
         (error) => {
           console.error('An error occurred:', error);
           this.ApplicationExists = true;
+          this.errorMessage = 'An error occurred while applying for the job.';
         }
       );
   }

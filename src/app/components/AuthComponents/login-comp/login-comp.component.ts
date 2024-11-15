@@ -52,8 +52,6 @@ export class LoginCompComponent implements OnInit {
             summary: 'Success',
             detail: 'Login successful',
           });
-          console.log('Login successful:', response);
-        
 
           // Redirect to home or dashboard
           this.router.navigate(['/home']);
@@ -62,9 +60,8 @@ export class LoginCompComponent implements OnInit {
           this.messageService.add({
             severity: 'error',
             summary: 'Failed',
-            detail: 'Login failed' + error.message,
+            detail: 'Login failed',
           });
-          console.error('Login failed:', error);
         },
       });
     } else {
