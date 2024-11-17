@@ -68,9 +68,6 @@
   
   .matching-score {
     width: 30%;
-    height: 20px;
-    display:flex;
-    justify-content: center;
     background-color: #001f3f;
     color:white;
     margin-top: 10px;
