@@ -45,7 +45,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     SignUpCompComponent,
     MatSnackBarModule,
   ],
-  providers: [BrowserModule, HttpClientModule],
+  providers: [BrowserModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

@@ -39,7 +39,13 @@ export class CandidateService {
 
   getCVByCandidateId(candidateId: number): Observable<CV> {
     return this.httpClient.get<CV>(
-      `http://127.0.0.1:8000/api/candidateCV/${candidateId}`
+      `${environment.apiUrl}/candidateCV/${candidateId}`
+    );
+  }
+
+  getRecommendedCandidates(): Observable<Candidate[]> {
+    return this.httpClient.get<Candidate[]>(
+      `${this.candidatesURL}/recommended`
     );
   }
 

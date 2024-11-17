@@ -1,0 +1,12 @@
+
+.container {
+  max-width: 800px;
+}
+
+.bg-white {
+  transition: transform 0.2s;
+}
+
+.bg-white:hover {
+  transform: scale(1.05);
+}

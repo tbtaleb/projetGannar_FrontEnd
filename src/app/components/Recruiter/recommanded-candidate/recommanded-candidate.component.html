@@ -1,0 +1,21 @@
+<div class="container mx-auto p-4 flex flex-col lg:flex-row">
+  <div class="w-full lg:w-3/4">
+    <h1 class="text-2xl font-bold mb-4 text-center">Recommended Candidates</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center">
+      <div *ngFor="let candidate of recommendedCandidates" class="bg-white p-4 rounded shadow flex flex-col items-center">
+        <i class="fas fa-user-circle text-4xl mb-2"></i>
+        <h2 class="text-xl font-semibold">{{ candidate.name }}</h2>
+        <p>{{ candidate.email }}</p>
+        <button class="mt-2 bg-blue-500 text-white px-4 py-2 rounded" (click)="showCandidateDetails(candidate)">
+          <i class="fas fa-info-circle mr-2"></i>View Details
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="w-full lg:w-1/4 mt-4 lg:mt-0 lg:ml-4">
+    <div class="bg-white p-4 rounded shadow">
+      <h2 class="text-xl font-bold mb-2">Component Description</h2>
+      <p>This component displays a list of recommended candidates who have the highest resume scores. All candidates shown here have a resume score above 50.</p>
+    </div>
+  </div>
+</div>

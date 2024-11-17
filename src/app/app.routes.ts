@@ -20,6 +20,7 @@ import { CandidateCVDisplayComponent } from './components/Recruiter/candidateCVD
 import { ApplicationsListComponent } from './components/Candidate/applications-list/applications-list.component';
 import { ProfileComponent } from './components/Candidate/profile/profile.component';
 import { RoleGuard } from './services/guard/role.guard';
+import { RecommandedCandidateComponent } from './components/Recruiter/recommanded-candidate/recommanded-candidate.component';
 export const routes: Routes = [
   {
     path: '',
@@ -54,6 +55,7 @@ export const routes: Routes = [
         canActivate: [AuthGuard],
       },
       { path: 'expired/:id', component: AllExpiredJobsComponent },
+      { path: 'recommandedCandidates', component: RecommandedCandidateComponent },
     ],
   },
   { path: 'signup', component: SignUpCompComponent },
