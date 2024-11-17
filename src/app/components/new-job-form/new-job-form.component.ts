@@ -13,6 +13,7 @@ import { JobOfferService } from '../../services/job-offer.service';
 import { MessageService } from 'primeng/api';
 import { ToastModule } from 'primeng/toast';
 import { AuthService } from '../../services/auth/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-new-job-form',
@@ -26,6 +27,7 @@ export class NewJobFormComponent implements OnInit {
   jobOfferForm!: FormGroup;
   jobOfferId: number | null = null;
   isEditMode: boolean = false;
+  
 
   constructor(
     private fb: FormBuilder,
@@ -33,7 +35,8 @@ export class NewJobFormComponent implements OnInit {
     private authService: AuthService,
     private messageService: MessageService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -87,17 +90,19 @@ export class NewJobFormComponent implements OnInit {
       if (this.isEditMode) {
         this.jobOfferService.editJobOffer(this.jobOfferId!, jobOffer).subscribe(
           (response) => {
-            this.messageService.add({
-              severity: 'success',
-              summary: 'Updated',
-              detail: 'Job offer updated successfully',
-            });
+            this.snackBar.open(
+              'Job offer updated successfully',
+              'Close',
+              {
+                duration: 5000,
+              }
+            );
            
             this.router.navigate(['/jobs']);
           },
           (error) => {
             this.messageService.add({
-              severity: 'error',
+              severity: 'info',
               summary: 'Failed',
               detail: 'Failed to update job offer',
             });
@@ -107,17 +112,15 @@ export class NewJobFormComponent implements OnInit {
       } else {
         this.jobOfferService.createJobOffer(jobOffer).subscribe(
           (response) => {
-            this.messageService.add({
-              severity: 'success',
-              summary: 'Created',
-              detail: 'Job offer created successfully',
+            this.snackBar.open('Job offer created successfully', 'Close', {
+              duration: 5000,
             });
-            
+           
             this.router.navigate(['/jobs']);
           },
           (error) => {
             this.messageService.add({
-              severity: 'error',
+              severity: 'info',
               summary: 'Failed',
               detail: 'Failed to create job offer',
             });

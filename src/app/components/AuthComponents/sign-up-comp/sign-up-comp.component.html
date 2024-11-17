@@ -6,90 +6,155 @@
     <h2 class="text-2xl font-bold mb-6 text-center text-[#00203a]">Sign Up</h2>
     <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
       <div class="mb-6 flex justify-center">
-        <button type="button" (click)="selectRole('candidate')" [ngClass]="{'bg-[#00203a] text-white border-2 border-[#00203a]': selectedRole === 'candidate', 'bg-white text-[#00203a] border-2 border-gray-300': selectedRole !== 'candidate'}" class="px-4 py-2 rounded-l-full transition duration-300">Candidate</button>
-        <button type="button" (click)="selectRole('recruiter')" [ngClass]="{'bg-[#00203a] text-white border-2 border-[#00203a]': selectedRole === 'recruiter', 'bg-white text-[#00203a] border-2 border-gray-300': selectedRole !== 'recruiter'}" class="px-4 py-2 rounded-r-full transition duration-300">Recruiter</button>
+        <button type="button" (click)="selectRole('candidate')" [ngClass]="{'bg-[#00203a] text-white border-2 border-[#00203a]': selectedRole === 'candidate', 'bg-white text-[#00203a] border-2 border-gray-300': selectedRole !== 'candidate'}" class="px-4 py-2 rounded-l-full transition duration-300">
+          <i class="fas fa-user mr-2"></i>Candidate
+        </button>
+        <button type="button" (click)="selectRole('recruiter')" [ngClass]="{'bg-[#00203a] text-white border-2 border-[#00203a]': selectedRole === 'recruiter', 'bg-white text-[#00203a] border-2 border-gray-300': selectedRole !== 'recruiter'}" class="px-4 py-2 rounded-r-full transition duration-300">
+          <i class="fas fa-user-tie mr-2"></i>Recruiter
+        </button>
       </div>
       <div class="mb-4" *ngIf="selectedRole === 'candidate'">
-        <label for="name" class="block text-gray-700">Name</label>
+        <label for="name" class="block text-gray-700">
+          <i class="fas fa-user mr-2"></i>Name
+        </label>
         <input type="text" id="name" formControlName="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00203a] focus:border-transparent" placeholder="Enter your name">
-        <div *ngIf="signUpForm.get('name')?.invalid && signUpForm.get('name')?.touched" class="text-red-500 text-sm mt-1">
+        <div *ngIf="signUpForm.get('name')?.invalid && signUpForm.get('name')?.touched" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-2" role="alert">
           Please enter your name.
         </div>
       </div>
       <div class="mb-4" *ngIf="selectedRole === 'recruiter'">
-        <label for="fullName" class="block text-gray-700">Full Name</label>
+        <label for="fullName" class="block text-gray-700">
+          <i class="fas fa-user mr-2"></i>Full Name
+        </label>
         <input type="text" id="fullName" formControlName="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00203a] focus:border-transparent" placeholder="Enter your full name">
-        <div *ngIf="signUpForm.get('name')?.invalid && signUpForm.get('name')?.touched" class="text-red-500 text-sm mt-1">
+        <div *ngIf="signUpForm.get('name')?.invalid && signUpForm.get('name')?.touched" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-2" role="alert">
           Please enter your full name.
         </div>
       </div>
       <div class="mb-4">
-        <label for="email" class="block text-gray-700">Email</label>
+        <label for="email" class="block text-gray-700">
+          <i class="fas fa-envelope mr-2"></i>Email
+        </label>
         <input type="email" id="email" formControlName="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00203a] focus:border-transparent" placeholder="Enter your email">
-        <div *ngIf="signUpForm.get('email')?.invalid && signUpForm.get('email')?.touched" class="text-red-500 text-sm mt-1">
+        <div *ngIf="signUpForm.get('email')?.invalid && signUpForm.get('email')?.touched" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-2" role="alert">
           Please enter a valid email.
         </div>
       </div>
-      <div class="mb-4">
-        <label for="password" class="block text-gray-700">Password</label>
-        <input type="password" id="password" formControlName="password" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00203a] focus:border-transparent" placeholder="Enter your password">
-        <div *ngIf="signUpForm.get('password')?.invalid && signUpForm.get('password')?.touched" class="text-red-500 text-sm mt-1">
-          Password must be at least 6 characters long.
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="mb-4">
+          <label for="password" class="block text-gray-700">
+            <i class="fas fa-lock mr-2"></i>Password
+          </label>
+          <input type="password" id="password" formControlName="password" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00203a] focus:border-transparent" placeholder="Enter your password">
+          <div *ngIf="signUpForm.get('password')?.invalid && signUpForm.get('password')?.touched" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-2" role="alert">
+            Password must be at least 6 characters long.
+          </div>
         </div>
-      </div>
-      <div class="mb-6">
-        <label for="confirmPassword" class="block text-gray-700">Confirm Password</label>
-        <input type="password" id="confirmPassword" formControlName="confirmPassword" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00203a] focus:border-transparent" placeholder="Confirm your password">
-        <div *ngIf="signUpForm.get('confirmPassword')?.invalid && signUpForm.get('confirmPassword')?.touched" class="text-red-500 text-sm mt-1">
-          Passwords must match.
+        <div class="mb-4">
+          <label for="confirmPassword" class="block text-gray-700">
+            <i class="fas fa-lock mr-2"></i>Confirm Password
+          </label>
+          <input type="password" id="confirmPassword" formControlName="confirmPassword" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00203a] focus:border-transparent" placeholder="Confirm your password">
+          <div *ngIf="signUpForm.get('confirmPassword')?.invalid && signUpForm.get('confirmPassword')?.touched" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-2" role="alert">
+            Passwords must match.
+          </div>
         </div>
       </div>
       <div *ngIf="selectedRole === 'candidate'" class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="mb-4">
-          <label for="phoneNumber" class="block text-gray-700">Phone Number</label>
+          <label for="phoneNumber" class="block text-gray-700">
+            <i class="fas fa-phone-alt mr-2"></i>Phone Number
+          </label>
           <input type="text" id="phoneNumber" formControlName="phoneNumber" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00203a] focus:border-transparent" placeholder="Enter your phone number">
+          <div *ngIf="signUpForm.get('phoneNumber')?.invalid && signUpForm.get('phoneNumber')?.touched" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-2" role="alert">
+            Please enter your phone number.
+          </div>
         </div>
         <div class="mb-4">
-          <label for="address" class="block text-gray-700">Address</label>
+          <label for="address" class="block text-gray-700">
+            <i class="fas fa-map-marker-alt mr-2"></i>Address
+          </label>
           <input type="text" id="address" formControlName="address" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00203a] focus:border-transparent" placeholder="Enter your address">
+          <div *ngIf="signUpForm.get('address')?.invalid && signUpForm.get('address')?.touched" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-2" role="alert">
+            Please enter your address.
+          </div>
         </div>
         <div class="mb-4">
-          <label for="dateOfBirth" class="block text-gray-700">Date of Birth</label>
+          <label for="dateOfBirth" class="block text-gray-700">
+            <i class="fas fa-calendar-alt mr-2"></i>Date of Birth
+          </label>
           <input type="date" id="dateOfBirth" formControlName="dateOfBirth" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00203a] focus:border-transparent" placeholder="Enter your date of birth">
+          <div *ngIf="signUpForm.get('dateOfBirth')?.invalid && signUpForm.get('dateOfBirth')?.touched" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-2" role="alert">
+            Please enter your date of birth.
+          </div>
         </div>
       </div>
       <div *ngIf="selectedRole === 'recruiter'" class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div class="mb-4">
-          <label for="company" class="block text-gray-700">Company</label>
+          <label for="company" class="block text-gray-700">
+            <i class="fas fa-building mr-2"></i>Company
+          </label>
           <input type="text" id="company" formControlName="company" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00203a] focus:border-transparent" placeholder="Enter your company name">
+          <div *ngIf="signUpForm.get('company')?.invalid && signUpForm.get('company')?.touched" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-2" role="alert">
+            Please enter your company name.
+          </div>
         </div>
         <div class="mb-4">
-          <label for="companyAddress" class="block text-gray-700">Company Address</label>
+          <label for="companyAddress" class="block text-gray-700">
+            <i class="fas fa-map-marker-alt mr-2"></i>Company Address
+          </label>
           <input type="text" id="companyAddress" formControlName="companyAddress" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00203a] focus:border-transparent" placeholder="Enter your company address">
+          <div *ngIf="signUpForm.get('companyAddress')?.invalid && signUpForm.get('companyAddress')?.touched" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-2" role="alert">
+            Please enter your company address.
+          </div>
         </div>
         <div class="mb-4">
-          <label for="post" class="block text-gray-700">Post</label>
+          <label for="post" class="block text-gray-700">
+            <i class="fas fa-briefcase mr-2"></i>Post
+          </label>
           <input type="text" id="post" formControlName="post" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00203a] focus:border-transparent" placeholder="Enter your post">
+          <div *ngIf="signUpForm.get('post')?.invalid && signUpForm.get('post')?.touched" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-2" role="alert">
+            Please enter your post.
+          </div>
         </div>
         <div class="mb-4">
-          <label for="domain" class="block text-gray-700">Domain</label>
+          <label for="domain" class="block text-gray-700">
+            <i class="fas fa-globe mr-2"></i>Domain
+          </label>
           <input type="text" id="domain" formControlName="domain" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00203a] focus:border-transparent" placeholder="Enter your domain">
+          <div *ngIf="signUpForm.get('domain')?.invalid && signUpForm.get('domain')?.touched" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-2" role="alert">
+            Please enter your domain.
+          </div>
         </div>
         <div class="mb-4">
-          <label for="phoneNumber" class="block text-gray-700">Phone Number</label>
+          <label for="phoneNumber" class="block text-gray-700">
+            <i class="fas fa-phone-alt mr-2"></i>Phone Number
+          </label>
           <input type="text" id="phoneNumber" formControlName="phoneNumber" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00203a] focus:border-transparent" placeholder="Enter your phone number">
+          <div *ngIf="signUpForm.get('phoneNumber')?.invalid && signUpForm.get('phoneNumber')?.touched" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-2" role="alert">
+            Please enter your phone number.
+          </div>
         </div>
         <div class="mb-4">
-          <label for="address" class="block text-gray-700">Address</label>
+          <label for="address" class="block text-gray-700">
+            <i class="fas fa-map-marker-alt mr-2"></i>Address
+          </label>
           <input type="text" id="address" formControlName="address" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00203a] focus:border-transparent" placeholder="Enter your address">
+          <div *ngIf="signUpForm.get('address')?.invalid && signUpForm.get('address')?.touched" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-2" role="alert">
+            Please enter your address.
+          </div>
         </div>
       </div>
       <div class="flex items-center justify-between">
-        <button type="submit" class="bg-[#00203a] text-white px-4 py-2 rounded-lg hover:bg-[#001a33] transition duration-300" [disabled]="signUpForm.invalid">Sign Up</button>
+        <button type="submit" class="bg-[#00203a] text-white px-4 py-2 rounded-lg hover:bg-[#001a33] transition duration-300" [disabled]="signUpForm.invalid">
+          <i class="fas fa-user-plus mr-2"></i>Sign Up
+        </button>
       </div>
     </form>
     <div class="mt-4 text-center">
-      <a [routerLink]="['/login']" class="text-[#00203a] hover:underline">You already have an account?</a>
+      <a [routerLink]="['/login']" class="text-[#00203a] hover:underline">
+        <i class="fas fa-sign-in-alt mr-2"></i>You already have an account?
+      </a>
     </div>
   </div>
 </div>

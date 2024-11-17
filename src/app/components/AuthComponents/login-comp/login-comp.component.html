@@ -1,5 +1,4 @@
 <div class="flex items-center justify-center min-h-screen bg-gray-100 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d');">
-
   <button (click)="navigateHome()" class="absolute top-4 right-4 bg-blue-500 text-white px-4 py-2 rounded-lg flex items-center hover:bg-blue-700 transition duration-300">
     <i class="pi pi-arrow-left mr-2"></i> Back to Home
   </button>
@@ -7,29 +6,41 @@
     <h2 class="text-2xl font-bold mb-6 text-center text-[#00203a]">Login</h2>
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="mb-4">
-        <label for="email" class="block text-gray-700">Email</label>
+        <label for="email" class="block text-gray-700">
+          <i class="fas fa-envelope mr-2"></i>Email
+        </label>
         <input type="email" id="email" formControlName="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00203a] focus:border-transparent" placeholder="Enter your email">
-        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="text-red-500 text-sm mt-1">
-          Please enter a valid email.
+        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-2" role="alert">
+          <span class="block sm:inline">Please enter a valid email.</span>
         </div>
       </div>
       <div class="mb-6">
-        <label for="password" class="block text-gray-700">Password</label>
+        <label for="password" class="block text-gray-700">
+          <i class="fas fa-lock mr-2"></i>Password
+        </label>
         <input type="password" id="password" formControlName="password" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#00203a] focus:border-transparent" placeholder="Enter your password">
-        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-red-500 text-sm mt-1">
-          Password must be at least 6 characters long.
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mt-2" role="alert">
+          <span class="block sm:inline">Password must be at least 6 characters long.</span>
         </div>
       </div>
       <div class="mb-6 flex justify-center">
-        <button type="button" (click)="selectRole('candidate')" [ngClass]="{'bg-[#00203a] text-white border-2 border-[#00203a]': selectedRole === 'candidate', 'bg-white text-[#00203a] border-2 border-gray-300': selectedRole !== 'candidate'}" class="px-4 py-2 rounded-l-full transition duration-300">Candidate</button>
-        <button type="button" (click)="selectRole('recruiter')" [ngClass]="{'bg-[#00203a] text-white border-2 border-[#00203a]': selectedRole === 'recruiter', 'bg-white text-[#00203a] border-2 border-gray-300': selectedRole !== 'recruiter'}" class="px-4 py-2 rounded-r-full transition duration-300">Recruiter</button>
+        <button type="button" (click)="selectRole('candidate')" [ngClass]="{'bg-[#00203a] text-white border-2 border-[#00203a]': selectedRole === 'candidate', 'bg-white text-[#00203a] border-2 border-gray-300': selectedRole !== 'candidate'}" class="px-4 py-2 rounded-l-full transition duration-300">
+          <i class="fas fa-user mr-2"></i>Candidate
+        </button>
+        <button type="button" (click)="selectRole('recruiter')" [ngClass]="{'bg-[#00203a] text-white border-2 border-[#00203a]': selectedRole === 'recruiter', 'bg-white text-[#00203a] border-2 border-gray-300': selectedRole !== 'recruiter'}" class="px-4 py-2 rounded-r-full transition duration-300">
+          <i class="fas fa-user-tie mr-2"></i>Recruiter
+        </button>
       </div>
       <div class="flex justify-center mb-6">
-        <button type="submit" class="bg-[#00203a] text-white px-6 py-3 rounded-lg text-lg hover:bg-[#001a33] hover:scale-105 transition duration-300 cursor-pointer" [disabled]="loginForm.invalid">Login</button>
+        <button type="submit" class="bg-[#00203a] text-white px-6 py-3 rounded-lg text-lg hover:bg-[#001a33] hover:scale-105 transition duration-300 cursor-pointer" [disabled]="loginForm.invalid">
+          <i class="fas fa-sign-in-alt mr-2"></i>Login
+        </button>
       </div>
     </form>
     <div class="mt-4 text-center">
-      <a [routerLink]="['/signup']" class="text-[#00203a] hover:underline">New here?</a>
+      <a [routerLink]="['/signup']" class="text-[#00203a] hover:underline">
+        <i class="fas fa-user-plus mr-2"></i>New here?
+      </a>
     </div>
   </div>
 </div>

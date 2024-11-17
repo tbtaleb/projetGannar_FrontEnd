@@ -5,11 +5,14 @@ import { Match } from '../../classes/match';
 import { MatchComponent } from '../match/match.component';
 import { CandidateService } from '../../services/candidate.service';
 import { AuthService } from '../../services/auth/auth.service';
+import { MessageService } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'app-matches-component',
   standalone: true,
-  imports: [CommonModule,MatchComponent],
+  imports: [CommonModule,MatchComponent,ToastModule],
+  providers: [MessageService],  
   templateUrl: './matches_component.component.html',
   styleUrl: './matches_component.component.css',
 })
@@ -17,7 +20,9 @@ export class MatchesComponentComponent implements OnInit{
 
   candidateMatches:Match[] = []
   candidate:any = {}
-  constructor(private matchService:MatchesService,private candidateService:CandidateService,private authService:AuthService){}
+  constructor(private matchService:MatchesService,private candidateService:CandidateService,private authService:AuthService,
+    private messageService:MessageService
+  ){}
 
   ngOnInit(): void {
     // this.loginUser();
@@ -27,6 +32,23 @@ export class MatchesComponentComponent implements OnInit{
   matchCandidate(){
     this.matchService.matchCandidateWithJobs(this.candidate.id).subscribe(data => {
       this.candidateMatches = data
+      if (data.length == 0){
+        this.messageService.add({
+          severity: 'info',
+          summary: 'Matches',
+          detail: 'No new matches found',
+        });
+        
+      }
+      else{
+        this.messageService.add({
+          severity: 'info',
+          summary: 'Gongrats!!!',
+          detail: 'You matched with ' + data.length + ' job offers',
+        });
+      }
+      
+      
       this.getMatches(this.candidate.id)
     })
   }

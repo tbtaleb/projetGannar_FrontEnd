@@ -10,13 +10,27 @@
         <label for="location" class="text-xl text-MainDark font-semibold my-2">Location</label>
         <input name="location" type="text" placeholder="Enter a location..." class="border-b-2 border-MainShade bg-transparent text-MainDark placeholder:text-MainShade py text-lg" [(ngModel)]="filters.location" (input)="applyFilters()">
       </div>
-      <div class="flex flex-col w-full lg:w-11/12 my-2">
-        <label for="salary" class="text-xl text-MainDark font-semibold my-2">Salary</label>
-        <div class="flex w-full lg:w-11/12">
+      <div class="flex flex-col w-full my-2">
+        <label for="salary" class="text-lg text-MainDark font-semibold my-2"
+          >Salary</label
+        >
+        <div class="flex w-full items-center">
           <p class="text-MainShade">100 DT</p>
-          <input name="salary" type="range" min="100" max="10000" step="100" class="mx-2" [(ngModel)]="filters.salary" (input)="applyFilters()">
+          <input
+            name="salary"
+            type="range"
+            min="100"
+            max="10000"
+            step="100"
+            class="mx-2"
+            [(ngModel)]="filters.salary"
+            (input)="applyFilters()"
+          />
           <p class="text-MainShade">10000 DT</p>
         </div>
+        <p class="text-MainDark font-semibold mt-2">
+          Selected Salary: {{ filters.salary }} DT
+        </p>
       </div>
     </div>
   </div>

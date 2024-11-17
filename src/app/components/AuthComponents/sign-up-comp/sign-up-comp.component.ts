@@ -9,11 +9,12 @@ import { Candidate } from '../../../classes/candidate';
 import { Recruiter } from '../../../classes/recruiter';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-sign-up-comp',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, RouterModule,ToastModule],
+  imports: [ReactiveFormsModule, CommonModule, RouterModule, ToastModule],
   providers: [MessageService],
   templateUrl: './sign-up-comp.component.html',
   styleUrls: ['./sign-up-comp.component.css'],
@@ -27,7 +28,8 @@ export class SignUpCompComponent implements OnInit {
     private candidateService: CandidateService,
     private recruiterService: RecruiterService,
     private router: Router,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -108,20 +110,17 @@ export class SignUpCompComponent implements OnInit {
         );
         this.candidateService.createCandidate(candidate).subscribe(
           (response) => {
-            this.messageService.add({
-              severity: 'success',
-              summary: 'Success',
-              detail: 'Candidate sign-up successful',
+            this.snackBar.open('You have successfully Created your accout,you can log in now', 'Close', {
+              duration: 5000,
             });
-           
+            this.router.navigate(['/login']);
           },
           (error) => {
             this.messageService.add({
-              severity: 'error',
-              summary: 'Signup failed',
-              detail: 'Candidate sign-up failed',
+              severity: 'info',
+              summary: 'Candidate sign-up failed',
+              detail: `${error}`,
             });
-            
           }
         );
       } else if (this.selectedRole === 'recruiter') {
@@ -138,15 +137,21 @@ export class SignUpCompComponent implements OnInit {
         );
         this.recruiterService.createRecruiter(recruiter).subscribe(
           (response) => {
-            console.log('Recruiter sign-up successful', response);
+            this.snackBar.open(
+              'You have successfully Created your accout,you can log in now',
+              'Close',
+              {
+                duration: 5000,
+              }
+            );
+            this.router.navigate(['/login'])
           },
           (error) => {
-             this.messageService.add({
-               severity: 'error',
-               summary: 'Signup failed',
-               detail: 'Recruiter sign-up failed' ,
-             });
-            
+            this.messageService.add({
+              severity: 'info',
+              summary: 'Recruiter sign-up failed',
+              detail: `${error}`,
+            });
           }
         );
       }
