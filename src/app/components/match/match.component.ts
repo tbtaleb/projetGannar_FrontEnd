@@ -11,54 +11,70 @@ import { AuthService } from '../../services/auth/auth.service';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './match.component.html',
-  styleUrl: './match.component.css'
+  styleUrl: './match.component.css',
 })
-export class MatchComponent implements OnInit{
+export class MatchComponent implements OnInit {
+  constructor(
+    private jobOfferService: JobOfferService,
+    private applicationService: ApplicationsService,
+    private candidateService: CandidateService,
+    private authService: AuthService
+  ) {}
 
-  constructor(private jobOfferService:JobOfferService,private applicationService:ApplicationsService,private candidateService:CandidateService,private authService:AuthService){}
-
-  job:any
-  candidate:any = {}
-  ApplicationExists=false
-  ApplicationCreated=false
+  job: any;
+  candidate: any = {};
+  ApplicationExists = false;
+  ApplicationCreated = false;
   candidateid!: number;
+
+  @Input() jobMatch!: Match;
+
   ngOnInit(): void {
     this.candidateid = this.authService.getUser().id;
-        this.jobOfferService.getJobOfferById(Number(this.jobMatch.jobOffer)).subscribe( data => {
-          this.job = data
-          
-        })
-     this.candidateid=this.authService.getUser().id;   
-    // this.loginUser();
+    this.jobOfferService
+      .getJobOfferById(Number(this.jobMatch.jobOffer))
+      .subscribe((data) => {
+        this.job = data;
+        this.checkIfApplied();
+      });
   }
 
-  applyForJob(){
-    this.applicationService.apply(this.candidateid, this.job.Id).subscribe(
+  checkIfApplied(): void {
+    if (!this.candidateid || !this.job) {
+      return;
+    }
+
+    this.applicationService
+      .getApplicationByCandidateIdAndJobOfferId(this.candidateid, this.job.Id)
+      .subscribe(
+        (data) => {
+          if (data) {
+            this.ApplicationExists = true;
+         
+          }
+        },
+        (error) => {
+          console.error('An error occurred:', error);
+        }
+      );
+  }
+
+  applyForJob(): void {
+    if (!this.candidateid || !this.job) {
+      console.error('Candidate or Job Offer not found');
+      return;
+    }
+
+    this.applicationService.apply(this.job.Id, this.candidateid).subscribe(
       (data) => {
-        console.log(data);
         this.ApplicationCreated = true;
+
+        this.ApplicationExists = true;
       },
       (error) => {
         console.error('An error occurred:', error);
-        this.ApplicationExists = true;
+        this.ApplicationExists = false;
       }
     );
   }
-
-  @Input() jobMatch!:Match
-
-  // async loginUser(){
-  //   try {
-  //     const token = 'your-access-token';
-  //     this.candidate = await this.candidateService.getCandidate();
-  //     this.jobOfferService.getJobOfferById(Number(this.jobMatch.jobOffer)).subscribe( data => {
-  //       this.job = data
-  //       console.log(this.job)
-  //     })
-  //     console.log('Candidate data:', this.candidate);
-  //   } catch (error) {
-  //     console.error('Error fetching candidate:', error);
-  //   }
-  // }
-
 }

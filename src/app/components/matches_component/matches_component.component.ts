@@ -33,7 +33,6 @@ export class MatchesComponentComponent implements OnInit{
   getMatches(id:number){
     this.matchService.getAllMatches(id).subscribe( data => {
       this.candidateMatches = data;
-      console.log(this.candidateMatches);
     })
   }
   

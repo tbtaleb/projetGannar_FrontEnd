@@ -1,36 +1,42 @@
-<div class="flex justify-around">
-    <div class="w-3/12 bg-white h-96 shadow-lg  rounded-xl p-4">
-        <h1 class="text-4xl font-bold text-MainDark">Filters</h1>
-        <div class="flex flex-col my-2">
-            <label for="location" class="text-xl text-MainDark font-semibold my-2">Location</label>
-            <input name="location" type="text" placeholder="Enter a location..." class="border-b-2 border-MainShade bg-transparent text-MainDark placeholder:text-MainShade py text-lg">
+<div class="min-h-screen  p-4">
+  <div class="max-w-6xl mx-auto flex flex-col lg:flex-row">
+    <div class="w-full h-1/2 lg:w-1/4 bg-white shadow-lg rounded-xl p-4 mb-6 lg:mb-0 lg:mr-6">
+      <h1 class="text-2xl font-bold text-MainDark mb-4">Filters</h1>
+      <div class="flex flex-col my-2">
+        <label for="name" class="text-lg text-MainDark font-semibold my-2">Job Name</label>
+        <input name="name" type="text" placeholder="Enter job name..." class="border-b-2 border-MainShade bg-transparent text-MainDark placeholder:text-MainShade py-1 text-lg" [(ngModel)]="filters.name" (input)="applyFilters()">
+      </div>
+      <div class="flex flex-col my-2">
+        <label for="location" class="text-lg text-MainDark font-semibold my-2">Location</label>
+        <input name="location" type="text" placeholder="Enter a location..." class="border-b-2 border-MainShade bg-transparent text-MainDark placeholder:text-MainShade py-1 text-lg" [(ngModel)]="filters.location" (input)="applyFilters()">
+      </div>
+      <div class="flex flex-col w-full my-2">
+        <label for="salary" class="text-lg text-MainDark font-semibold my-2">Salary</label>
+        <div class="flex w-full">
+          <p class="text-MainShade">100 DT</p>
+          <input name="salary" type="range" min="100" max="10000" step="100" class="mx-2" [(ngModel)]="filters.salary" (input)="applyFilters()">
+          <p class="text-MainShade">10000 DT</p>
         </div>
-        <div class="flex flex-col w-11/12 my-2">
-            <label for="salary" class="text-xl text-MainDark font-semibold my-2">Salary</label>
-            <div class="flex w-11/12">
-                <p class="text-MainShade">1,000 DT</p>
-                <input name="salary" type="range" min="1,000" class="mx-2">
-                <p class="text-MainShade">10,000 DT</p>
-            </div>
-        </div>
-        <div class="flex flex-col my-2">
-            <label for="WorkHours" class="text-xl text-MainDark font-semibold my-2 ">Work Hours</label>
-            <select name="WorkHours" id="" class="border-b-2 border-MainShade bg-transparent text-MainDark py text-lg">
-                <option value="fullTime">Full time</option>
-                <option value="halfTime">Half time</option>
-            </select>
-        </div>
-        <div class="flex justify-center">
-            <button class="shadow my-2 border-2 border-MainDark text-MainDark py-2 px-4 font-bold rounded-full transition hover:scale-105 duration-200 ease hover:shadow-lg hover:bg-MainDark hover:text-white">Filter</button>
-        </div>
+      </div>
     </div>
-    <div class="w-full ml-8">
-        <div class="flex">
-            <input type="text" placeholder="Search by name..." class="text-2xl py-4 mb-4 px-2 shadow-lg w-full rounded-lg border-2">
-            <i class="fa-solid fa-xl fa-magnifying-glass bg-MainDark w-16 h-16 text-center content-center text-white rounded-lg shadow-lg"></i>
-        </div>
-        @for (job of jobOffers; track job.Id){
-            <app-job [jobOffer]="job"></app-job>
-        }
+    <div class="w-full lg:w-3/4">
+      <div class="flex mb-6">
+        <input
+          type="text"
+          placeholder="Search by name..."
+          class="text-2xl py-4 px-2 shadow-lg w-full rounded-lg border-2"
+          [(ngModel)]="filters.name"
+          (input)="applyFilters()"
+        />
+        <i
+          class="fa-solid fa-xl fa-magnifying-glass bg-MainDark w-16 h-16 text-center content-center text-white rounded-lg shadow-lg flex items-center justify-center"
+        ></i>
+      </div>
+      <div class="grid grid-cols-1 gap-4">
+        <ng-container *ngFor="let job of filteredJobOffers">
+          <app-job [jobOffer]="job"></app-job>
+        </ng-container>
+      </div>
     </div>
+  </div>
 </div>

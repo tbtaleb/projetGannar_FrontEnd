@@ -1,83 +1,15 @@
-.container {
-    display: flex;
-    justify-content: flex-start; 
-    align-items: center; 
-    width: 80%;
-    position: relative;
-  }
-  
-  .offer-header {
-    width: 20%;
-    top:0px;
-    right: 0px;
-    position: absolute;
-    
-   
-  }
-  .title{
-    padding-top: 0px;
-    margin: 0px;
-    border-bottom: 1px solid #001f3f; 
-   
-  }
-  
-  .text-content {
-    width: 75%;
-    margin-left:0px;
-    
-  }
-  
-  .company-logo {
-    width: 50px;
-    height: 50px;
-    background-color: #fff;
-    border-radius: 10px;
-    margin-left: auto; 
-   
-  }
-  .domain {
-    font-size: 12px;
-    color: #001f3f;
-    padding-top: 0px;
-    margin-top: 10px; 
-  }
-  .offer-content {
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 16px;
-    max-height: 200px;
-    min-height: 200px;
-    overflow-y: scroll;
-  
-  }
-  
-  .job-title {
-      color: #001f3f;
-      font-size: 30px;
-      font-weight: 600;
-      margin: 0px ;
-      padding: 0px;
-  
-  }
-  
-  .job-type {
-      color: #001f3f;
-      font-size: 14px;
-      font-weight: 500;
-  }
-  
-  .matching-score {
-    width: 30%;
-    background-color: #001f3f;
-    color:white;
-    margin-top: 10px;
-    border-radius: 10px;
-    margin-left: auto; 
-  }
-  .offer-card {
-    padding: 5px;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
+.matches-container {
+  @apply max-w-4xl mx-auto text-left font-sans ;
+}
+
+.matches-container h2 {
+  @apply text-2xl mb-4 text-blue-900;
+}
+
+.matches-container p {
+  @apply text-sm text-gray-600;
+}
+
+.offers-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6;
+}

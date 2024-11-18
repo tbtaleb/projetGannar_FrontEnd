@@ -2,14 +2,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Application } from '../classes/application';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApplicationsService {
-  applicationsURL: string = 'http://127.0.0.1:8000/api/applications';
-  specificapplicationURL: string = 'http://127.0.0.1:8000/api/getapplicationby';
-  applyURL: string = 'http://127.0.0.1:8000/api/application';
+  applicationsURL: string = `${environment.apiUrl}/applications`;
+  specificapplicationURL: string = `${environment.apiUrl}/getapplicationby`;
+  applyURL: string = `${environment.apiUrl}`;
   constructor(private httpClient: HttpClient) {}
 
   getAllApplications(candidateId: number): Observable<Application[]> {
@@ -25,9 +26,10 @@ export class ApplicationsService {
       `${this.specificapplicationURL}/${candidateId}/and/${jobOfferId}`
     );
   }
-  apply(candidateId: number, jobOfferId: number): Observable<Application> {
-    return this.httpClient.get<Application>(
-      `${this.applyURL}/${candidateId}/apply/${jobOfferId}`
+  apply(jobOfferId: number, candidateId: number): Observable<any> {
+    return this.httpClient.post<any>(
+      `${this.applyURL}/apply/${jobOfferId}/${candidateId}`,
+      {}
     );
   }
 

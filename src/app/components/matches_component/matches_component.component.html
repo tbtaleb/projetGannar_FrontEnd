@@ -1,12 +1,10 @@
-<div class="matches-container">
-    <h2>Your Matches</h2>
-    <p>These offers are shown based on your matching score</p>
-    <button (click)="matchCandidate()" class="bg-[#00203a] text-white px-6 py-3 rounded-lg text-lg hover:bg-[#001a33] hover:scale-105 transition duration-300 cursor-pointer" >Find Matches</button>
-    <div class="offers-grid">
-        @for (match of candidateMatches; track match.Id){
-            <app-match [jobMatch]="match"></app-match>
-        }
-        
-    </div>
-
+<div class="matches-container max-w-6xl mx-auto p-4">
+  <h2 class="text-3xl font-bold text-MainDark mb-4">Your Matches</h2>
+  <p class="text-lg text-gray-600 mb-6">These offers are shown based on your matching score</p>
+  <button (click)="matchCandidate()" class="bg-[#00203a] text-white px-6 py-3 rounded-lg text-lg hover:bg-[#001a33] hover:scale-105 transition duration-300 cursor-pointer mb-6">Find Matches</button>
+  <div class="offers-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <ng-container *ngFor="let match of candidateMatches;">
+      <app-match [jobMatch]="match"></app-match>
+    </ng-container>
+  </div>
 </div>

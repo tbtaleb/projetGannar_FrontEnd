@@ -65,7 +65,7 @@ export class NewJobFormComponent implements OnInit {
         this.jobOfferForm.patchValue(jobOffer);
       },
       (error) => {
-        console.error('Failed to load job offer', error);
+        
       }
     );
   }
@@ -92,7 +92,7 @@ export class NewJobFormComponent implements OnInit {
               summary: 'Updated',
               detail: 'Job offer updated successfully',
             });
-            console.log('Job offer updated successfully', response);
+           
             this.router.navigate(['/jobs']);
           },
           (error) => {
@@ -101,7 +101,7 @@ export class NewJobFormComponent implements OnInit {
               summary: 'Failed',
               detail: 'Failed to update job offer',
             });
-            console.error('Failed to update job offer', error);
+           
           }
         );
       } else {
@@ -112,7 +112,7 @@ export class NewJobFormComponent implements OnInit {
               summary: 'Created',
               detail: 'Job offer created successfully',
             });
-            console.log('Job offer created successfully', response);
+            
             this.router.navigate(['/jobs']);
           },
           (error) => {
@@ -121,7 +121,7 @@ export class NewJobFormComponent implements OnInit {
               summary: 'Failed',
               detail: 'Failed to create job offer',
             });
-            console.error('Failed to create job offer', error);
+           
           }
         );
       }

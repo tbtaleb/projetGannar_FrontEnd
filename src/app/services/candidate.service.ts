@@ -3,64 +3,66 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Candidate } from '../classes/candidate';
 import { CV } from '../classes/cv';
-
+import { environment } from '../../environments/environment';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CandidateService {
+  candidatesURL: string = `${environment.apiUrl}/candidates`;
+  tokenURL: string = `${environment.apiUrl}/candidate-token`;
+  resumesURL: string = `${environment.apiUrl}/resumes`;
 
+  constructor(private httpClient: HttpClient) {}
 
-  candidatesURL:string = "http://127.0.0.1:8000/api/candidates";
-  tokenURL:string = "http://127.0.0.1:8000/api/candidate-token";
-  resumesURL:string = "http://127.0.0.1:8000/api/resumes";
-
-
-  constructor(private httpClient:HttpClient) {}
-
-  getAllCandidates():Observable<Candidate[]>{
+  getAllCandidates(): Observable<Candidate[]> {
     return this.httpClient.get<Candidate[]>(this.candidatesURL);
   }
 
-  getCandidateById(candidateId:number):Observable<Candidate>{
-    return this.httpClient.get<Candidate>(`${this.candidatesURL}/${candidateId}`)
+  getCandidateById(candidateId: number): Observable<Candidate> {
+    return this.httpClient.get<Candidate>(
+      `${this.candidatesURL}/${candidateId}`
+    );
   }
 
-
-  createCandidate(candidate:Candidate){
-    return this.httpClient.post<Candidate>(`${this.candidatesURL}/register`,candidate)
+  createCandidate(candidate: Candidate) {
+    return this.httpClient.post<Candidate>(
+      `${this.candidatesURL}/register`,
+      candidate
+    );
   }
 
-  deleteCandidate(candidateId:number):Observable<Candidate>{
-    return this.httpClient.delete<Candidate>(`${this.candidatesURL}/${candidateId}`)
+  deleteCandidate(candidateId: number): Observable<Candidate> {
+    return this.httpClient.delete<Candidate>(
+      `${this.candidatesURL}/${candidateId}`
+    );
   }
 
-  getCVByCandidateId(candidateId:number):Observable<CV>{
-    return this.httpClient.get<CV>(`http://127.0.0.1:8000/api/candidateCV/${candidateId}`)
+  getCVByCandidateId(candidateId: number): Observable<CV> {
+    return this.httpClient.get<CV>(
+      `${environment.apiUrl}/candidateCV/${candidateId}`
+    );
   }
 
-
-  login(candidate:any){
-    return this.httpClient.post<any>(`${this.tokenURL}`,candidate,{
-      withCredentials: true
-    })
+  getRecommendedCandidates(): Observable<Candidate[]> {
+    return this.httpClient.get<Candidate[]>(
+      `${this.candidatesURL}/recommended`
+    );
   }
-  
 
+  login(candidate: any) {
+    return this.httpClient.post<any>(`${this.tokenURL}`, candidate, {
+      withCredentials: true,
+    });
+  }
 
-  uploadCV(file: File):Observable<any>{
-
+  uploadCV(file: File): Observable<any> {
     const formData = new FormData();
     formData.append('file', file);
 
-    const req = new HttpRequest(
-      'POST',
-      `${this.resumesURL}`,
-      formData,
-      {
-        reportProgress: true,
-        responseType: 'json',
-      }
-    );
+    const req = new HttpRequest('POST', `${this.resumesURL}`, formData, {
+      reportProgress: true,
+      responseType: 'json',
+    });
     return this.httpClient.request(req);
   }
 

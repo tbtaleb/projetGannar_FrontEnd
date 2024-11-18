@@ -1,0 +1,15 @@
+<div class="p-4">
+  <h2 class="text-2xl font-bold mb-4 flex items-center">
+    <i class="fas fa-user-circle mr-2"></i>{{ candidate.name }}
+  </h2>
+  <p><strong><i class="fas fa-phone-alt mr-2"></i>Phone Number:</strong> {{ candidate.phoneNumber }}</p>
+  <p><strong><i class="fas fa-envelope mr-2"></i>Email:</strong> {{ candidate.email }}</p>
+  <div *ngIf="candidateCV">
+    <h3 class="text-xl font-semibold mt-4 flex items-center">
+      <i class="fas fa-file-alt mr-2"></i>Resume
+    </h3>
+    <p><strong><i class="fas fa-briefcase mr-2"></i>Field:</strong> {{ candidateCV.reco_field }}</p>
+    <p><strong><i class="fas fa-star mr-2"></i>Resume Score:</strong> {{ candidateCV.res_score }}</p>
+    <p><strong><i class="fas fa-level-up-alt mr-2"></i>Level:</strong> {{ candidateCV.cand_level }}</p>
+  </div>
+</div>

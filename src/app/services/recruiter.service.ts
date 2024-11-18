@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Recruiter } from '../classes/recruiter';
 import { Candidate } from '../classes/candidate';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RecruiterService {
-  recruitersURL: string = 'http://127.0.0.1:8000/api/recruiters';
-  tokenURL: string = 'http://127.0.0.1:8000/api/recruiter-token';
+  recruitersURL: string = `${environment.apiUrl}/recruiters`;
+  tokenURL: string = `${environment.apiUrl}/recruiter-token`;
 
   constructor(private httpClient: HttpClient) {}
 
