@@ -2,18 +2,35 @@
   <div class="max-w-3xl mx-auto">
     <h1 class="text-2xl font-bold mb-4">My Applications</h1>
     <div *ngIf="applications.length > 0; else noApplications">
-      <div *ngFor="let application of applications" class="bg-white shadow-md rounded-lg p-4 mb-4 flex justify-between items-center">
+      <div
+        *ngFor="let application of applications"
+        class="bg-white shadow-md rounded-lg p-4 mb-4 flex justify-between items-center"
+      >
         <div>
-          <h2 class="text-xl font-bold mb-2">{{ jobOffers[application.jobOffer]?.name }}</h2>
+          <h2 class="text-xl font-bold mb-2">
+            {{ jobOffers[application.jobOffer]?.name }}
+          </h2>
           <p class="mb-2">{{ jobOffers[application.jobOffer]?.description }}</p>
-          <p class="mb-2"><span class="font-bold">Location:</span> {{ jobOffers[application.jobOffer]?.location }}</p>
-          <p class="mb-2"><span class="font-bold">Salary:</span> {{ jobOffers[application.jobOffer]?.salary }}</p>
+          <p class="mb-2">
+            <span class="font-bold">Your score for this Job offer:</span>
+            {{ application.candidate_score | number : "1.2-2" }}%
+          </p>
+          <p class="mb-2">
+            <span class="font-bold">You applied in:</span>
+            {{ application.created_at | date : "MMMM d, y, h:mm a" }}
+          </p>
         </div>
         <div class="flex space-x-2">
-          <button (click)="showJobOfferDetails(application.jobOffer)" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300">
+          <button
+            (click)="showJobOfferDetails(application.jobOffer)"
+            class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition duration-300"
+          >
             <i class="pi pi-info-circle"></i> Details
           </button>
-          <button (click)="deleteApplication(application.Id)" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition duration-300">
+          <button
+            (click)="deleteApplication(application.Id)"
+            class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition duration-300"
+          >
             <i class="pi pi-trash"></i> Delete
           </button>
         </div>

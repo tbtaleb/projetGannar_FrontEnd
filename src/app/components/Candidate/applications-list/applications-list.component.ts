@@ -45,6 +45,7 @@ export class ApplicationsListComponent implements OnInit {
         (data) => {
           this.applications = data;
           
+          
           this.loadJobOffers();
         },
         (error) => {

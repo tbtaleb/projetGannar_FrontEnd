@@ -1,3 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.max-h-32 {
+  max-height: 8rem; /* Adjust the height as needed */
+}
+
 .matches-container {
   @apply max-w-4xl mx-auto text-left font-sans ;
 }

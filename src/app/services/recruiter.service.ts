@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { Recruiter } from '../classes/recruiter';
 import { Candidate } from '../classes/candidate';
 import { environment } from '../../environments/environment';
@@ -28,7 +28,7 @@ export class RecruiterService {
     return this.httpClient.post<Recruiter>(
       `${this.recruitersURL}/register`,
       recruiter
-    );
+    ).pipe(catchError(this.handleError));;
   }
 
   deleteRecruiter(recruiterId: number): Observable<Recruiter> {
@@ -46,5 +46,17 @@ export class RecruiterService {
     return this.httpClient.post<any>(`${this.tokenURL}`, recruiter, {
       withCredentials: true,
     });
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    let errorMessage = 'An unknown error occurred!';
+    if (error.error instanceof ErrorEvent) {
+      // Client-side error
+      errorMessage = `Error: ${error.error.message}`;
+    } else {
+      // Server-side error
+      errorMessage = `Error: ${error.error.error}`;
+    }
+    return throwError(errorMessage);
   }
 }

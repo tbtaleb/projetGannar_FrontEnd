@@ -1,26 +1,60 @@
-<div class="min-h-screen  p-4">
+<div class="min-h-screen p-4">
   <div class="max-w-6xl mx-auto flex flex-col lg:flex-row">
     <div class="w-full h-1/2 lg:w-1/4 bg-white shadow-lg rounded-xl p-4 mb-6 lg:mb-0 lg:mr-6">
-      <h1 class="text-2xl font-bold text-MainDark mb-4">Filters</h1>
+      <h1 class="text-2xl font-bold text-MainDark mb-4">
+        <i class="fas fa-filter mr-2"></i>Filters
+      </h1>
       <div class="flex flex-col my-2">
-        <label for="name" class="text-lg text-MainDark font-semibold my-2">Job Name</label>
-        <input name="name" type="text" placeholder="Enter job name..." class="border-b-2 border-MainShade bg-transparent text-MainDark placeholder:text-MainShade py-1 text-lg" [(ngModel)]="filters.name" (input)="applyFilters()">
+        <label for="name" class="text-lg text-MainDark font-semibold my-2">
+          <i class="fas fa-briefcase mr-2"></i>Job Name
+        </label>
+        <input
+          name="name"
+          type="text"
+          placeholder="Enter job name..."
+          class="border-b-2 border-MainShade bg-transparent text-MainDark placeholder:text-MainShade py-1 text-lg"
+          [(ngModel)]="filters.name"
+          (input)="applyFilters()"
+        />
       </div>
       <div class="flex flex-col my-2">
-        <label for="location" class="text-lg text-MainDark font-semibold my-2">Location</label>
-        <input name="location" type="text" placeholder="Enter a location..." class="border-b-2 border-MainShade bg-transparent text-MainDark placeholder:text-MainShade py-1 text-lg" [(ngModel)]="filters.location" (input)="applyFilters()">
+        <label for="location" class="text-lg text-MainDark font-semibold my-2">
+          <i class="fas fa-map-marker-alt mr-2"></i>Location
+        </label>
+        <input
+          name="location"
+          type="text"
+          placeholder="Enter a location..."
+          class="border-b-2 border-MainShade bg-transparent text-MainDark placeholder:text-MainShade py-1 text-lg"
+          [(ngModel)]="filters.location"
+          (input)="applyFilters()"
+        />
       </div>
       <div class="flex flex-col w-full my-2">
-        <label for="salary" class="text-lg text-MainDark font-semibold my-2">Salary</label>
-        <div class="flex w-full">
+        <label for="salary" class="text-lg text-MainDark font-semibold my-2">
+          <i class="fas fa-dollar-sign mr-2"></i>Salary
+        </label>
+        <div class="flex w-full items-center">
           <p class="text-MainShade">100 DT</p>
-          <input name="salary" type="range" min="100" max="10000" step="100" class="mx-2" [(ngModel)]="filters.salary" (input)="applyFilters()">
+          <input
+            name="salary"
+            type="range"
+            min="100"
+            max="10000"
+            step="100"
+            class="mx-2"
+            [(ngModel)]="filters.salary"
+            (input)="applyFilters()"
+          />
           <p class="text-MainShade">10000 DT</p>
         </div>
+        <p class="text-MainDark font-semibold mt-2">
+          Selected Salary: {{ filters.salary }} DT
+        </p>
       </div>
     </div>
     <div class="w-full lg:w-3/4">
-      <div class="flex mb-6">
+       <div class="flex mb-6">
         <input
           type="text"
           placeholder="Search by name..."
