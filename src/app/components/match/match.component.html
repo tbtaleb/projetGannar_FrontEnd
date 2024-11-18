@@ -20,8 +20,8 @@
   </div>
   <div>
     <div class="flex flex-col md:flex-row justify-between items-center">
-      <div class="text-blue-500 font-bold mb-4 md:mb-0">{{ jobMatch.candidate_score | number:'1.2-2'}} % Match</div>
-      <button *ngIf="!ApplicationExists" (click)="applyForJob()" class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition duration-300">
+      <div class="text-MainDark font-bold mb-4 md:mb-0">{{ jobMatch.candidate_score | number:'1.2-2'}} % Match</div>
+      <button *ngIf="!ApplicationExists" (click)="applyForJob()" class="bg-MainDark text-white py-2 px-4 rounded-lg hover:scale-101 transition duration-300">
         Apply
       </button>
     </div>

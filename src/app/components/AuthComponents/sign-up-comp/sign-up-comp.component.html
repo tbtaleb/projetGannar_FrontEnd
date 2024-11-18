@@ -2,10 +2,10 @@
   <button (click)="navigateHome()" class="absolute top-4 right-4 bg-blue-500 text-white px-4 py-2 rounded-lg flex items-center hover:bg-blue-700 transition duration-300">
     <i class="pi pi-arrow-left mr-2"></i> Back to Home
   </button>
-  <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-    <h2 class="text-2xl font-bold mb-6 text-center text-[#00203a]">Sign Up</h2>
+  <div class="bg-white px-8 py-4 rounded-lg shadow-lg w-full max-w-md">
+    <h2 class="text-2xl font-bold mb-3 text-center text-[#00203a]">Sign Up</h2>
     <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
-      <div class="mb-6 flex justify-center">
+      <div class="mb-4 flex justify-center">
         <button type="button" (click)="selectRole('candidate')" [ngClass]="{'bg-[#00203a] text-white border-2 border-[#00203a]': selectedRole === 'candidate', 'bg-white text-[#00203a] border-2 border-gray-300': selectedRole !== 'candidate'}" class="px-4 py-2 rounded-l-full transition duration-300">
           <i class="fas fa-user mr-2"></i>Candidate
         </button>
@@ -13,7 +13,7 @@
           <i class="fas fa-user-tie mr-2"></i>Recruiter
         </button>
       </div>
-      <div class="mb-4" *ngIf="selectedRole === 'candidate'">
+      <div class="mb-2" *ngIf="selectedRole === 'candidate'">
         <label for="name" class="block text-gray-700">
           <i class="fas fa-user mr-2"></i>Name
         </label>
@@ -22,7 +22,7 @@
           Please enter your name.
         </div>
       </div>
-      <div class="mb-4" *ngIf="selectedRole === 'recruiter'">
+      <div class="mb-2" *ngIf="selectedRole === 'recruiter'">
         <label for="fullName" class="block text-gray-700">
           <i class="fas fa-user mr-2"></i>Full Name
         </label>
@@ -31,7 +31,7 @@
           Please enter your full name.
         </div>
       </div>
-      <div class="mb-4">
+      <div class="mb-2">
         <label for="email" class="block text-gray-700">
           <i class="fas fa-envelope mr-2"></i>Email
         </label>
@@ -41,7 +41,7 @@
         </div>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="mb-4">
+        <div class="mb-2">
           <label for="password" class="block text-gray-700">
             <i class="fas fa-lock mr-2"></i>Password
           </label>
@@ -50,7 +50,7 @@
             Password must be at least 6 characters long.
           </div>
         </div>
-        <div class="mb-4">
+        <div class="mb-2">
           <label for="confirmPassword" class="block text-gray-700">
             <i class="fas fa-lock mr-2"></i>Confirm Password
           </label>
@@ -61,7 +61,7 @@
         </div>
       </div>
       <div *ngIf="selectedRole === 'candidate'" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="mb-4">
+        <div class="mb-2">
           <label for="phoneNumber" class="block text-gray-700">
             <i class="fas fa-phone-alt mr-2"></i>Phone Number
           </label>
@@ -70,7 +70,7 @@
             Please enter your phone number.
           </div>
         </div>
-        <div class="mb-4">
+        <div class="mb-2">
           <label for="address" class="block text-gray-700">
             <i class="fas fa-map-marker-alt mr-2"></i>Address
           </label>
@@ -79,7 +79,7 @@
             Please enter your address.
           </div>
         </div>
-        <div class="mb-4">
+        <div class="mb-2">
           <label for="dateOfBirth" class="block text-gray-700">
             <i class="fas fa-calendar-alt mr-2"></i>Date of Birth
           </label>
@@ -90,7 +90,7 @@
         </div>
       </div>
       <div *ngIf="selectedRole === 'recruiter'" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="mb-4">
+        <div class="mb-2">
           <label for="company" class="block text-gray-700">
             <i class="fas fa-building mr-2"></i>Company
           </label>
@@ -99,7 +99,7 @@
             Please enter your company name.
           </div>
         </div>
-        <div class="mb-4">
+        <div class="mb-2">
           <label for="companyAddress" class="block text-gray-700">
             <i class="fas fa-map-marker-alt mr-2"></i>Company Address
           </label>
@@ -108,7 +108,7 @@
             Please enter your company address.
           </div>
         </div>
-        <div class="mb-4">
+        <div class="mb-2">
           <label for="post" class="block text-gray-700">
             <i class="fas fa-briefcase mr-2"></i>Post
           </label>
@@ -117,7 +117,7 @@
             Please enter your post.
           </div>
         </div>
-        <div class="mb-4">
+        <div class="mb-2">
           <label for="domain" class="block text-gray-700">
             <i class="fas fa-globe mr-2"></i>Domain
           </label>
