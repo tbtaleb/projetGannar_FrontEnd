@@ -10,7 +10,7 @@ import { ToastModule } from 'primeng/toast';
 @Component({
   selector: 'app-my-job-offer-list',
   standalone: true,
-  imports: [CommonModule,ToastModule],
+  imports: [CommonModule, ToastModule],
   templateUrl: './my-job-offer-list.component.html',
   styleUrl: './my-job-offer-list.component.css',
   providers: [MessageService],
@@ -50,11 +50,11 @@ export class MyJobOfferListComponent {
     this.jobOfferService.deleteJobOffer(jobOfferId).subscribe(
       (response) => {
         console.log('Job offer deleted successfully', response);
-         this.messageService.add({
-           severity: 'success',
-           summary: 'Deleted',
-           detail: 'Application deleted successfully',
-         });
+        this.messageService.add({
+          severity: 'info',
+          summary: 'Deleted',
+          detail: 'Application deleted successfully',
+        });
         this.loadJobOffers(); // Reload the job offers after deletion
       },
       (error) => {

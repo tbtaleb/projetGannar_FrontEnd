@@ -1,0 +1,1020 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>front-end-gannar2 documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">front-end-gannar2 documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  NewJobFormComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/new-job-form/new-job-form.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">providers</td>
+                <td class="col-md-9">
+                            <code>MessageService</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-new-job-form</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">standalone</td>
+                <td class="col-md-9"><code>true</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">imports</td>
+                <td class="col-md-9">
+                            <code>ReactiveFormsModule</code>
+                            <code>ToastModule</code>
+                            <code>CommonModule</code>
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./new-job-form.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./new-job-form.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#isEditMode" >isEditMode</a>
+                            </li>
+                            <li>
+                                <a href="#jobOfferForm" >jobOfferForm</a>
+                            </li>
+                            <li>
+                                <a href="#jobOfferId" >jobOfferId</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#loadJobOffer" >loadJobOffer</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onSubmit" >onSubmit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(fb: FormBuilder, jobOfferService: <a href="../injectables/JobOfferService.html" target="_self">JobOfferService</a>, authService: <a href="../injectables/AuthService.html" target="_self">AuthService</a>, messageService: MessageService, route: ActivatedRoute, router: Router, snackBar: MatSnackBar)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/components/new-job-form/new-job-form.component.ts:29</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>fb</td>
+                                                  
+                                                        <td>
+                                                                    <code>FormBuilder</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>jobOfferService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/JobOfferService.html" target="_self" >JobOfferService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthService.html" target="_self" >AuthService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>messageService</td>
+                                                  
+                                                        <td>
+                                                                    <code>MessageService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                    <code>ActivatedRoute</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>snackBar</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatSnackBar</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadJobOffer"></a>
+                    <span class="name">
+                        <span ><b>loadJobOffer</b></span>
+                        <a href="#loadJobOffer"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>loadJobOffer(jobOfferId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="65"
+                                    class="link-to-prism">src/app/components/new-job-form/new-job-form.component.ts:65</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>jobOfferId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="42"
+                                    class="link-to-prism">src/app/components/new-job-form/new-job-form.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSubmit"></a>
+                    <span class="name">
+                        <span ><b>onSubmit</b></span>
+                        <a href="#onSubmit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onSubmit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="76"
+                                    class="link-to-prism">src/app/components/new-job-form/new-job-form.component.ts:76</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isEditMode"></a>
+                    <span class="name">
+                        <span ><b>isEditMode</b></span>
+                        <a href="#isEditMode"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/components/new-job-form/new-job-form.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="jobOfferForm"></a>
+                    <span class="name">
+                        <span ><b>jobOfferForm</b></span>
+                        <a href="#jobOfferForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormGroup</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/components/new-job-form/new-job-form.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="jobOfferId"></a>
+                    <span class="name">
+                        <span ><b>jobOfferId</b></span>
+                        <a href="#jobOfferId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>number | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/components/new-job-form/new-job-form.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { CommonModule, Location } from &#x27;@angular/common&#x27;;
+import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from &#x27;@angular/forms&#x27;;
+import { ActivatedRoute, Router } from &#x27;@angular/router&#x27;;
+import { JobOffer } from &#x27;../../classes/job-offer&#x27;;
+import { JobOfferService } from &#x27;../../services/job-offer.service&#x27;;
+
+import { MessageService } from &#x27;primeng/api&#x27;;
+import { ToastModule } from &#x27;primeng/toast&#x27;;
+import { AuthService } from &#x27;../../services/auth/auth.service&#x27;;
+import { MatSnackBar } from &#x27;@angular/material/snack-bar&#x27;;
+
+@Component({
+  selector: &#x27;app-new-job-form&#x27;,
+  standalone: true,
+  imports: [ReactiveFormsModule, ToastModule, CommonModule],
+  providers: [MessageService],
+  templateUrl: &#x27;./new-job-form.component.html&#x27;,
+  styleUrl: &#x27;./new-job-form.component.css&#x27;,
+})
+export class NewJobFormComponent implements OnInit {
+  jobOfferForm!: FormGroup;
+  jobOfferId: number | null &#x3D; null;
+  isEditMode: boolean &#x3D; false;
+  
+
+  constructor(
+    private fb: FormBuilder,
+    private jobOfferService: JobOfferService,
+    private authService: AuthService,
+    private messageService: MessageService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) {}
+
+  ngOnInit(): void {
+    this.jobOfferForm &#x3D; this.fb.group({
+      name: [&#x27;&#x27;, [Validators.required]],
+      description: [&#x27;&#x27;, [Validators.required]],
+      workTime: [&#x27;&#x27;, [Validators.required]],
+      location: [&#x27;&#x27;, [Validators.required]],
+      salary: [&#x27;&#x27;, [Validators.required, Validators.min(0)]],
+      skills: [&#x27;&#x27;, [Validators.required]],
+      company: [&#x27;&#x27;, [Validators.required]],
+      email: [&#x27;&#x27;, [Validators.required, Validators.email]],
+      numtel: [&#x27;&#x27;, [Validators.required]],
+      expirationDate: [null],
+    });
+
+    this.route.paramMap.subscribe((params) &#x3D;&gt; {
+      this.jobOfferId &#x3D; Number(params.get(&#x27;id&#x27;));
+      if (this.jobOfferId) {
+        this.isEditMode &#x3D; true;
+        this.loadJobOffer(this.jobOfferId);
+      }
+    });
+  }
+
+  loadJobOffer(jobOfferId: number): void {
+    this.jobOfferService.getJobOfferById(jobOfferId).subscribe(
+      (jobOffer) &#x3D;&gt; {
+        this.jobOfferForm.patchValue(jobOffer);
+      },
+      (error) &#x3D;&gt; {
+        
+      }
+    );
+  }
+
+  onSubmit(): void {
+    if (this.jobOfferForm.valid) {
+      const recruiter &#x3D; this.authService.getUser();
+      if (!recruiter) {
+        console.error(&#x27;No recruiter found&#x27;);
+        return;
+      }
+
+      const jobOffer: JobOffer &#x3D; {
+        Id: this.jobOfferId || 0, // Use the job offer ID if editing, otherwise 0
+        recruiter: recruiter.id, // Use the recruiter ID from the auth service
+        ...this.jobOfferForm.value,
+      };
+
+      if (this.isEditMode) {
+        this.jobOfferService.editJobOffer(this.jobOfferId!, jobOffer).subscribe(
+          (response) &#x3D;&gt; {
+            this.snackBar.open(
+              &#x27;Job offer updated successfully&#x27;,
+              &#x27;Close&#x27;,
+              {
+                duration: 5000,
+              }
+            );
+           
+            this.router.navigate([&#x27;/jobs&#x27;]);
+          },
+          (error) &#x3D;&gt; {
+            this.messageService.add({
+              severity: &#x27;info&#x27;,
+              summary: &#x27;Failed&#x27;,
+              detail: &#x27;Failed to update job offer&#x27;,
+            });
+           
+          }
+        );
+      } else {
+        this.jobOfferService.createJobOffer(jobOffer).subscribe(
+          (response) &#x3D;&gt; {
+            this.snackBar.open(&#x27;Job offer created successfully&#x27;, &#x27;Close&#x27;, {
+              duration: 5000,
+            });
+           
+            this.router.navigate([&#x27;/jobs&#x27;]);
+          },
+          (error) &#x3D;&gt; {
+            this.messageService.add({
+              severity: &#x27;info&#x27;,
+              summary: &#x27;Failed&#x27;,
+              detail: &#x27;Failed to create job offer&#x27;,
+            });
+           
+          }
+        );
+      }
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;flex flex-col items-center justify-center bg-MainLight mt-3 min-h-screen&quot;&gt;
+  &lt;div class&#x3D;&quot;w-3/4 rounded-lg shadow-xl p-8 bg-white&quot;&gt;
+    &lt;form [formGroup]&#x3D;&quot;jobOfferForm&quot; (ngSubmit)&#x3D;&quot;onSubmit()&quot;&gt;
+      &lt;div class&#x3D;&quot;grid grid-cols-1 md:grid-cols-2 gap-4&quot;&gt;
+        &lt;!-- Job Title --&gt;
+        &lt;div class&#x3D;&quot;mb-4&quot;&gt;
+          &lt;label class&#x3D;&quot;block text-MainShade text-2xl font-bold mb-2&quot; for&#x3D;&quot;name&quot;&gt;
+            &lt;i class&#x3D;&quot;fas fa-briefcase mr-2&quot;&gt;&lt;/i&gt;Job Title
+          &lt;/label&gt;
+          &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;name&quot; formControlName&#x3D;&quot;name&quot; class&#x3D;&quot;w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-MainShade focus:border-transparent&quot; placeholder&#x3D;&quot;Enter job title&quot;&gt;
+          &lt;div *ngIf&#x3D;&quot;jobOfferForm.get(&#x27;name&#x27;)?.touched &amp;&amp; jobOfferForm.get(&#x27;name&#x27;)?.invalid&quot; class&#x3D;&quot;text-red-500 mt-2&quot;&gt;
+            &lt;div *ngIf&#x3D;&quot;jobOfferForm.get(&#x27;name&#x27;)?.errors?.[&#x27;required&#x27;]&quot; class&#x3D;&quot;bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative&quot; role&#x3D;&quot;alert&quot;&gt;
+              Job title is required.
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- Description --&gt;
+        &lt;div class&#x3D;&quot;mb-4&quot;&gt;
+          &lt;label class&#x3D;&quot;block text-MainShade text-2xl font-bold mb-2&quot; for&#x3D;&quot;description&quot;&gt;
+            &lt;i class&#x3D;&quot;fas fa-align-left mr-2&quot;&gt;&lt;/i&gt;Description
+          &lt;/label&gt;
+          &lt;textarea id&#x3D;&quot;description&quot; formControlName&#x3D;&quot;description&quot; class&#x3D;&quot;w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-MainShade focus:border-transparent&quot; placeholder&#x3D;&quot;Enter job description&quot;&gt;&lt;/textarea&gt;
+          &lt;div *ngIf&#x3D;&quot;jobOfferForm.get(&#x27;description&#x27;)?.touched &amp;&amp; jobOfferForm.get(&#x27;description&#x27;)?.invalid&quot; class&#x3D;&quot;text-red-500 mt-2&quot;&gt;
+            &lt;div *ngIf&#x3D;&quot;jobOfferForm.get(&#x27;description&#x27;)?.errors?.[&#x27;required&#x27;]&quot; class&#x3D;&quot;bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative&quot; role&#x3D;&quot;alert&quot;&gt;
+              Description is required.
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- Work Time --&gt;
+        &lt;div class&#x3D;&quot;mb-4&quot;&gt;
+          &lt;label class&#x3D;&quot;block text-MainShade text-2xl font-bold mb-2&quot; for&#x3D;&quot;workTime&quot;&gt;
+            &lt;i class&#x3D;&quot;fas fa-clock mr-2&quot;&gt;&lt;/i&gt;Work Time
+          &lt;/label&gt;
+          &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;workTime&quot; formControlName&#x3D;&quot;workTime&quot; class&#x3D;&quot;w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-MainShade focus:border-transparent&quot; placeholder&#x3D;&quot;Enter work time&quot;&gt;
+          &lt;div *ngIf&#x3D;&quot;jobOfferForm.get(&#x27;workTime&#x27;)?.touched &amp;&amp; jobOfferForm.get(&#x27;workTime&#x27;)?.invalid&quot; class&#x3D;&quot;text-red-500 mt-2&quot;&gt;
+            &lt;div *ngIf&#x3D;&quot;jobOfferForm.get(&#x27;workTime&#x27;)?.errors?.[&#x27;required&#x27;]&quot; class&#x3D;&quot;bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative&quot; role&#x3D;&quot;alert&quot;&gt;
+              Work time is required.
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- Location --&gt;
+        &lt;div class&#x3D;&quot;mb-4&quot;&gt;
+          &lt;label class&#x3D;&quot;block text-MainShade text-2xl font-bold mb-2&quot; for&#x3D;&quot;location&quot;&gt;
+            &lt;i class&#x3D;&quot;fas fa-map-marker-alt mr-2&quot;&gt;&lt;/i&gt;Location
+          &lt;/label&gt;
+          &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;location&quot; formControlName&#x3D;&quot;location&quot; class&#x3D;&quot;w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-MainShade focus:border-transparent&quot; placeholder&#x3D;&quot;Enter location&quot;&gt;
+          &lt;div *ngIf&#x3D;&quot;jobOfferForm.get(&#x27;location&#x27;)?.touched &amp;&amp; jobOfferForm.get(&#x27;location&#x27;)?.invalid&quot; class&#x3D;&quot;text-red-500 mt-2&quot;&gt;
+            &lt;div *ngIf&#x3D;&quot;jobOfferForm.get(&#x27;location&#x27;)?.errors?.[&#x27;required&#x27;]&quot; class&#x3D;&quot;bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative&quot; role&#x3D;&quot;alert&quot;&gt;
+              Location is required.
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- Salary --&gt;
+        &lt;div class&#x3D;&quot;mb-4&quot;&gt;
+          &lt;label class&#x3D;&quot;block text-MainShade text-2xl font-bold mb-2&quot; for&#x3D;&quot;salary&quot;&gt;
+            &lt;i class&#x3D;&quot;fas fa-dollar-sign mr-2&quot;&gt;&lt;/i&gt;Salary
+          &lt;/label&gt;
+          &lt;input type&#x3D;&quot;number&quot; id&#x3D;&quot;salary&quot; formControlName&#x3D;&quot;salary&quot; class&#x3D;&quot;w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-MainShade focus:border-transparent&quot; placeholder&#x3D;&quot;Enter salary&quot;&gt;
+          &lt;div *ngIf&#x3D;&quot;jobOfferForm.get(&#x27;salary&#x27;)?.touched &amp;&amp; jobOfferForm.get(&#x27;salary&#x27;)?.invalid&quot; class&#x3D;&quot;text-red-500 mt-2&quot;&gt;
+            &lt;div *ngIf&#x3D;&quot;jobOfferForm.get(&#x27;salary&#x27;)?.errors?.[&#x27;required&#x27;]&quot; class&#x3D;&quot;bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative&quot; role&#x3D;&quot;alert&quot;&gt;
+              Salary is required.
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- Skills --&gt;
+        &lt;div class&#x3D;&quot;mb-4&quot;&gt;
+          &lt;label class&#x3D;&quot;block text-MainShade text-2xl font-bold mb-2&quot; for&#x3D;&quot;skills&quot;&gt;
+            &lt;i class&#x3D;&quot;fas fa-tools mr-2&quot;&gt;&lt;/i&gt;Skills
+          &lt;/label&gt;
+          &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;skills&quot; formControlName&#x3D;&quot;skills&quot; class&#x3D;&quot;w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-MainShade focus:border-transparent&quot; placeholder&#x3D;&quot;Enter skills&quot;&gt;
+          &lt;small class&#x3D;&quot;text-MainShade&quot;&gt;Please enter skills separated by commas (e.g., JavaScript, HTML, CSS).&lt;/small&gt;
+          &lt;div *ngIf&#x3D;&quot;jobOfferForm.get(&#x27;skills&#x27;)?.touched &amp;&amp; jobOfferForm.get(&#x27;skills&#x27;)?.invalid&quot; class&#x3D;&quot;text-red-500 mt-2&quot;&gt;
+            &lt;div *ngIf&#x3D;&quot;jobOfferForm.get(&#x27;skills&#x27;)?.errors?.[&#x27;required&#x27;]&quot; class&#x3D;&quot;bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative&quot; role&#x3D;&quot;alert&quot;&gt;
+              Skills are required.
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- Company --&gt;
+        &lt;div class&#x3D;&quot;mb-4&quot;&gt;
+          &lt;label class&#x3D;&quot;block text-MainShade text-2xl font-bold mb-2&quot; for&#x3D;&quot;company&quot;&gt;
+            &lt;i class&#x3D;&quot;fas fa-building mr-2&quot;&gt;&lt;/i&gt;Company
+          &lt;/label&gt;
+          &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;company&quot; formControlName&#x3D;&quot;company&quot; class&#x3D;&quot;w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-MainShade focus:border-transparent&quot; placeholder&#x3D;&quot;Enter company name&quot;&gt;
+          &lt;div *ngIf&#x3D;&quot;jobOfferForm.get(&#x27;company&#x27;)?.touched &amp;&amp; jobOfferForm.get(&#x27;company&#x27;)?.invalid&quot; class&#x3D;&quot;text-red-500 mt-2&quot;&gt;
+            &lt;div *ngIf&#x3D;&quot;jobOfferForm.get(&#x27;company&#x27;)?.errors?.[&#x27;required&#x27;]&quot; class&#x3D;&quot;bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative&quot; role&#x3D;&quot;alert&quot;&gt;
+              Company name is required.
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- Email --&gt;
+        &lt;div class&#x3D;&quot;mb-4&quot;&gt;
+          &lt;label class&#x3D;&quot;block text-MainShade text-2xl font-bold mb-2&quot; for&#x3D;&quot;email&quot;&gt;
+            &lt;i class&#x3D;&quot;fas fa-envelope mr-2&quot;&gt;&lt;/i&gt;Email
+          &lt;/label&gt;
+          &lt;input type&#x3D;&quot;email&quot; id&#x3D;&quot;email&quot; formControlName&#x3D;&quot;email&quot; class&#x3D;&quot;w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-MainShade focus:border-transparent&quot; placeholder&#x3D;&quot;Enter email&quot;&gt;
+          &lt;div *ngIf&#x3D;&quot;jobOfferForm.get(&#x27;email&#x27;)?.touched &amp;&amp; jobOfferForm.get(&#x27;email&#x27;)?.invalid&quot; class&#x3D;&quot;text-red-500 mt-2&quot;&gt;
+            &lt;div *ngIf&#x3D;&quot;jobOfferForm.get(&#x27;email&#x27;)?.errors?.[&#x27;required&#x27;]&quot; class&#x3D;&quot;bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative&quot; role&#x3D;&quot;alert&quot;&gt;
+              Email is required.
+            &lt;/div&gt;
+            &lt;div *ngIf&#x3D;&quot;jobOfferForm.get(&#x27;email&#x27;)?.errors?.[&#x27;email&#x27;]&quot; class&#x3D;&quot;bg-yellow-100 border border-red-400 text-red-700 px-4 py-3 rounded relative&quot; role&#x3D;&quot;alert&quot;&gt;
+              Invalid email format.
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- Phone Number --&gt;
+        &lt;div class&#x3D;&quot;mb-4&quot;&gt;
+          &lt;label class&#x3D;&quot;block text-MainShade text-2xl font-bold mb-2&quot; for&#x3D;&quot;numtel&quot;&gt;
+            &lt;i class&#x3D;&quot;fas fa-phone-alt mr-2&quot;&gt;&lt;/i&gt;Phone Number
+          &lt;/label&gt;
+          &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;numtel&quot; formControlName&#x3D;&quot;numtel&quot; class&#x3D;&quot;w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-MainShade focus:border-transparent&quot; placeholder&#x3D;&quot;Enter phone number&quot;&gt;
+          &lt;div *ngIf&#x3D;&quot;jobOfferForm.get(&#x27;numtel&#x27;)?.touched &amp;&amp; jobOfferForm.get(&#x27;numtel&#x27;)?.invalid&quot; class&#x3D;&quot;text-red-500 mt-2&quot;&gt;
+            &lt;div *ngIf&#x3D;&quot;jobOfferForm.get(&#x27;numtel&#x27;)?.errors?.[&#x27;required&#x27;]&quot; class&#x3D;&quot;bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative&quot; role&#x3D;&quot;alert&quot;&gt;
+              Phone number is required.
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;!-- Expiration Date --&gt;
+        &lt;div class&#x3D;&quot;mb-4&quot;&gt;
+          &lt;label class&#x3D;&quot;block text-MainShade text-2xl font-bold mb-2&quot; for&#x3D;&quot;expirationDate&quot;&gt;
+            &lt;i class&#x3D;&quot;fas fa-calendar-alt mr-2&quot;&gt;&lt;/i&gt;Expiration Date
+          &lt;/label&gt;
+          &lt;input type&#x3D;&quot;date&quot; id&#x3D;&quot;expirationDate&quot; formControlName&#x3D;&quot;expirationDate&quot; class&#x3D;&quot;w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-MainShade focus:border-transparent&quot; placeholder&#x3D;&quot;Enter expiration date&quot;&gt;
+          &lt;div *ngIf&#x3D;&quot;jobOfferForm.get(&#x27;expirationDate&#x27;)?.touched &amp;&amp; jobOfferForm.get(&#x27;expirationDate&#x27;)?.invalid&quot; class&#x3D;&quot;text-red-500 mt-2&quot;&gt;
+            &lt;div *ngIf&#x3D;&quot;jobOfferForm.get(&#x27;expirationDate&#x27;)?.errors?.[&#x27;required&#x27;]&quot; class&#x3D;&quot;bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative&quot; role&#x3D;&quot;alert&quot;&gt;
+              Expiration date is required.
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;!-- Submit Button --&gt;
+      &lt;div class&#x3D;&quot;flex items-center justify-between mt-4&quot;&gt;
+        &lt;button type&#x3D;&quot;submit&quot; class&#x3D;&quot;bg-MainShade text-white px-4 py-2 rounded-lg hover:bg-MainDark transition duration-300&quot; [disabled]&#x3D;&quot;jobOfferForm.invalid&quot;&gt;
+          {{ isEditMode ? &#x27;Update Job Offer&#x27; : &#x27;Create Job Offer&#x27; }}
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/form&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p-toast&gt;&lt;/p-toast&gt;</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="flex flex-col items-center justify-center bg-MainLight mt-3 min-h-screen">  <div class="w-3/4 rounded-lg shadow-xl p-8 bg-white">    <form [formGroup]="jobOfferForm" (ngSubmit)="onSubmit()">      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">        <!-- Job Title -->        <div class="mb-4">          <label class="block text-MainShade text-2xl font-bold mb-2" for="name">            <i class="fas fa-briefcase mr-2"></i>Job Title          </label>          <input type="text" id="name" formControlName="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-MainShade focus:border-transparent" placeholder="Enter job title">          <div *ngIf="jobOfferForm.get(\'name\')?.touched && jobOfferForm.get(\'name\')?.invalid" class="text-red-500 mt-2">            <div *ngIf="jobOfferForm.get(\'name\')?.errors?.[\'required\']" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">              Job title is required.            </div>          </div>        </div>        <!-- Description -->        <div class="mb-4">          <label class="block text-MainShade text-2xl font-bold mb-2" for="description">            <i class="fas fa-align-left mr-2"></i>Description          </label>          <textarea id="description" formControlName="description" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-MainShade focus:border-transparent" placeholder="Enter job description"></textarea>          <div *ngIf="jobOfferForm.get(\'description\')?.touched && jobOfferForm.get(\'description\')?.invalid" class="text-red-500 mt-2">            <div *ngIf="jobOfferForm.get(\'description\')?.errors?.[\'required\']" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">              Description is required.            </div>          </div>        </div>        <!-- Work Time -->        <div class="mb-4">          <label class="block text-MainShade text-2xl font-bold mb-2" for="workTime">            <i class="fas fa-clock mr-2"></i>Work Time          </label>          <input type="text" id="workTime" formControlName="workTime" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-MainShade focus:border-transparent" placeholder="Enter work time">          <div *ngIf="jobOfferForm.get(\'workTime\')?.touched && jobOfferForm.get(\'workTime\')?.invalid" class="text-red-500 mt-2">            <div *ngIf="jobOfferForm.get(\'workTime\')?.errors?.[\'required\']" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">              Work time is required.            </div>          </div>        </div>        <!-- Location -->        <div class="mb-4">          <label class="block text-MainShade text-2xl font-bold mb-2" for="location">            <i class="fas fa-map-marker-alt mr-2"></i>Location          </label>          <input type="text" id="location" formControlName="location" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-MainShade focus:border-transparent" placeholder="Enter location">          <div *ngIf="jobOfferForm.get(\'location\')?.touched && jobOfferForm.get(\'location\')?.invalid" class="text-red-500 mt-2">            <div *ngIf="jobOfferForm.get(\'location\')?.errors?.[\'required\']" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">              Location is required.            </div>          </div>        </div>        <!-- Salary -->        <div class="mb-4">          <label class="block text-MainShade text-2xl font-bold mb-2" for="salary">            <i class="fas fa-dollar-sign mr-2"></i>Salary          </label>          <input type="number" id="salary" formControlName="salary" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-MainShade focus:border-transparent" placeholder="Enter salary">          <div *ngIf="jobOfferForm.get(\'salary\')?.touched && jobOfferForm.get(\'salary\')?.invalid" class="text-red-500 mt-2">            <div *ngIf="jobOfferForm.get(\'salary\')?.errors?.[\'required\']" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">              Salary is required.            </div>          </div>        </div>        <!-- Skills -->        <div class="mb-4">          <label class="block text-MainShade text-2xl font-bold mb-2" for="skills">            <i class="fas fa-tools mr-2"></i>Skills          </label>          <input type="text" id="skills" formControlName="skills" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-MainShade focus:border-transparent" placeholder="Enter skills">          <small class="text-MainShade">Please enter skills separated by commas (e.g., JavaScript, HTML, CSS).</small>          <div *ngIf="jobOfferForm.get(\'skills\')?.touched && jobOfferForm.get(\'skills\')?.invalid" class="text-red-500 mt-2">            <div *ngIf="jobOfferForm.get(\'skills\')?.errors?.[\'required\']" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">              Skills are required.            </div>          </div>        </div>        <!-- Company -->        <div class="mb-4">          <label class="block text-MainShade text-2xl font-bold mb-2" for="company">            <i class="fas fa-building mr-2"></i>Company          </label>          <input type="text" id="company" formControlName="company" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-MainShade focus:border-transparent" placeholder="Enter company name">          <div *ngIf="jobOfferForm.get(\'company\')?.touched && jobOfferForm.get(\'company\')?.invalid" class="text-red-500 mt-2">            <div *ngIf="jobOfferForm.get(\'company\')?.errors?.[\'required\']" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">              Company name is required.            </div>          </div>        </div>        <!-- Email -->        <div class="mb-4">          <label class="block text-MainShade text-2xl font-bold mb-2" for="email">            <i class="fas fa-envelope mr-2"></i>Email          </label>          <input type="email" id="email" formControlName="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-MainShade focus:border-transparent" placeholder="Enter email">          <div *ngIf="jobOfferForm.get(\'email\')?.touched && jobOfferForm.get(\'email\')?.invalid" class="text-red-500 mt-2">            <div *ngIf="jobOfferForm.get(\'email\')?.errors?.[\'required\']" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">              Email is required.            </div>            <div *ngIf="jobOfferForm.get(\'email\')?.errors?.[\'email\']" class="bg-yellow-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">              Invalid email format.            </div>          </div>        </div>        <!-- Phone Number -->        <div class="mb-4">          <label class="block text-MainShade text-2xl font-bold mb-2" for="numtel">            <i class="fas fa-phone-alt mr-2"></i>Phone Number          </label>          <input type="text" id="numtel" formControlName="numtel" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-MainShade focus:border-transparent" placeholder="Enter phone number">          <div *ngIf="jobOfferForm.get(\'numtel\')?.touched && jobOfferForm.get(\'numtel\')?.invalid" class="text-red-500 mt-2">            <div *ngIf="jobOfferForm.get(\'numtel\')?.errors?.[\'required\']" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">              Phone number is required.            </div>          </div>        </div>        <!-- Expiration Date -->        <div class="mb-4">          <label class="block text-MainShade text-2xl font-bold mb-2" for="expirationDate">            <i class="fas fa-calendar-alt mr-2"></i>Expiration Date          </label>          <input type="date" id="expirationDate" formControlName="expirationDate" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-MainShade focus:border-transparent" placeholder="Enter expiration date">          <div *ngIf="jobOfferForm.get(\'expirationDate\')?.touched && jobOfferForm.get(\'expirationDate\')?.invalid" class="text-red-500 mt-2">            <div *ngIf="jobOfferForm.get(\'expirationDate\')?.errors?.[\'required\']" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">              Expiration date is required.            </div>          </div>        </div>      </div>      <!-- Submit Button -->      <div class="flex items-center justify-between mt-4">        <button type="submit" class="bg-MainShade text-white px-4 py-2 rounded-lg hover:bg-MainDark transition duration-300" [disabled]="jobOfferForm.invalid">          {{ isEditMode ? \'Update Job Offer\' : \'Create Job Offer\' }}        </button>      </div>    </form>  </div></div><p-toast></p-toast></div>'
+    var COMPONENTS = [{'name': 'AccueilComponent', 'selector': 'app-accueil'},{'name': 'AllExpiredJobsComponent', 'selector': 'app-all-expired-jobs'},{'name': 'AllJobsComponent', 'selector': 'app-all-jobs'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'ApplicationsListComponent', 'selector': 'app-applications-list'},{'name': 'AppliedCandidatesrListComponent', 'selector': 'app-applied-candidatesr-list'},{'name': 'AppNotificationsComponent', 'selector': 'app-app-notifications'},{'name': 'CandidateCVDisplayComponent', 'selector': 'app-candidate-cvdisplay'},{'name': 'CandidateDetailComponent', 'selector': 'app-candidate-detail'},{'name': 'CandidateInfoComponent', 'selector': 'app-candidate-info'},{'name': 'CandidatesListComponent', 'selector': 'app-candidates-list'},{'name': 'ExpJobDetailsComponent', 'selector': 'app-exp-job-details'},{'name': 'ExpJobDivComponent', 'selector': 'app-exp-job-div'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'JobComponent', 'selector': 'app-job'},{'name': 'JobDetailComponent', 'selector': 'app-job-detail'},{'name': 'JobDetailsComponent', 'selector': 'app-job-details'},{'name': 'JobOfferDetailComponent', 'selector': 'app-job-offer-detail'},{'name': 'JobsListComponent', 'selector': 'app-jobs-list'},{'name': 'LoginCompComponent', 'selector': 'app-login-comp'},{'name': 'MatchComponent', 'selector': 'app-match'},{'name': 'MatchesComponentComponent', 'selector': 'app-matches-component'},{'name': 'MyJobOfferListComponent', 'selector': 'app-my-job-offer-list'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NewJobFormComponent', 'selector': 'app-new-job-form'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RecommandedCandidateComponent', 'selector': 'app-recommanded-candidate'},{'name': 'RecommendedCandidatesComponent', 'selector': 'app-recommended-candidates'},{'name': 'SignUpCompComponent', 'selector': 'app-sign-up-comp'},{'name': 'SingleCandidateComponent', 'selector': 'app-single-candidate'},{'name': 'UploadCvComponent', 'selector': 'app-upload-cv'},{'name': 'UserProfileComponent', 'selector': 'app-user-profile'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'NewJobFormComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'NewJobFormComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
