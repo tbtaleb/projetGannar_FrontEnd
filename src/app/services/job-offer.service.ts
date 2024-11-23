@@ -25,6 +25,11 @@ export class JobOfferService {
     );
   }
 
+  deleteApplication(candidateId: number, jobOfferId: number): Observable<void> {
+    const url = `${environment.apiUrl}/applications/${candidateId}/${jobOfferId}/delete`;
+    return this.httpClient.delete<void>(url);
+  }
+
   getJobOfferById(jobOfferId: number): Observable<JobOffer> {
     return this.httpClient.get<JobOffer>(`${this.jobOffersURL}/${jobOfferId}`);
   }

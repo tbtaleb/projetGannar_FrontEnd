@@ -37,7 +37,7 @@ export class RecruiterService {
     );
   }
 
-  getCandidatesByRecruiterId(recruiterId: number): Observable<Candidate[]> {
+  getCandidatesByRecruiterId(recruiterId: number): Observable<any[]> {
     const url = `${this.recruitersURL}/${recruiterId}/candidates`;
     return this.httpClient.get<Candidate[]>(url);
   }

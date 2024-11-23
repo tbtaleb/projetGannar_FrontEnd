@@ -4,6 +4,7 @@ import { RecruiterService } from '../../../services/recruiter.service';
 import { AuthService } from '../../../services/auth/auth.service';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { JobOfferService } from '../../../services/job-offer.service';
 
 @Component({
   selector: 'app-applied-candidatesr-list',
@@ -14,18 +15,19 @@ import { Router } from '@angular/router';
 })
 export class AppliedCandidatesrListComponent {
   jobOffersWithCandidates: any[] = [];
-
+  jobOffer: any;
   constructor(
     private recruiterService: RecruiterService,
     private authService: AuthService,
-    private router: Router,
+    private jobOfferService: JobOfferService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.loadJobOffersWithCandidates();
   }
-  DisplayCV(candidateId:number){
-    this.router.navigate(['/displayCV',candidateId]);
+  DisplayCV(candidateId: number) {
+    this.router.navigate(['/displayCV', candidateId]);
   }
   loadJobOffersWithCandidates(): void {
     const recruiter = this.authService.getUser();
@@ -42,5 +44,25 @@ export class AppliedCandidatesrListComponent {
     } else {
       console.error('No recruiter found');
     }
+  }
+
+  deleteApplication(candidateId: number, jobOfferId: number): void {
+    this.jobOfferService.deleteApplication(candidateId, jobOfferId).subscribe(
+      () => {
+        // Remove the deleted application from the list
+        this.jobOffersWithCandidates = this.jobOffersWithCandidates.map(
+          (jobOfferWithCandidates) => {
+            jobOfferWithCandidates.candidates =
+              jobOfferWithCandidates.candidates.filter(
+                (candidate: Candidate) => candidate.id !== candidateId
+              );
+            return jobOfferWithCandidates;
+          }
+        );
+      },
+      (error) => {
+        console.error('Error deleting application:', error);
+      }
+    );
   }
 }

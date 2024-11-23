@@ -1,15 +1,14 @@
 <div class="info">
-    <div class="bg-white p-4 rounded shadow">
-      <h2 class="text-2xl font-bold mb-4">Applied Candidates</h2>
-      <p>
-        This component shows the list of candidates grouped by the job offers
-        they have applied for.
-      </p>
-    </div>
+  <div class="bg-white p-4 rounded shadow">
+    <h2 class="text-2xl font-bold mb-4">Applied Candidates</h2>
+    <p>
+      This component shows the list of candidates grouped by the job offers they
+      have applied for.
+    </p>
   </div>
+</div>
 <div class="container mx-auto p-4">
   <div class="max-w-3xl mx-auto">
-    
     <div *ngIf="jobOffersWithCandidates.length > 0; else noJobOffers">
       <div
         *ngFor="let jobOfferWithCandidates of jobOffersWithCandidates"
@@ -19,6 +18,7 @@
           {{ jobOfferWithCandidates.job_offer.name }}
         </h2>
         <p class="mb-2">{{ jobOfferWithCandidates.job_offer.description }}</p>
+        
         <p class="mb-2">
           <span class="font-bold">Location:</span>
           {{ jobOfferWithCandidates.job_offer.location }}
@@ -57,12 +57,25 @@
                   {{ candidate.dateOfBirth }}
                 </p>
               </div>
-              <button
-                (click)="DisplayCV(candidate.id)"
-                class="bg-MainDark text-white py-2 px-4 font-semibold rounded-full shadow hover:scale-105 transition duration-100 ease-in-out hover:shadow-lg ml-4 self-end"
-              >
-                View CV
-              </button>
+              <div>
+                <button
+                  (click)="DisplayCV(candidate.id)"
+                  class="bg-MainDark text-white py-2 px-4 font-semibold rounded-full shadow hover:scale-105 transition duration-100 ease-in-out hover:shadow-lg ml-4 self-end"
+                >
+                  View CV
+                </button>
+                <button
+                  (click)="
+                    deleteApplication(
+                      candidate.id,
+                      jobOfferWithCandidates.job_offer.Id
+                    )
+                  "
+                  class="bg-red-500 text-white py-2 px-4 font-semibold rounded-full shadow hover:scale-105 transition duration-100 ease-in-out hover:shadow-lg ml-4 self-end"
+                >
+                  Delete
+                </button>
+              </div>
             </div>
           </div>
           <ng-template #noCandidates>
@@ -75,5 +88,4 @@
       <p class="text-center text-gray-500">No job offers found.</p>
     </ng-template>
   </div>
-  
 </div>
