@@ -1,5 +1,5 @@
 import { CommonModule, Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { JobOfferService } from '../../../services/job-offer.service';
 import { ApplicationsService } from '../../../services/applications.service';
@@ -29,10 +29,11 @@ export class JobDetailComponent implements OnInit {
     private applicationService: ApplicationsService,
     public authService: AuthService
   ) {}
+  @Input() jobOfferId!: number 
 
   ngOnInit(): void {
-    this.id = this.activatedRoute.snapshot.paramMap.get('id');
-    this.getJobById(this.id);
+    // this.id = this.activatedRoute.snapshot.paramMap.get('id');
+    this.getJobById(this.jobOfferId);
     this.loadCurrentUser();
   }
 

@@ -21,6 +21,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { SignUpCompComponent } from './components/AuthComponents/sign-up-comp/sign-up-comp.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { JobDetailComponent } from "./components/AllJobs/job-detail/job-detail.component";
 
 @Component({
   selector: 'app-root',
@@ -28,7 +29,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
   imports: [
     RouterOutlet,
     MatSnackBarModule,
-  ],
+    AllJobsComponent,
+    JobDetailsComponent,
+    JobDetailComponent
+],
   providers: [BrowserModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',

@@ -1,6 +1,6 @@
 <div class="min-h-screen p-4">
   <div class="max-w-6xl mx-auto flex flex-col lg:flex-row">
-    <div class="w-full h-1/2 lg:w-1/4 bg-white shadow-lg rounded-xl p-4 mb-6 lg:mb-0 lg:mr-6">
+    <div class="w-full h-1/2 lg:w-1/4 bg-white shadow-sm hover:shadow-lg hover:border-MainDark rounded-lg p-4 mb-6 lg:mb-0 lg:mr-6">
       <h1 class="text-2xl font-bold text-MainDark mb-4">
         <i class="fas fa-filter mr-2"></i>Filters
       </h1>
@@ -54,20 +54,13 @@
       </div>
     </div>
     <div class="w-full lg:w-3/4">
-       <div class="flex mb-6">
-        <input
-          type="text"
-          placeholder="Search by name..."
-          class="text-2xl py-4 px-2 shadow-lg w-full rounded-lg border-2"
-          [(ngModel)]="filters.name"
-          (input)="applyFilters()"
-        />
-        <i
-          class="fa-solid fa-xl fa-magnifying-glass bg-MainDark w-16 h-16 text-center content-center text-white rounded-lg shadow-lg flex items-center justify-center"
-        ></i>
-      </div>
+       <!-- here was the name filter  -->
       <div class="grid grid-cols-1 gap-4">
         <ng-container *ngFor="let job of filteredJobOffers">
+          <!-- <app-job ></app-job>
+          <app-job ></app-job>
+          <app-job ></app-job>
+          <app-job ></app-job> -->
           <app-job [jobOffer]="job"></app-job>
         </ng-container>
       </div>
