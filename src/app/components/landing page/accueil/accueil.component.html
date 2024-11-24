@@ -1,103 +1,94 @@
-<app-upload-cv></app-upload-cv>
-<div class="flex flex-col items-center justify-center min-h-screen px-4 md:px-10 relative z-10">
-  <div class="flex flex-col md:flex-row items-center max-w-6xl w-full">
-    <div class="md:w-1/2 mb-8 md:mb-0">
-      <img src="assets/ccv.png" class="max-h-[80vh] mx-auto" alt="">
-    </div>
-    <div class="md:w-1/2 md:pl-8">
-      <h1 class="font-bold text-5xl mb-6 leading-tight">
-        Ensure your resume makes<br>
-        it past the Applicant Tracking<br>
-        Systems with the help of AI
-      </h1>
-      <ul class="space-y-4 font-bold">
-        <li class="flex items-start">
-          <i class="fa-regular fa-square-check mt-1 mr-2"></i>
-          <span>Avoid your resume being ignored due to a lack of relevant keywords</span>
-        </li>
-        <li class="flex items-start">
-          <i class="fa-regular fa-square-check mt-1 mr-2"></i>
-          <span>Maximize your content's impact by optimizing for industry-specific keywords</span>
-        </li>
-        <li class="flex items-start">
-          <i class="fa-regular fa-square-check mt-1 mr-2"></i>
-          <span>Upgrade your skills section to align perfectly with job requirements</span>
-        </li>
-      </ul>
+<div class="w-full flex flex-col">
+  <!-- banner -->
+  <div class="h-screen bg-cover bg-center text-white w-full" style="background-image: url('https://th.bing.com/th/id/R.567c4eb2420bfe0e81dbac97eb826064?rik=BqDi38wuOwKr9Q&riu=http%3a%2f%2fwww.sohopodomorocity.com%2fwp-content%2fuploads%2f2016%2f09%2f2.jpg&ehk=OwRsvOBYfKALeSwdDZplmaPKdC5vsB8%2fOYg67jgbGhQ%3d&risl=&pid=ImgRaw&r=0')">
+    <div class="flex h-full flex-col items-center justify-center bg-black bg-opacity-65 leading-loose w-full">
+      <h1 class="text-3xl font-bold md:text-4xl lg:text-6xl">We help you find your <span class="text-yellow-400">Dream Job</span></h1>
+      <p class="my-2 md:my-4 md:text-lg md:font-semibold lg:text-xl">Our AI System will ensure you the best Matches</p>
+      <button routerLink="/login" class="rounded-full bg-blue-500 px-4 py-2 text-xl text-white shadow-lg lg:px-5 lg:py-3 lg:font-semibold">Get Started</button>
     </div>
   </div>
-</div>
-<h1 class="font-bold text-5xl mb-6 leading-tight text-center">Find some job offers that match your skill set</h1>
-<div class="relative">
-  <div id="scrollContainer" class="overflow-x-auto whitespace-nowrap scroll-smooth pb-5">
-    <button class="absolute left-0 z-10 h-full px-4 text-white bg-blue-500 bg-opacity-75 rounded-lg ml-2 hover:bg-opacity-100 transition-opacity duration-300" (click)="scrollLeft()">
-      <i class="fa-solid fa-chevron-left fa-xl"></i>
-    </button>
 
-    <!-- Job Offer Cards -->
-    <div class="inline-flex space-x-4 px-12">
-      @for (job of jobOffers; track job.Id){
-      <div class="w-64 bg-white rounded-lg shadow-md p-4">
-        <div class="flex justify-between items-start mb-2">
-          <h3 class="font-bold text-lg">{{job.name}}</h3>
-          <!--<i [class]="job.icon + ' text-2xl text-gray-600'"></i>-->
-        </div>
-        <p class="text-sm text-gray-600 mb-2">{{job.company}}</p>
-        <p class="text-sm mb-1"><i class="fa-regular fa-clock mr-2"></i>{{job.workTime}}</p>
-        <p class="text-sm"><i class="fa-solid fa-dollar-sign mr-2"></i>{{job.salary}}</p>
-      </div>
-      }
+  <div class="p-16 w-full">
+    <div class="mb-4">
+      <h1 class="mb-3 text-center text-4xl font-bold text-gray-900 lg:text-start lg:text-5xl">Searching Categories</h1>
+      <p class="text-center text-xl text-gray-700 lg:text-start lg:text-2xl">Our Searching filters that will help you find what suits you</p>
     </div>
-
-    <button class="absolute right-0 z-10 h-full px-4 text-white bg-blue-500 bg-opacity-75 rounded-lg mr-2 hover:bg-opacity-100 transition-opacity duration-300" (click)="scrollRight()">
-      <i class="fa-solid fa-chevron-right fa-xl"></i>
-    </button>
-  </div>
-</div>
-<div>
-  <footer class="bg-gray-800 text-white py-8 mt-12">
-    <div class="container mx-auto px-4">
-      <div class="flex flex-wrap justify-between">
-        <div class="w-full md:w-1/4 mb-6 md:mb-0">
-          <h3 class="text-xl font-bold mb-4">JobMatch AI</h3>
-          <p class="text-sm">Empowering your career with AI-driven job matching.</p>
+    <div class="flex items-center justify-center">
+      <div class="mt-10 grid w-full grid-cols-1 space-y-4 md:grid-cols-2 md:space-y-0 lg:grid-cols-3 gap-4">
+        <div class="flex h-80 w-full items-center justify-center rounded-md bg-blue-300 shadow-lg lg:h-96">
+          <div class="flex flex-col items-center justify-center">
+            <div class="flex justify-center items-center h-32 w-32 rounded-md bg-white shadow-lg">
+               <i class="fas fa-search text-6xl text-blue-500"></i>
+            </div>
+            <div class="mt-4 text-3xl font-semibold text-cyan-950">Filter By Name</div>
+          </div>
         </div>
-        <div class="w-full md:w-1/4 mb-6 md:mb-0">
-          <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
-          <ul class="text-sm">
-            <li class="mb-2"><a href="#" class="hover:text-gray-400">Home</a></li>
-            <li class="mb-2"><a href="#" class="hover:text-gray-400">About Us</a></li>
-            <li class="mb-2"><a href="#" class="hover:text-gray-400">Services</a></li>
-            <li class="mb-2"><a href="#" class="hover:text-gray-400">Contact</a></li>
-          </ul>
+        <div class="flex h-80 w-full items-center justify-center rounded-md bg-blue-300 shadow-lg lg:h-96">
+          <div class="flex flex-col items-center justify-center">
+            <div class="flex justify-center items-center h-32 w-32 rounded-md bg-white shadow-lg">
+               <i class="fas fa-map-marker-alt text-6xl text-blue-500"></i>
+            </div>
+            <div class="mt-4 text-3xl font-semibold text-cyan-950">Filter By Location</div>
+          </div>
         </div>
-        <div class="w-full md:w-1/4 mb-6 md:mb-0">
-          <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
-          <p class="text-sm mb-2">123 AI Street, Tech City</p>
-          <p class="text-sm mb-2">contact&#64;jobmatchai.com</p>
-          <p class="text-sm">+1 (555) 123-4567</p>
-        </div>
-        <div class="w-full md:w-1/4">
-          <h4 class="text-lg font-semibold mb-4">Follow Us</h4>
-          <div class="flex space-x-4">
-            <a href="#" class="text-white hover:text-gray-400">
-              <i class="fab fa-facebook-f fa-lg"></i>
-            </a>
-            <a href="#" class="text-white hover:text-gray-400">
-              <i class="fab fa-twitter fa-lg"></i>
-            </a>
-            <a href="#" class="text-white hover:text-gray-400">
-              <i class="fab fa-linkedin-in fa-lg"></i>
-            </a>
-            <a href="#" class="text-white hover:text-gray-400">
-              <i class="fab fa-instagram fa-lg"></i>
-            </a>
+        <div class="flex h-80 w-full items-center justify-center rounded-md bg-blue-300 shadow-lg lg:h-96">
+          <div class="flex flex-col items-center justify-center">
+            <div class="flex justify-center items-center h-32 w-32 rounded-md bg-white shadow-lg">
+               <i class="fas fa-dollar-sign text-6xl text-blue-500"></i>
+            </div>
+            <div class="mt-4 text-3xl font-semibold text-cyan-950">Filter By Salary</div>
           </div>
         </div>
       </div>
-      <div class="border-t border-gray-700 mt-8 pt-6 text-sm text-center">
-        <p>&copy; 2024 JobMatch AI. All rights reserved.</p>
+    </div>
+  </div>
+
+  <!-- Featured Jobs -->
+  <div class="bg-yellow-100 p-16 w-full">
+    <div class="mb-4">
+      <h1 class="mb-3 text-center text-4xl font-bold text-gray-900 lg:text-start lg:text-5xl">Featured Job Offers</h1>
+      <p class="text-center text-xl text-gray-700 lg:text-start lg:text-2xl">Highlighting Top Opportunities</p>
+    </div>
+
+    <div class="mt-12 flex items-center justify-center">
+      <div class="grid grid-cols-1 space-y-4 md:grid-cols-2 md:space-y-0 lg:grid-cols-4 lg:space-x-4 gap-4">
+        <div *ngFor="let job of jobOffers" class="w-full rounded-md bg-blue-300 p-3 shadow-lg overflow-hidden flex flex-col">
+          <div class="flex flex-wrap">
+            <div class="flex w-8/12 flex-col items-start justify-between">
+              <h2 class="text-2xl font-bold text-cyan-950">{{ job.company }}</h2>
+              <p class="w-1/2 border-b-2 border-gray-900"></p>
+            </div>
+            <div class="h-20 w-20 rounded-md bg-white shadow-md"></div>
+          </div>
+          <div class="mt-2 lg:mt-6 flex-grow">
+            <h1 class="text-xl font-bold text-cyan-950 md:text-5xl lg:text-6xl">{{ job.name }}</h1>
+            <p class="my-2 text-lg font-semibold text-cyan-950 md:my-2 md:text-2xl lg:my-4">{{ job.email }}</p>
+            <p class="leading-losse text-lg font-semibold text-cyan-950 lg:text-2xl">Salary : <span class=" text-gray-900">{{ job.salary }}</span></p>
+          </div>
+          
+        </div>
+        
       </div>
+      
+    </div>
+    <div class="flex items-center justify-end md:mt-2 lg:mt-4">
+          <button routerLink="/jobs" class="rounded-full bg-cyan-950 px-4 py-2 text-xl text-white transition hover:scale-105">View more</button>
+        </div>
+  </div>
+   <footer class="bg-gray-900 text-white p-6">
+    <div class="flex justify-between items-center">
+      <div>
+        <h3 class="text-2xl font-semibold">Jobify.</h3>
+        <p class="mt-2 text-gray-400">Your one-stop platform for AI-driven job opportunities.</p>
+      </div>
+      <div class="space-x-4">
+        <!-- <a href="#" class="text-lg hover:text-yellow-400">About Us</a>
+        <a href="#" class="text-lg hover:text-yellow-400">Contact</a>
+        <a href="#" class="text-lg hover:text-yellow-400">Privacy Policy</a> -->
+      </div>
+    </div>
+    <div class="mt-6 text-center text-gray-400">
+      <p>&copy; 2024 Jobify. All Rights Reserved.</p>
     </div>
   </footer>
 </div>

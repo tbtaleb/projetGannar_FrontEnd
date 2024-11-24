@@ -6,11 +6,13 @@ import { JobOfferService } from '../../../services/job-offer.service';
 import { RecruiterService } from '../../../services/recruiter.service';
 import { CandidateService } from '../../../services/candidate.service';
 import { Candidate } from '../../../classes/candidate';
+import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-accueil',
   standalone: true,
-  imports: [UploadCvComponent],
+  imports: [CommonModule,RouterLink],
   templateUrl: './accueil.component.html',
   styleUrl: './accueil.component.css'
 })
